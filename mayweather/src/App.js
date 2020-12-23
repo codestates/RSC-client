@@ -1,14 +1,34 @@
-import "./App.css";
+import React from "react";
+import { Switch, Route, withRouter } from "react-router-dom";
+import Home from "./pages/Home";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Welcome to MayWeather Service</h1>
-      <h2>restart merge</h2>
-      <div>git pull upstream dev not working</div>
-      <div>4번째줄 내용</div>
-    </div>
-  );
+class App extends React.Component {
+  // state = {
+  //   isLogin: false, //필요없을지도. if home이 only for visitors
+  // };
+
+  render() {
+    // const { isLogin } = this.state;
+
+    return (
+      <div>
+        <Switch>
+          <Route
+            path="/login"
+            render={() => (
+              <Login />
+            )}
+          />
+        </Switch>
+        <Switch>
+          <Route
+            path="/"
+            render={() => <Home />}
+          />
+        </Switch>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default withRouter(App);
