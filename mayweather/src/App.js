@@ -8,9 +8,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       locations: [
-        { place: "Seoul" },
-        { place: "Incheon" },
-        { place: "Busan" }
+        { id: 1, place: "Seoul" },
+        { id: 2, place: "Incheon" },
+        { id: 3, place: "Busan" }
       ],
       // isLogin: false, //필요없을지도. if home이 only for visitors
     }
@@ -25,12 +25,14 @@ class App extends React.Component {
 
     return (
       <div>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+        </Switch>
       </div>
     )
   }
