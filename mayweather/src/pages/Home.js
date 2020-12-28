@@ -1,24 +1,28 @@
 import React from "react";
-import map from "../mapofkr.svg"
-// import LocationListEntry from "./homeComponents/LocationListEntry";
+import { withRouter, useHistory } from "react-router-dom";
+import map from "../mapofkr.svg";
+import LocationListEntry from "./homeComponents/LocationListEntry";
 
-const Home = ({ locations, handleLocationClick }) => {
+function Home({ locations }) {
+    const history = useHistory();
+    const handleLocationClick = () => {
+        history.push("login")
+    }
+    console.log("locations >>>", locations)
     return (
         <div>
             <h1>Welcome to MayWeather Service</h1>
-            {/* {locations.map((location) => {
-                return (
-                    <LocationListEntry locationlist={location} handleClick={handleClick} />
-                )
-            })} */}
-            {/* <div>
-                {this.state.locations.map(i => (
-                    <p>{i.place}</p>
-                ))}
-            </div> */}
             <img src={map} alt="Map" />
+            <div>
+                {locations.map((location) => {
+                    return (
+                        <LocationListEntry key={location.id} location={location} onClick={handleLocationClick} />
+                        // <Link to="/Login">{location.location}</Link>
+                    )
+                })}
+            </div>
         </div>
-    )
+    );
 }
 
-export default Home;
+export default withRouter(Home);
