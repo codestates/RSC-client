@@ -6,7 +6,7 @@ import LocationListEntry from "./homeComponents/LocationListEntry";
 function Home({ locations }) {
     const history = useHistory();
     const handleLocationClick = () => {
-        history.push("login")
+        history.push("/login")
     }
     console.log("locations >>>", locations)
     return (

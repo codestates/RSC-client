@@ -28,17 +28,18 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
-    fetch("https://54.180.36.82:5000/")
-      .then(res => {
-        return (res.json())
-      })
-      .then((data) => {
-        this.setState({
-          locations: data
-        });
-      })
-  }
+  // componentDidMount() {
+  //   fetch("https://54.180.36.82:5000/")
+  //     .then(res => {
+  //       // console.log("data from real server >>>", res)
+  //       return (res.json())
+  //     })
+  //     .then((data) => {
+  //       this.setState({
+  //         locations: data
+  //       });
+  //     })
+  // }
 
   /*
   render에는 첫 화면인 /home, /homeComponents/LocationListEntry에 각 location에 대한 정보가 있음

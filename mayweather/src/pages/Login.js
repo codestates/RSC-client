@@ -26,7 +26,7 @@ class Login extends React.Component {
             axios.post("https://54.180.36.82:5000/login", { id: userId, password: password })
                 .then((res) => {
                     console.log("res >>>", res)
-                    // handleResponseSuccess();
+                    handleResponseSuccess();
                 })
         }
     }
