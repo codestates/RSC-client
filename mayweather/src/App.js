@@ -3,6 +3,8 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Logout from "./pages/Logout";
+import Content from "./pages/Content";
 import Mypage from "./pages/Mypage";
 import axios from "axios";
 
@@ -10,26 +12,35 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      locations: [ //서버 완성되기 전 임시 데이터
+      a: "1",
+      isLoggedin: false,
+      locations: [
+        //서버 완성되기 전 임시 데이터
         {
-          "id": "1",
-          "location": "seoul",
-          "currentTemp": "-0.1",
-          "currentWeatherIcon": "01n"
+          id: "1",
+          location: "seoul",
+          currentTemp: "-0.1",
+          currentWeatherIcon: "01n",
         },
         {
-          "id": "2",
-          "location": "incheon",
-          "currentTemp": "-0.2",
-          "currentWeatherIcon": "02n"
-        }
+          id: "2",
+          location: "incheon",
+          currentTemp: "-0.2",
+          currentWeatherIcon: "02n",
+        },
       ],
       // locations: [],
-      isLoggedin: false, //mypage, login 페이지 상태 (끌어올리기)
-      // userinfo: res.data
-    }
-    this.handleResponseSuccess = this.handleResponseSuccess.bind(this)
+    };
+    this.handleLogout = this.handleLogout.bind(this);
+    this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
   }
+  handleLogout() {
+    axios
+      .post("http://13.209.245.44/logout", { withCredentials: true })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+  // userinfo: res.data
 
   // componentDidMount() {
   //   fetch("https://54.180.36.82:5000/")
@@ -51,7 +62,7 @@ class App extends React.Component {
     //       isLoggedin: true,
     //       // userinfo: res.data
     //     })
-    this.props.history.push("/content")
+    this.props.history.push("/content");
     // })
   }
   /*
@@ -64,11 +75,25 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
-          {/* // <Route exact path="/Home" render={() => <Home />} /> */}
-          <Route path="/login" render={() => <Login handleResponseSuccess={this.handleResponseSuccess} />} />
-          <Route exact path="/mypage" render={() => <Mypage />} />
           <Route exact path="/signup" render={() => <Signup />} />
-          <Route exact path="/" render={() => <Home locations={this.state.locations} />} />
+          <Route
+            exact
+            path="/content"
+            render={() => <Content handleLogout={this.handleLogout}></Content>}
+          ></Route>
+          <Route exact path="/logout" render={() => <Logout></Logout>}></Route>
+          <Route
+            path="/login"
+            render={() => (
+              <Login handleResponseSuccess={this.handleResponseSuccess} />
+            )}
+          />
+          <Route exact path="/mypage" render={() => <Mypage />} />
+          <Route
+            exact
+            path="/"
+            render={() => <Home locations={this.state.locations} />}
+          />
         </Switch>
       </div>
     );
