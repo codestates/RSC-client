@@ -7,7 +7,7 @@ class Login extends React.Component {
         super(props);
 
         this.state = {
-            id: "",
+            userId: "",
             password: "",
             errorMessage: ""
         };
@@ -16,14 +16,15 @@ class Login extends React.Component {
     handleInputValue = (key) => (e) => {
         this.setState({ [key]: e.target.value });
     }
+    //http://13.209.245.44/ or http://54.180.36.82:5000 
     handleLogin = () => {
         const { userId, password } = this.state;
         const { handleResponseSuccess } = this.props;
-        if (!this.state.userId || !this.state.password) {
+        if (this.state.userId === "" || this.state.password === "") {
             this.setState({ errorMessage: "ID와 비밀번호를 다시 확인해주세요" });
             return;
         } else {
-            axios.post("https://54.180.36.82:5000/login", { id: userId, password: password })
+            axios.post("http://54.180.36.82:5000/login", { userId: userId, password: password })
                 .then((res) => {
                     console.log("res >>>", res)
                     handleResponseSuccess();
@@ -38,7 +39,7 @@ class Login extends React.Component {
                     <form onSubmit={(e) => e.preventDefault()}>
                         <div>
                             {/* <span>ID</span> */}
-                            <input type='text' placeholder='ID를 입력하세요' onChange={this.handleInputValue("id")}></input>
+                            <input type='text' placeholder='ID를 입력하세요' onChange={this.handleInputValue("userId")}></input>
                         </div>
                         <div>
                             {/* <span>비밀번호</span> */}

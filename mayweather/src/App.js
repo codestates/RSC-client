@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Mypage from "./pages/Mypage";
+import axios from "axios";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,8 +25,10 @@ class App extends React.Component {
         }
       ],
       // locations: [],
-      isLoggedin: false //mypage, login 페이지 상태 (끌어올리기)
+      isLoggedin: false, //mypage, login 페이지 상태 (끌어올리기)
+      // userinfo: res.data
     }
+    this.handleResponseSuccess = this.handleResponseSuccess.bind(this)
   }
 
   // componentDidMount() {
@@ -41,6 +44,16 @@ class App extends React.Component {
   //     })
   // }
 
+  handleResponseSuccess() {
+    // axios.get("http://54.180.36.82:5000/content")
+    //   .then((res) => {
+    //     this.setState({
+    //       isLoggedin: true,
+    //       // userinfo: res.data
+    //     })
+    this.props.history.push("/content")
+    // })
+  }
   /*
   render에는 첫 화면인 /home, /homeComponents/LocationListEntry에 각 location에 대한 정보가 있음
   /home에서 지역(link또는 일반 컴포넌트로 구현)을 클릭했을 때 /login으로 이동(모달로 /home에서 login모달창을 여는 방법 또는 /login페이지로 이동)
@@ -52,7 +65,7 @@ class App extends React.Component {
       <div>
         <Switch>
           {/* // <Route exact path="/Home" render={() => <Home />} /> */}
-          <Route path="/login" render={() => <Login />} />
+          <Route path="/login" render={() => <Login handleResponseSuccess={this.handleResponseSuccess} />} />
           <Route exact path="/mypage" render={() => <Mypage />} />
           <Route exact path="/signup" render={() => <Signup />} />
           <Route exact path="/" render={() => <Home locations={this.state.locations} />} />
