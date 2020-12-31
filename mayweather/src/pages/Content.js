@@ -64,7 +64,7 @@ class Content extends React.Component {
 
   componentDidMount() {
     axios
-      .get("https://54.180.36.82:5000/content", { withCredentials: true })
+      .get("https://54.180.36.82/content", { withCredentials: true })
       .then((res) => res.json())
       .then((res) => {
         if (res.location.length < 6) {
@@ -94,7 +94,7 @@ class Content extends React.Component {
       });
 
     axios
-      .get("https://54.180.36.82:5000/")
+      .get("mayweather24.com/")
       .then((res) => res.json())
       .then((res) => {
         this.setState({
@@ -122,130 +122,130 @@ class Content extends React.Component {
             <Logout open={this.state.isModalOpen}></Logout>
           </div>
         ) : (
-          <div className="content1">
-            <h1>주요도시 날씨</h1>
+            <div className="content1">
+              <h1>주요도시 날씨</h1>
 
-            <div>
-              1번도시&nbsp;
+              <div>
+                1번도시&nbsp;
               <select onChange={this.handleChange("location1")}>
-                <option value="">도시선택</option>
-                <option value="seoul">서울</option>
-                <option value="incheon">인천</option>
-                <option value="daegu">대구</option>
-                <option value="gwangju">광주</option>
-                <option value="busan">부산</option>
-              </select>
-            </div>
-            <div>
-              2번도시&nbsp;
+                  <option value="">도시선택</option>
+                  <option value="seoul">서울</option>
+                  <option value="incheon">인천</option>
+                  <option value="daegu">대구</option>
+                  <option value="gwangju">광주</option>
+                  <option value="busan">부산</option>
+                </select>
+              </div>
+              <div>
+                2번도시&nbsp;
               <select onChange={this.handleChange("location2")}>
-                <option value="">도시선택</option>
-                <option value="seoul">서울</option>
-                <option value="incheon">인천</option>
-                <option value="daegu">대구</option>
-                <option value="gwangju">광주</option>
-                <option value="busan">부산</option>
-              </select>
-            </div>
-            <h2>선택한 도시 날씨보기</h2>
-            <div>
-              {/* 1번 도시 날씨 */}
-              {this.state.location1 === "서울" ? (
-                <div>
-                  <h3>도시1번 날씨{this.state.currentWeather_seoul}</h3>
-                  <button>친구찾기</button>
-                </div>
-              ) : (
-                <></>
-              )}
-              {this.state.location1 === "인천" ? (
-                <div>
-                  <h3>도시1번 날씨{this.state.currentWeather_incheon}</h3>
-                  <button>친구찾기</button>
-                </div>
-              ) : (
-                <></>
-              )}
-              {this.state.location1 === "대구" ? (
-                <div>
-                  <h3>도시1번 날씨{this.state.currentWeather_daegu}</h3>
-                  <button>친구찾기</button>
-                </div>
-              ) : (
-                <></>
-              )}
-              {this.state.location1 === "광주" ? (
-                <div>
-                  <h3>도시1번 날씨{this.state.currentWeather_gwangju}</h3>
-                  <button>친구찾기</button>
-                </div>
-              ) : (
-                <></>
-              )}
-              {this.state.location1 === "부산" ? (
-                <div>
-                  <h3>도시1번 날씨{this.state.currentWeather_busan}</h3>
-                  <button>친구찾기</button>
-                </div>
-              ) : (
-                <></>
-              )}
-            </div>
+                  <option value="">도시선택</option>
+                  <option value="seoul">서울</option>
+                  <option value="incheon">인천</option>
+                  <option value="daegu">대구</option>
+                  <option value="gwangju">광주</option>
+                  <option value="busan">부산</option>
+                </select>
+              </div>
+              <h2>선택한 도시 날씨보기</h2>
+              <div>
+                {/* 1번 도시 날씨 */}
+                {this.state.location1 === "서울" ? (
+                  <div>
+                    <h3>도시1번 날씨{this.state.currentWeather_seoul}</h3>
+                    <button>친구찾기</button>
+                  </div>
+                ) : (
+                    <></>
+                  )}
+                {this.state.location1 === "인천" ? (
+                  <div>
+                    <h3>도시1번 날씨{this.state.currentWeather_incheon}</h3>
+                    <button>친구찾기</button>
+                  </div>
+                ) : (
+                    <></>
+                  )}
+                {this.state.location1 === "대구" ? (
+                  <div>
+                    <h3>도시1번 날씨{this.state.currentWeather_daegu}</h3>
+                    <button>친구찾기</button>
+                  </div>
+                ) : (
+                    <></>
+                  )}
+                {this.state.location1 === "광주" ? (
+                  <div>
+                    <h3>도시1번 날씨{this.state.currentWeather_gwangju}</h3>
+                    <button>친구찾기</button>
+                  </div>
+                ) : (
+                    <></>
+                  )}
+                {this.state.location1 === "부산" ? (
+                  <div>
+                    <h3>도시1번 날씨{this.state.currentWeather_busan}</h3>
+                    <button>친구찾기</button>
+                  </div>
+                ) : (
+                    <></>
+                  )}
+              </div>
 
-            <div>
-              {/* 2번 도시 날씨 */}
-              {this.state.location2 === "서울" ? (
-                <div>
-                  <h3>도시2번 날씨{this.state.currentWeather_seoul}</h3>
-                  <button>친구찾기</button>
-                </div>
-              ) : (
-                <></>
-              )}
-              {this.state.location2 === "인천" ? (
-                <div>
-                  <h3>도시2번 날씨{this.state.currentWeather_incheon}</h3>
-                  <button>친구찾기</button>
-                </div>
-              ) : (
-                <></>
-              )}
-              {this.state.location2 === "대구" ? (
-                <div>
-                  <h3>도시2번 날씨{this.state.currentWeather_daegu}</h3>
-                  <button>친구찾기</button>
-                </div>
-              ) : (
-                <></>
-              )}
-              {this.state.location2 === "광주" ? (
-                <div>
-                  <h3>도시2번 날씨{this.state.currentWeather_gwangju}</h3>
-                  <button>친구찾기</button>
-                </div>
-              ) : (
-                <></>
-              )}
-              {this.state.location2 === "부산" ? (
-                <div>
-                  <h3>도시1번 날씨{this.state.currentWeather_busan}</h3>
-                  <button>친구찾기</button>
-                </div>
-              ) : (
-                <></>
-              )}
-            </div>
+              <div>
+                {/* 2번 도시 날씨 */}
+                {this.state.location2 === "서울" ? (
+                  <div>
+                    <h3>도시2번 날씨{this.state.currentWeather_seoul}</h3>
+                    <button>친구찾기</button>
+                  </div>
+                ) : (
+                    <></>
+                  )}
+                {this.state.location2 === "인천" ? (
+                  <div>
+                    <h3>도시2번 날씨{this.state.currentWeather_incheon}</h3>
+                    <button>친구찾기</button>
+                  </div>
+                ) : (
+                    <></>
+                  )}
+                {this.state.location2 === "대구" ? (
+                  <div>
+                    <h3>도시2번 날씨{this.state.currentWeather_daegu}</h3>
+                    <button>친구찾기</button>
+                  </div>
+                ) : (
+                    <></>
+                  )}
+                {this.state.location2 === "광주" ? (
+                  <div>
+                    <h3>도시2번 날씨{this.state.currentWeather_gwangju}</h3>
+                    <button>친구찾기</button>
+                  </div>
+                ) : (
+                    <></>
+                  )}
+                {this.state.location2 === "부산" ? (
+                  <div>
+                    <h3>도시1번 날씨{this.state.currentWeather_busan}</h3>
+                    <button>친구찾기</button>
+                  </div>
+                ) : (
+                    <></>
+                  )}
+              </div>
 
-            <div>
-              <Link to="./login">로그인페이지가기</Link>
-            </div>
+              <div>
+                <Link to="./login">로그인페이지가기</Link>
+              </div>
 
-            <div>
-              <button onClick={this.handleOnClick}>로그아웃</button>
-              <Logout open={this.state.isModalOpen}></Logout>
+              <div>
+                <button onClick={this.handleOnClick}>로그아웃</button>
+                <Logout open={this.state.isModalOpen}></Logout>
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
     );
   }
