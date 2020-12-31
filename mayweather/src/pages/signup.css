@@ -1,5 +1,38 @@
 .signup {
   position: absolute;
+  margin-top: 5px;
   width: 100%;
-  left: 43%;
+  left: 28%;
+}
+
+.signupbox {
+  position: absolute;
+  border: 2.5px black solid;
+  width: 500px;
+  height: 580px;
+  left: 32%;
+  margin-top: 70px;
+  background-color: cornflowerblue;
+}
+
+.signupfont {
+  font-size: 20px;
+}
+
+.signupbtn {
+  width: 100px;
+  height: 30px;
+}
+
+.signupfont_0 {
+  font-size: 20px;
+  color: black;
+  border: 0.5px black solid;
+  background-color: white;
+  text-decoration: none;
+}
+
+.inputbox {
+  width: 200px;
+  height: 30px;
 }
