@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-import '../App.css';
+import "../App.css";
 
 class Login extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class Login extends React.Component {
       userId: "",
       password: "",
       errorMessage: "",
-      visitorLocation: ""
+      visitorLocation: "",
     };
     this.handleInputValue = this.handleInputValue.bind(this);
   }
@@ -63,23 +63,27 @@ class Login extends React.Component {
                   placeholder="비밀번호를 입력하세요"
                   onChange={this.handleInputValue("password")}
                 ></input>
-              </div><br />
+              </div>
+              <br />
               <button
                 className="loginbtn"
                 type="submit"
                 onClick={this.handleLogin}
               >
                 로그인
-            </button>
+              </button>
               {<div>{this.state.errorMessage}</div>}
-            </form><br />
+            </form>
+            <br />
             <div>
-              <Link to="./signup">아직 회원이 아니신가요?</Link><br />
+              <Link to="./signup">아직 회원이 아니신가요?</Link>
+              <br />
               {/* <Link to="/">비회원으로 로그인하기</Link> */}
             </div>
           </div>
           <div className="login_nonmember">
-            <h3>비회원 로그인</h3><br />
+            <h3>비회원 로그인</h3>
+            <br />
             <div>
               보고싶은 도시&nbsp;
               <select onChange={this.handleInputValue("visitorLocation")}>
@@ -89,7 +93,10 @@ class Login extends React.Component {
                 <option value="daegu">대구</option>
                 <option value="gwangju">광주</option>
                 <option value="busan">부산</option>
-              </select><br /><br /><br />
+              </select>
+              <br />
+              <br />
+              <br />
               <Link to="./content">
                 <button>날씨 보기</button>
               </Link>

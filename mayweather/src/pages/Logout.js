@@ -19,9 +19,11 @@ class Logout extends React.Component {
       >
         {this.props.open ? (
           <div>
-            <h1>로그아웃 되었습니다</h1>
+            <h1 className="modal_0">로그아웃 되었습니다</h1>
             <div>
-              <Link to="./">홈으로 가기</Link>
+              <Link to="./" className="modal_1">
+                홈으로 가기
+              </Link>
             </div>
             {/* <button>확인</button>
             <button>아니요</button> */}

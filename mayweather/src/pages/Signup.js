@@ -13,13 +13,20 @@ class Signup extends React.Component {
       username: "",
       location1: "",
       location2: "",
-      errorMessage: "",
+      errorMessage:
+        "비어 있는 값이 있습니다. 혹은 중복된 도시가 선택되었습니다. 확인 바랍니다.",
     };
     this.WriteUserInfo = this.WriteUserInfo.bind(this);
     this.handlerSignup = this.handlerSignup.bind(this);
   }
   WriteUserInfo = (key) => (e) => {
     this.setState({ [key]: e.target.value });
+  };
+  handleErrorMessage = () => {
+    <div>{alert(`${this.state.errorMessage}`)}</div>;
+  };
+  handlerSignup_0 = () => {
+    this.handlerSignup();
   };
   handlerSignup() {
     if (
@@ -30,10 +37,7 @@ class Signup extends React.Component {
       (this.state.location1 === "" && this.state.location2 === "") || // 도시 둘다 선택안했을 때
       this.state.location1 === this.state.location2 // 도시 값이 둘다 같을 때
     ) {
-      return this.setState({
-        errorMessage:
-          "비어 있는 값이 있습니다. 혹은 중복된 도시가 선택되었습니다. 확인 바랍니다.",
-      });
+      this.handleErrorMessage();
     } else {
       this.setState({
         errorMessage: "",
@@ -42,7 +46,7 @@ class Signup extends React.Component {
         // 도시1만 값이 있을 때
         axios
           .post(
-            "http://13.209.245.44/signup",
+            "https://mayweather24.com/signup",
             {
               userId: this.state.userId,
               password: this.state.password,
@@ -58,7 +62,7 @@ class Signup extends React.Component {
         // 도시2만 값이 있을 때
         axios
           .post(
-            "http://13.209.245.44/signup",
+            "https://mayweather24.com/signup",
             {
               userId: this.state.userId,
               password: this.state.password,
@@ -74,13 +78,13 @@ class Signup extends React.Component {
         // 둘다 값이 있을 때
         axios
           .post(
-            "http://13.209.245.44/signup",
+            "https://mayweather24.com/signup",
             {
               userId: this.state.userId,
               password: this.state.password,
               email: this.state.email,
               username: this.state.username,
-              location: `${this.state.location1}, ${this.state.location2}`,
+              location: `${this.state.location1},${this.state.location2}`,
             },
             { withCredentials: true }
           )
@@ -91,77 +95,89 @@ class Signup extends React.Component {
   }
   render() {
     return (
-      <div className="signup">
-        <h1>회원가입</h1>
-        <h2>모든 항목을 적어야 합니다.</h2>
-        <div>
-          <input
-            type="text"
-            placeholder="userId"
-            onChange={this.WriteUserInfo("userId")}
-          ></input>
+      <div className="signupbox">
+        <div className="signup">
+          <h1>MayWeather</h1>
+          <h2>회원가입</h2>
+          <h2>모든 항목을 적어야 합니다.</h2>
+          <div>
+            <input
+              className="inputbox"
+              type="text"
+              placeholder="userId"
+              onChange={this.WriteUserInfo("userId")}
+            ></input>
+          </div>
+          <br></br>
+          <div>
+            <input
+              className="inputbox"
+              type="password"
+              placeholder="password"
+              onChange={this.WriteUserInfo("password")}
+            ></input>
+          </div>
+          <br></br>
+          <div>
+            <input
+              className="inputbox"
+              type="email"
+              placeholder="email"
+              onChange={this.WriteUserInfo("email")}
+            ></input>
+          </div>
+          <br></br>
+          <div>
+            <input
+              className="inputbox"
+              type="text"
+              placeholder="username"
+              onChange={this.WriteUserInfo("username")}
+            ></input>
+          </div>
+          <br></br>
+          <div>
+            <span className="signupfont">첫번째 좋아하는 도시 : </span>
+            <select
+              value={this.state.value}
+              onChange={this.WriteUserInfo("location1")}
+            >
+              {/* <optgroup label="도시를 선택하세요!"></optgroup> */}
+              <option value="">선택안함</option>
+              <option value="seoul">서울</option>
+              <option value="incheon">인천</option>
+              <option value="daegu">대구</option>
+              <option value="gwangju">광주</option>
+              <option value="busan">부산</option>
+            </select>
+          </div>
+          <br></br>
+          <div>
+            <span className="signupfont">두번째 좋아하는 도시 : </span>
+            <select
+              value={this.state.value}
+              onChange={this.WriteUserInfo("location2")}
+            >
+              {/* <optgroup label="도시를 선택하세요!"></optgroup> */}
+              <option value="">선택안함</option>
+              <option value="seoul">서울</option>
+              <option value="incheon">인천</option>
+              <option value="daegu">대구</option>
+              <option value="gwangju">광주</option>
+              <option value="busan">부산</option>
+            </select>
+          </div>
+          <br></br>
+          <div>
+            <button className="signupbtn" onClick={this.handlerSignup_0}>
+              회원가입
+            </button>
+          </div>
+          <br></br>
+          <Link to="/login" className="signupfont_0">
+            이미 아이디가 있으신가요?
+          </Link>
         </div>
-        <div>
-          <input
-            type="password"
-            placeholder="password"
-            onChange={this.WriteUserInfo("password")}
-          ></input>
-        </div>
-        <div>
-          <input
-            type="email"
-            placeholder="email"
-            onChange={this.WriteUserInfo("email")}
-          ></input>
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="username"
-            onChange={this.WriteUserInfo("username")}
-          ></input>
-        </div>
-        <div>
-          <span>첫번째 좋아하는 도시 : </span>
-          <select
-            value={this.state.value}
-            onChange={this.WriteUserInfo("location1")}
-          >
-            {/* <optgroup label="도시를 선택하세요!"></optgroup> */}
-            <option value="">선택안함</option>
-            <option value="seoul">서울</option>
-            <option value="incheon">인천</option>
-            <option value="daegu">대구</option>
-            <option value="gwangju">광주</option>
-            <option value="busan">부산</option>
-          </select>
-        </div>
-        <div>
-          <span>두번째 좋아하는 도시 : </span>
-          <select
-            value={this.state.value}
-            onChange={this.WriteUserInfo("location2")}
-          >
-            {/* <optgroup label="도시를 선택하세요!"></optgroup> */}
-            <option value="">선택안함</option>
-            <option value="seoul">서울</option>
-            <option value="incheon">인천</option>
-            <option value="daegu">대구</option>
-            <option value="gwangju">광주</option>
-            <option value="busan">부산</option>
-          </select>
-        </div>
-
-        <div>
-          <button onClick={this.handlerSignup}>회원가입</button>
-        </div>
-        <Link to="/login">이미 아이디가 있으신가요?</Link>
-        {this.errorMessage !== "" ? (
-          <div>{this.state.errorMessage}</div>
-        ) : (
-          <></>
-        )}
       </div>
     );
   }

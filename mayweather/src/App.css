@@ -106,9 +106,9 @@
 /* LocationListEntry페이지 ******************************************************/
 .locationbuttons {
   position: abosolute;
-  align-items: center;
+  /* align-items: center; */
   width: 10%;
-  height: 10%;
-  display: inline-flex;
+  height: 3%;
+  display: block;
   justify-content: space-evenly;
 }

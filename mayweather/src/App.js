@@ -16,14 +16,16 @@ class App extends React.Component {
     this.state = {
       a: "1",
       isLoggedin: false,
-      locations: []
+      locations: [],
     };
     this.handleLogout = this.handleLogout.bind(this);
     this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
   }
   handleLogout() {
     axios
-      .post("https://d2d2orvnr38twg.cloudfront.net/logout", { withCredentials: true })
+      .post("https://mayweather24.com/logout", {
+        withCredentials: true,
+      })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
@@ -31,32 +33,20 @@ class App extends React.Component {
 
   componentDidMount() {
     // console.log('----componentDidMount----')
-    fetch("https://d2d2orvnr38twg.cloudfront.net")
+    fetch("https://mayweather24.com")
       .then((res) => {
-        return (console.log("data from real server >>>", res), res.json())
+        return console.log("data from real server >>>", res), res.json();
       })
       .then((data) => {
         this.setState({
-          locations: data.currentWeather
+          locations: data.currentWeather,
         });
-      })
+      });
   }
 
   handleResponseSuccess() {
-    // axios.get("http://54.180.36.82:5000/content")
-    //   .then((res) => {
-    //     this.setState({
-    //       isLoggedin: true,
-    //       // userinfo: res.data
-    //     })
     this.props.history.push("/content");
-    // })
   }
-  /*
-  render에는 첫 화면인 /home, /homeComponents/LocationListEntry에 각 location에 대한 정보가 있음
-  /home에서 지역(link또는 일반 컴포넌트로 구현)을 클릭했을 때 /login으로 이동(모달로 /home에서 login모달창을 여는 방법 또는 /login페이지로 이동)
-  ID, pw로 로그인을 하면, /contents 페이지로 이동.
-  /mypage 에는 userinfor가 나오고, 선호지역 변경 기능이 있어야함 */
 
   render() {
     return (
@@ -75,9 +65,12 @@ class App extends React.Component {
               <Login handleResponseSuccess={this.handleResponseSuccess} />
             )}
           />
-          <Route exact path="/mypage" render={() => <Mypage handleLogout={this.handleLogout} />} />
           <Route
             exact
+            path="/mypage"
+            render={() => <Mypage handleLogout={this.handleLogout} />}
+          />
+          <Route
             path="/"
             render={() => <Home locations={this.state.locations} />}
           />

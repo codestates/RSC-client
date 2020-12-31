@@ -1,0 +1,62 @@
+.content0 {
+  /* 모달창 열릴 때 배경페이지 */
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.16);
+}
+
+.content1 {
+  /* input 가운데 위치 */
+  position: absolute;
+  width: 100%;
+  left: 43%;
+  top: 50px;
+}
+
+.content2 {
+  position: absolute;
+  width: 100%;
+  top: 180px;
+  border: 0.5px black solid;
+  background-color: rgb(177, 217, 255);
+}
+/* .content2_1 {
+  position: absolute;
+  width: 100%;ㅌ
+  top: 250px;
+  border: 0.5px black solid;
+}
+.content2_2 {
+  position: absolute;
+  width: 100%;
+  top: 250px;
+  border: 0.5px black solid;
+} */
+
+.listbox {
+  display: flex;
+
+  border: 1px dottered red;
+  padding: 10px;
+}
+
+.list {
+  border: 1px solid black;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 20px;
+  background-color: white;
+}
+
+.weatherfont {
+  font-size: 20px;
+}
+.weathertitle {
+  font-size: 30px;
+  font-weight: bold;
+}
