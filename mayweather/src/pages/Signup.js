@@ -46,7 +46,7 @@ class Signup extends React.Component {
         // 도시1만 값이 있을 때
         axios
           .post(
-            "http://localhost:443/signup",
+            "https://mayweather24.com/signup",
             {
               userId: this.state.userId,
               password: this.state.password,
@@ -62,7 +62,7 @@ class Signup extends React.Component {
         // 도시2만 값이 있을 때
         axios
           .post(
-            "http://localhost:443/signup",
+            "https://mayweather24.com/signup",
             {
               userId: this.state.userId,
               password: this.state.password,
@@ -78,7 +78,7 @@ class Signup extends React.Component {
         // 둘다 값이 있을 때
         axios
           .post(
-            "http://localhost:443/signup",
+            "https://mayweather24.com/signup",
             {
               userId: this.state.userId,
               password: this.state.password,

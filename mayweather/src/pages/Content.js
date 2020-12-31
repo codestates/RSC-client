@@ -196,6 +196,8 @@ class Content extends React.Component {
                 </select>
               </div>
             </div>
+
+            {/* 날씨 나오는 곳 */}
             <div className="content2">
               <span className="content2_1 weatherfont">
                 {/* 1번 도시 날씨 */}

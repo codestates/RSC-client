@@ -2,6 +2,8 @@ import React from "react";
 import { withRouter, useHistory } from "react-router-dom";
 import map from "../mapofkr.svg";
 import LocationListEntry from "./homeComponents/LocationListEntry";
+import "./home.css";
+
 function Home({ locations }) {
   const history = useHistory();
   const handleLocationClick = () => {
@@ -11,7 +13,7 @@ function Home({ locations }) {
   return (
     <div>
       <h1>Welcome to MayWeather Service</h1>
-      <img src={map} alt="Map" />
+      <img src={map} alt="Map" className="map" />
       <div>
         {locations.map((location) => {
           return (
@@ -20,7 +22,6 @@ function Home({ locations }) {
               location={location}
               onClick={handleLocationClick}
             />
-            // <Link to="/Login">{location.location}</Link>
           );
         })}
       </div>

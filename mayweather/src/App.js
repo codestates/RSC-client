@@ -8,37 +8,40 @@ import Content from "./pages/Content";
 import Mypage from "./pages/Mypage";
 import axios from "axios";
 
+//사용 가능한 서버: http://13.209.245.44/ or http://54.180.36.82
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       a: "1",
       isLoggedin: false,
-      locations: [
-        //서버 완성되기 전 임시 데이터
-        {
-          id: "1",
-          location: "seoul",
-          currentTemp: "-0.1",
-          currentWeatherIcon: "01n",
-        },
-        {
-          id: "2",
-          location: "incheon",
-          currentTemp: "-0.2",
-          currentWeatherIcon: "02n",
-        },
-      ],
-      // locations: [],
+      locations: [],
     };
     this.handleLogout = this.handleLogout.bind(this);
     this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
   }
   handleLogout() {
     axios
-      .post("https://localhost:443/logout", null, { withCredentials: true })
+      .post("https://mayweather24.com/logout", {
+        withCredentials: true,
+      })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+  }
+  // userinfo: res.data
+
+  componentDidMount() {
+    // console.log('----componentDidMount----')
+    fetch("https://mayweather24.com")
+      .then((res) => {
+        return console.log("data from real server >>>", res), res.json();
+      })
+      .then((data) => {
+        this.setState({
+          locations: data.currentWeather,
+        });
+      });
   }
 
   handleResponseSuccess() {
@@ -62,9 +65,12 @@ class App extends React.Component {
               <Login handleResponseSuccess={this.handleResponseSuccess} />
             )}
           />
-          <Route exact path="/mypage" render={() => <Mypage />} />
           <Route
             exact
+            path="/mypage"
+            render={() => <Mypage handleLogout={this.handleLogout} />}
+          />
+          <Route
             path="/"
             render={() => <Home locations={this.state.locations} />}
           />

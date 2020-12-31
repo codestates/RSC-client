@@ -1,11 +1,13 @@
 import React from "react";
+import "../../App.css";
 
 //지역 이름과 실시간 날씨(온도, 날씨아이콘)을 불러옴
 
 const LocationListEntry = ({ location, onClick }) => {
+  console.log("location from locationlistentry >>>", location);
   return (
-    // <div className="location">
-    <button className="location" onClick={onClick}>
+    // <div className="locationbuttons">
+    <button className="locationbuttons" onClick={onClick}>
       <div style={{ flex: 7 }}>
         <div className="name">{location.location}</div>
         <p className="temperature">{location.currentTemp}</p>
