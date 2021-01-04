@@ -127,7 +127,7 @@ class Mypage extends React.Component {
 
         <div className="mypage">
           <center>
-            <h1>Mypage</h1>
+            <h1 className="pg_title">Mypage</h1>
             <br />
             {/* </center> */}
             {this.state.isModalOpen ? (
@@ -135,8 +135,8 @@ class Mypage extends React.Component {
                 <Logout open={this.state.isModalOpen}></Logout>
               </div>
             ) : (
-              <></>
-            )}
+                <></>
+              )}
             <div className="mypage_userinfobox">
               <img src={userimg} alt="Userimg" className="userimg" />
               <div className="mypage_userinfo">
@@ -166,8 +166,8 @@ class Mypage extends React.Component {
                     {this.state.location2 ? (
                       <div>{this.state.location2}</div>
                     ) : (
-                      <div>선택한 지역이 없습니다.</div>
-                    )}
+                        <div>선택한 지역이 없습니다.</div>
+                      )}
                   </dd>
                   <button
                     onClick={() => {

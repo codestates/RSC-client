@@ -1,99 +1,11 @@
-/*home 페이지 ******************************************************************/
-.hompage {
-  border: chartreuse;
-  background-color: black;
-  background-repeat: no-repeat;
-  background-size: auto;
+body {
+  background: linear-gradient(to left bottom, #3459a3, #3f98c1);
+  height: 100vh;
 }
 
-.buttons {
-  background-color: black;
-  padding-left: 10%;
-  padding-bottom: 400px;
+.pg_title {
+  color: white;
 }
-
-/* 지도 이미지 */
-.mapimg {
-  width: 700px;
-  height: 745px;
-  position: fixed;
-  left: 35%;
-  background-color: black;
-}
-
-/* 제목 */
-#hometitle {
-  margin: 0;
-  padding: 30px;
-  padding-bottom: 50px;
-  text-shadow: 0.5px 1px lightcyan;
-  font-weight: 900;
-  color: #61dafb;
-  background-color: black;
-}
-
-/* LocationListEntry페이지(Home) ******************************************************/
-.locationbuttons {
-  min-width: 100px;
-  padding: 20px;
-  position: abosolute;
-  width: 120px;
-  height: 135px;
-  display: block;
-  justify-content: space-evenly;
-  border: none;
-  background-color: lightgray;
-}
-
-/*홈 화면에 보이는 지역별 버튼관련 내용*/
-.locationbuttons:hover {
-  background-color: #61dafb;
-}
-.weathericon {
-  height: 40px;
-  width: 40px;
-}
-.locationname {
-  color: black;
-  line-height: 5px;
-  font-size: 18px;
-  font-weight: 700;
-}
-.temperature {
-  color: black;
-  font-size: 17px;
-}
-
-/* 로그인페이지 ****************************************************************/
-.login {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(to bottom, #3459a3, #3380a3);
-}
-.loginpage {
-  margin: 10px;
-  padding: 10px;
-  position: absolute;
-  align-items: center;
-  left: 20%;
-  width: 60%;
-  height: 40%;
-  display: inline-flex;
-  justify-content: space-evenly;
-}
-
-/* 내비게이션바 */
-/* .login_navbar {
-  list-style-type: none;
-  display: flex;
-  position: relative;
-  background-color: black;
-  margin: 0 auto 0;
-  padding-top: 0px;
-  padding: 10px;
-  justify-content: flex-end;
-} */
 
 ul {
   list-style-type: none;
@@ -101,11 +13,6 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: black;
-  /* list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  justify-content: flex-end; */
 }
 
 li {
@@ -127,6 +34,108 @@ li a:hover {
   font-weight: bolder;
   color: #61dafb;
 }
+
+/*home 페이지 ******************************************************************/
+
+/* .hompage {
+  background: linear-gradient(to left bottom, #3459a3, #3f98c1);
+  height: 100%;
+  width: 100%;
+} */
+
+.buttons {
+  padding-left: 10%;
+  padding-bottom: 400px;
+}
+
+/* 지도 이미지 */
+.mapimg {
+  width: 60%;
+  height: 90%;
+  position: fixed;
+  margin-left: 30px;
+}
+
+/* 제목 */
+#hometitle {
+  text-align: center;
+  padding: 30px;
+  padding-bottom: 50px;
+  /* Create the gradient. */
+  background-image: linear-gradient(45deg, rgb(253, 253, 114), rgb(253, 107, 22));
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  font-weight: 900;
+  font-size: 35px;
+}
+
+/* LocationListEntry페이지(Home) ******************************************************/
+.locationbuttons {
+  cursor: pointer;
+  width: 130px;
+  height: 135px;
+  margin-left: 10%;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 20px;
+  display: block;
+  justify-content: space-evenly;
+  min-width: 100px;
+}
+
+/*홈 화면에 보이는 지역별 버튼관련 내용*/
+.locationbuttons:hover {
+  background-color: #61dafb;
+}
+.weathericon {
+  height: 40px;
+  width: 40px;
+}
+.locationname {
+  color: black;
+  line-height: 5px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.temperature {
+  color: black;
+  font-size: 17px;
+}
+
+
+
+
+
+/* 로그인페이지 ****************************************************************/
+.login_fullpage {
+  background-repeat: no-repeat;
+}
+
+.login {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.loginpage {
+  padding: 10px;
+  position: absolute;
+  align-items: center;
+  left: 20%;
+  width: 60%;
+  height: 40%;
+  display: inline-flex;
+  justify-content: space-evenly;
+}
+
 
 /* 로그인페이지 회원 로그인 */
 
@@ -162,35 +171,6 @@ li a:hover {
 }
 
 /* 마이페이지 ****************************************************************/
-/* 내비게이션바 */
-/* .mypage_navbar {
-  list-style-type: none;
-  display: flex;
-  position: relative;
-  background-color: black;
-  margin: 0 auto 0;
-  padding-top: 0px;
-  padding: 15px;
-  justify-content: flex-end;
-
-  list-style-type: none;
-  display: inline-flex;
-  margin: 0;
-  padding: 0;
-  float: right;
-} */
-
-/* 내비게이션바 위에 있는 홈/메인페이지로의 이동 링크 */
-/* .mypage_tohome {
-  flex: 0;
-  flex-basis: 5%;
-  border: 1px;
-  padding: 1px;
-  text-decoration: none;
-  text-align: center;
-} */
-
-/* 네비게이션바 위의 로그아웃버튼 */
 
 .mypage {
   position: absolute;
@@ -260,4 +240,13 @@ li a:hover {
 
   /* font-weight: 700;
   letter-spacing: -1px; */
+}
+
+@media screen and (max-height: 650px) {
+  .map {
+    width: 20%;
+    height: 70%;
+    position: absolute;
+    left: 40%
+  }
 }

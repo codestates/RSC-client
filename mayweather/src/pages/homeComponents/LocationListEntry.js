@@ -6,7 +6,6 @@ const LocationListEntry = ({ location, onClick }) => {
   return (
     <button className="locationbuttons" onClick={onClick}>
       <div>
-        {/* <div style={{ flex: 6 }}> */}
         <div className="locationname">{location.location}</div>
         <p className="temperature">{location.currentTemp}°C</p>
         <img

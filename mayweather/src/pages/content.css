@@ -18,10 +18,12 @@
   width: 100%;
   left: 43%;
   top: 5px;
+  display: grid;
 }
 
 .content2 {
   position: absolute;
+  min-width: 900px;
   width: 100%;
   top: 180px;
   background-color: #3f98c1;
@@ -65,9 +67,13 @@
 }
 
 .weatherfont {
+  color: white;
   font-size: 20px;
+  font-weight: bold;
 }
 .weathertitle {
+  text-align: center;
+  color: rgb(253, 253, 114);
   font-size: 30px;
   font-weight: bold;
 }
