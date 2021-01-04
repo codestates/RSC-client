@@ -99,12 +99,17 @@ class Signup extends React.Component {
         <nav>
           <ul>
             <li>MayWeather24</li>
+            <li>
+              <Link to="./" className="login_tohome">
+                Home
+              </Link>
+            </li>
           </ul>
         </nav>
         <div className="signupbox">
           <div className="signup">
-            <h2>회원가입</h2>
-            <h2>모든 항목을 적어야 합니다.</h2>
+            <h2 className="pg_title">회원가입</h2>
+            <div>모든 항목을 작성해야 합니다.</div><br />
             <div>
               <input
                 className="inputbox"

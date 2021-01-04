@@ -12,8 +12,8 @@ function Home({ locations }) {
   return (
     <div className="homepage">
       <center>
-        <h1 id="hometitle">Welcome to MayWeather24</h1>
-        <img src={map} alt="Map" className="mapimg" />
+        <div id="hometitle">Welcome to MayWeather24</div>
+        <div><img src={map} alt="Map" className="mapimg" /></div>
       </center>
       <div className="buttons">
         {locations.map((location) => {

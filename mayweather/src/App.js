@@ -61,7 +61,7 @@ class App extends React.Component {
   componentDidMount() {
     fetch("https://mayweather24.com")
       .then((res) => {
-        return console.log("data from real server >>>", res), res.json();
+        return res.json();
       })
       .then((data) => {
         this.setState({

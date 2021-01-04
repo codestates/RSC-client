@@ -5,7 +5,6 @@ import Logout from "./Logout";
 import userimg from "../userimg.jpg";
 import "../App.css";
 
-
 class Mypage extends React.Component {
   constructor(props) {
     super(props);
@@ -45,20 +44,24 @@ class Mypage extends React.Component {
   };
 
   handleMyLocationOnClick1 = () => {
-    axios.post("https://mayweather24.com/mypage", {
-      // userId: this.state.userId,
-      prevLocation: this.state.location1,
-      location: this.state.newlocation1,
-    }, {
-      withCredentials: true,
-    })
-      .then(res => console.log("post mypage >>>", res))
+    axios
+      .post(
+        "https://mayweather24.com/mypage",
+        {
+          userId: this.state.userId,
+          prevLocation: this.state.location1,
+          location: this.state.newlocation1,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => console.log("post mypage >>>", res));
     this.setState({
       location1: this.state.newlocation1,
       newlocation1: "",
-    })
-  }
-
+    });
+  };
 
   handleGetUserInfo = async () => {
     const getUserInfo = await axios("https://mayweather24.com/content", {
@@ -81,7 +84,7 @@ class Mypage extends React.Component {
         location2: locationArr[1],
       });
     }
-  }
+  };
 
   componentDidMount() {
     axios
@@ -122,9 +125,9 @@ class Mypage extends React.Component {
           </ul>
         </nav>
 
-        <div>
+        <div className="mypage">
           <center>
-            <h1>Mypage</h1>
+            <h1 className="pg_title">Mypage</h1>
             <br />
             {/* </center> */}
             {this.state.isModalOpen ? (
@@ -156,10 +159,23 @@ class Mypage extends React.Component {
                       <option value="busan">부산</option>
                     </select>
                   </div>
-                  <button onClick={this.handleMyLocationOnClick1}>변경</button><br />
+                  <button onClick={this.handleMyLocationOnClick1}>변경</button>
+                  <br />
                   <dt>선택지역 2</dt>
-                  <dd>{this.state.location2 ? <div>{this.state.location2}</div> : <div>선택한 지역이 없습니다.</div>}</dd>
-                  <button onClick={() => { alert("현재는 내가 선택한 지역1만 변경가능합니다."); }}>변경</button>
+                  <dd>
+                    {this.state.location2 ? (
+                      <div>{this.state.location2}</div>
+                    ) : (
+                        <div>선택한 지역이 없습니다.</div>
+                      )}
+                  </dd>
+                  <button
+                    onClick={() => {
+                      alert("현재는 내가 선택한 지역1만 변경가능합니다.");
+                    }}
+                  >
+                    변경
+                  </button>
                 </dl>
               </div>
             </div>
@@ -171,4 +187,3 @@ class Mypage extends React.Component {
 }
 
 export default Mypage;
-

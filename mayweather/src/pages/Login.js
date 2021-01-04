@@ -20,10 +20,6 @@ class Login extends React.Component {
   }
 
   handleInputValue = (key) => (e) => {
-    // if (this.state.visitorLocation !== e.target.value) {
-    // this.setState({ [key]: e.target.value });
-    // this.props.handle_a(e.target.value);
-    // }
     this.setState({ [key]: e.target.value });
     this.props.handleVisitorLocation(e.target.value);
   };
@@ -71,7 +67,6 @@ class Login extends React.Component {
           { withCredentials: true }
         )
         .then((res) => {
-          console.log("post login res >>>", res);
           this.setState({
             isMember: false,
           })
@@ -83,7 +78,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="login_fullpage">
         <nav className="login_navbar">
           <ul>
             <li>MayWeather24</li>
@@ -96,7 +91,7 @@ class Login extends React.Component {
         </nav>
         <div>
           <center>
-            <h1>Login Page</h1>
+            <h1 className="pg_title">Login Page</h1>
           </center>
         </div>
         <div className="loginpage">
@@ -152,19 +147,10 @@ class Login extends React.Component {
               <br />
               <br />
               <br />
-              {/* <Link to="./content"> */}
-              {/* <button
-                  onClick={this.props.handleVisitorLocation.bind(
-                    this.state.visitorLocation
-                  )}
-                >
-                  로그인
-                </button> */}
               <button type="submit" onClick={this.handleLogin_0}>
                 로그인
               </button>
               {<div>{this.state.errorMessage_0}</div>}
-              {/* </Link> */}
             </div>
           </div>
         </div>

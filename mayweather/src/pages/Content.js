@@ -1,7 +1,7 @@
 import React from "react";
 import Logout from "./Logout";
 import "./content.css";
-import "../App.css"
+import "../App.css";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 
@@ -41,23 +41,6 @@ class Content extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // handleFindFriend = (data) => {
-  //   axios
-  //     .post(
-  //       "https://mayweather24.com/friends",
-  //       { location: data },
-  //       {
-  //         headers: { "Content-Type": "application/json" },
-  //         withCredentials: true,
-  //       }
-  //     )
-  //     .then((res) => res.friendNameArr)
-  //     .then((res) => {
-  //       this.setState({
-  //         locationFriends: res,
-  //       });
-  //     });
-  // };
   handleChange = (key) => (e) => {
     // 도시 상태 바꾸기
     if (
@@ -84,49 +67,12 @@ class Content extends React.Component {
     this.openModal();
     this.props.handleLogout();
   };
-  // handleGetUserInfo = () => {
-  //   axios
-  //     .get("https://mayweather24.com/content", {
-  //       withCredentials: true,
-  //     })
-  //     // .then((res) => console.log("유저정보 : ", res))
-  //     .then((res) => {
-  //       this.setState({
-  //         userInfo: res,
-  //       });
-  //     });
 
-  //   // if (this.state.userInfo.data.location.length < 8) {
-  //   //   // 길이 수정 영어길이 생각하여 수정하기
-  //   //   // 도시가 1개 일때
-  //   //   this.setState({
-  //   //     userId: this.state.userInfo.data.userId,
-  //   //     username: this.state.userInfo.data.username,
-  //   //     email: this.state.userInfo.data.email,
-  //   //     location1: this.state.userInfo.data.location,
-  //   //   });
-  //   // } else {
-  //   //   // 도시가 2개 일때
-  //   //   // 1번 문자열안에 있는 따옴표 제거하기
-  //   //   let arr = this.state.userInfo.data.location.split(",");
-  //   //   this.setState({
-  //   //     userId: this.state.userInfo.data.userId,
-  //   //     username: this.state.userInfo.data.username,
-  //   //     email: this.state.userInfo.data.email,
-  //   //     location1: arr.data[0],
-  //   //     location2: arr.data[1],
-  //   //   });
-  //   // }
-  // };
 
   handleContent = async () => {
     const getContent = await axios("https://mayweather24.com/content", {
       withCredentials: true,
     });
-    // console.log(
-    //   "🚀 ~ file: App.js ~ line 54 ~ App ~ componentDidMount ~ getContent",
-    //   getContent
-    // );
     // 도시 1개 일 때
     if (!getContent.data.location.includes(",")) {
       this.setState({
@@ -148,16 +94,13 @@ class Content extends React.Component {
       });
       console.log("handleContent 끝");
     }
-    // ?????합체
-    // };
   };
 
   componentDidMount() {
     this.handleContent();
-    // this.handleGetUserInfo();
     this.setState({
-      location1: this.state.visitorLocation
-    })
+      location1: this.state.visitorLocation,
+    });
   }
 
   render() {
@@ -173,49 +116,53 @@ class Content extends React.Component {
                 <nav>
                   <ul>
                     <li>MayWeather24</li>
-                    <li>{this.state.isMember ? <Link className="list" to="./mypage">
-                      Mypage
-              </Link> : <Link to="./signup">
-                        Signup
-              </Link>}</li>
-                    <li><Link to="./login">
-                      Login
-              </Link></li>
+                    <li>
+                      {this.state.isMember ? (
+                        <Link to="./mypage">Mypage</Link>
+                      ) : (
+                          <Link to="./signup">Signup</Link>
+                        )}
+                    </li>
+                    <li>
+                      <Link to="./login">Login</Link>
+                    </li>
                     {/* .then(() => this.props.history.push("/login")) */}
-                    <li className="content_logout"><button onClick={this.handleOnClick}>
-                      Logout
-              </button>
-                      <Logout open={this.state.isModalOpen}></Logout></li>
+                    <li className="content_logout">
+                      <button onClick={this.handleOnClick}>Logout</button>
+                      <Logout open={this.state.isModalOpen}></Logout>
+                    </li>
                   </ul>
                 </nav>
               </div>
-              <div className="content1">
-                <h1>주요도시 날씨</h1>
-                {/* {this.props.loca}
+              <div className="content1_box">
+                <div className="content1">
+                  <h1 className="pg_title">주요도시 날씨</h1>
+                  {/* {this.props.loca}
               {console.log("예측날씨 오전9시 서울날씨", this.props.abc)}
               {console.log("예측날씨 오전9시 서울날씨-1", this.props.abc_1)}
               {console.log("예측날씨 오전9시 서울날씨-2", this.props.abc_2)} */}
-                <div>
-                  1번도시&nbsp;
-                <select onChange={this.handleChange("location1")}>
-                    <option value="">도시선택</option>
-                    <option value="seoul">서울</option>
-                    <option value="incheon">인천</option>
-                    <option value="daegu">대구</option>
-                    <option value="gwangju">광주</option>
-                    <option value="busan">부산</option>
-                  </select>
-                </div>
-                <div>
-                  2번도시&nbsp;
-                <select onChange={this.handleChange("location2")}>
-                    <option value="">도시선택</option>
-                    <option value="seoul">서울</option>
-                    <option value="incheon">인천</option>
-                    <option value="daegu">대구</option>
-                    <option value="gwangju">광주</option>
-                    <option value="busan">부산</option>
-                  </select>
+                  <div >
+                    1번도시&nbsp;
+                  <select onChange={this.handleChange("location1")}>
+                      <option value="">도시선택</option>
+                      <option value="seoul">서울</option>
+                      <option value="incheon">인천</option>
+                      <option value="daegu">대구</option>
+                      <option value="gwangju">광주</option>
+                      <option value="busan">부산</option>
+                    </select>
+                  </div>
+                  <div>
+                    2번도시&nbsp;
+                  <select onChange={this.handleChange("location2")}>
+                      <option value="">도시선택</option>
+                      <option value="seoul">서울</option>
+                      <option value="incheon">인천</option>
+                      <option value="daegu">대구</option>
+                      <option value="gwangju">광주</option>
+                      <option value="busan">부산</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               {/* 날씨 나오는 곳 */}
