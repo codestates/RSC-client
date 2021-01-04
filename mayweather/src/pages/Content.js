@@ -144,6 +144,9 @@ class Content extends React.Component {
   componentDidMount() {
     this.handleSprinkleWeatherData();
     // this.handleGetUserInfo();
+    this.setState({
+      location1: this.state.visitorLocation
+    })
   }
 
   render() {

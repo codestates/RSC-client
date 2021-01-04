@@ -8,7 +8,6 @@ import Content from "./pages/Content";
 import Mypage from "./pages/Mypage";
 import axios from "axios";
 
-//사용 가능한 서버: http://13.209.245.44/ or http://54.180.36.82
 
 class App extends React.Component {
   constructor(props) {
@@ -17,10 +16,13 @@ class App extends React.Component {
       a: "1",
       isLoggedin: false,
       locations: [],
+      visitorLoca: ""
     };
     this.handleLogout = this.handleLogout.bind(this);
     this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
+    this.handleVisitorLocation= this.handleVisitorLocation.bind(this);
   }
+
   handleLogout() {
     axios
       .post("https://mayweather24.com/logout", {
@@ -29,10 +31,14 @@ class App extends React.Component {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
-  // userinfo: res.data
+
+  handleVisitorLocation(e) {
+    this.setState({
+      visitorLoca: e
+    })
+  }
 
   componentDidMount() {
-    // console.log('----componentDidMount----')
     fetch("https://mayweather24.com")
       .then((res) => {
         return console.log("data from real server >>>", res), res.json();
@@ -56,13 +62,13 @@ class App extends React.Component {
           <Route
             exact
             path="/content"
-            render={() => <Content handleLogout={this.handleLogout}></Content>}
+            render={() => (<Content handleLogout={this.handleLogout} visitorLoca={this.state.visitorLoca}></Content>)}
           ></Route>
           <Route exact path="/logout" render={() => <Logout></Logout>}></Route>
           <Route
             path="/login"
             render={() => (
-              <Login handleResponseSuccess={this.handleResponseSuccess} />
+              <Login handleResponseSuccess={this.handleResponseSuccess} handleVisitorLocation={this.handleVisitorLocation}/>
             )}
           />
           <Route
