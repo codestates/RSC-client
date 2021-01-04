@@ -1,7 +1,7 @@
 import React from "react";
 import Logout from "./Logout";
 import "./content.css";
-import "../App.css"
+import "../App.css";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 
@@ -156,8 +156,8 @@ class Content extends React.Component {
     this.handleContent();
     // this.handleGetUserInfo();
     this.setState({
-      location1: this.state.visitorLocation
-    })
+      location1: this.state.visitorLocation,
+    });
   }
 
   render() {
@@ -168,27 +168,30 @@ class Content extends React.Component {
             <Logout open={this.state.isModalOpen}></Logout>
           </div>
         ) : (
+          <div>
             <div>
-              <div>
-                <nav>
-                  <ul>
-                    <li>MayWeather24</li>
-                    <li>{this.state.isMember ? <Link className="list" to="./mypage">
-                      Mypage
-              </Link> : <Link to="./signup">
-                        Signup
-              </Link>}</li>
-                    <li><Link to="./login">
-                      Login
-              </Link></li>
-                    {/* .then(() => this.props.history.push("/login")) */}
-                    <li className="content_logout"><button onClick={this.handleOnClick}>
-                      Logout
-              </button>
-                      <Logout open={this.state.isModalOpen}></Logout></li>
-                  </ul>
-                </nav>
-              </div>
+              <nav>
+                <ul>
+                  <li>MayWeather24</li>
+                  <li>
+                    {this.state.isMember ? (
+                      <Link to="./mypage">Mypage</Link>
+                    ) : (
+                      <Link to="./signup">Signup</Link>
+                    )}
+                  </li>
+                  <li>
+                    <Link to="./login">Login</Link>
+                  </li>
+                  {/* .then(() => this.props.history.push("/login")) */}
+                  <li className="content_logout">
+                    <button onClick={this.handleOnClick}>Logout</button>
+                    <Logout open={this.state.isModalOpen}></Logout>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div className="content1_box">
               <div className="content1">
                 <h1>주요도시 날씨</h1>
                 {/* {this.props.loca}
@@ -197,7 +200,7 @@ class Content extends React.Component {
               {console.log("예측날씨 오전9시 서울날씨-2", this.props.abc_2)} */}
                 <div>
                   1번도시&nbsp;
-                <select onChange={this.handleChange("location1")}>
+                  <select onChange={this.handleChange("location1")}>
                     <option value="">도시선택</option>
                     <option value="seoul">서울</option>
                     <option value="incheon">인천</option>
@@ -208,7 +211,7 @@ class Content extends React.Component {
                 </div>
                 <div>
                   2번도시&nbsp;
-                <select onChange={this.handleChange("location2")}>
+                  <select onChange={this.handleChange("location2")}>
                     <option value="">도시선택</option>
                     <option value="seoul">서울</option>
                     <option value="incheon">인천</option>
@@ -218,827 +221,828 @@ class Content extends React.Component {
                   </select>
                 </div>
               </div>
-              {/* 날씨 나오는 곳 */}
-              <a className="content2">
-                <span className="content2_1 weatherfont">
-                  {/* 1번 도시 날씨 */}
-                  {this.state.location1 === "seoul" ? (
-                    <div>
-                      <span>
-                        <div className="weathertitle">현재서울날씨</div>
-                        <span>
-                          <span>
-                            <img
-                              src={`http://openweathermap.org/img/wn/${this.props.currentWeather_seoul.currentWeatherIcon}@2x.png`}
-                            />
-                          </span>
-                          <span>
-                            {"현재온도 : " +
-                              this.props.currentWeather_seoul.currentTemp +
-                              " ℃"}
-                          </span>
-                        </span>
-                      </span>
-                      <div>
-                        <span>
-                          {/* <div>9am 서울예상날씨</div> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[0].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전9시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_seoul[0].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>12am 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[1].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전12시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_seoul[1].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>18pm 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[2].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오후18시&nbsp;온도 :&nbsp;
-                            {this.props.intervalWeather_seoul[2].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                      </div>
-                      {/* <div>
-                      <button
-                        onClick={this.handleFindFriend(this.state.location1)}
-                      >
-                        친구찾기
-                      </button>
-                      {this.state.locationFriends === "" ? (
-                        <></>
-                      ) : (
-                        <div>
-                          {this.state.locationFriends[0]}
-                          {this.state.locationFriends[1]}
-                          {this.state.locationFriends[2]}
-                        </div>
-                      )}
-                    </div> */}
-                    </div>
-                  ) : (
-                      <></>
-                    )}
-                  {this.state.location1 === "incheon" ? (
-                    <div>
-                      <span>
-                        <div className="weathertitle">현재인천날씨</div>
-                        <span>
-                          <span>
-                            <img
-                              src={`http://openweathermap.org/img/wn/${this.props.currentWeather_incheon.currentWeatherIcon}@2x.png`}
-                            />
-                          </span>
-                          <span>
-                            {"현재온도 : " +
-                              this.props.currentWeather_incheon.currentTemp +
-                              " ℃"}
-                          </span>
-                        </span>
-                      </span>
-                      <div>
-                        <span>
-                          {/* <div>9am 서울예상날씨</div> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[0].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전9시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_incheon[0].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>12am 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[1].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전12시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_incheon[1].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>18pm 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[2].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오후18시&nbsp;온도 :&nbsp;
-                            {this.props.intervalWeather_incheon[2].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                      </div>
-                      {/* <div>
-                      <button
-                        onClick={this.handleFindFriend(this.state.location1)}
-                      >
-                        친구찾기
-                      </button>
-                      {this.state.locationFriends === "" ? (
-                        <></>
-                      ) : (
-                        <div>
-                          {this.state.locationFriends[0]}
-                          {this.state.locationFriends[1]}
-                          {this.state.locationFriends[2]}
-                        </div>
-                      )}
-                    </div> */}
-                    </div>
-                  ) : (
-                      <></>
-                    )}
-                  {this.state.location1 === "daegu" ? (
-                    <div>
-                      <span>
-                        <div className="weathertitle">현재대구날씨</div>
-                        <span>
-                          <span>
-                            <img
-                              src={`http://openweathermap.org/img/wn/${this.props.currentWeather_daegu.currentWeatherIcon}@2x.png`}
-                            />
-                          </span>
-                          <span>
-                            {"현재온도 : " +
-                              this.props.currentWeather_daegu.currentTemp +
-                              " ℃"}
-                          </span>
-                        </span>
-                      </span>
-                      <div>
-                        <span>
-                          {/* <div>9am 서울예상날씨</div> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[0].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전9시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_daegu[0].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>12am 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[1].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전12시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_daegu[1].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>18pm 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[2].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오후18시&nbsp;온도 :&nbsp;
-                            {this.props.intervalWeather_daegu[2].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                      </div>
-                      {/* <div>
-                      <button
-                        onClick={this.handleFindFriend(this.state.location1)}
-                      >
-                        친구찾기
-                      </button>
-                      {this.state.locationFriends === "" ? (
-                        <></>
-                      ) : (
-                        <div>
-                          {this.state.locationFriends[0]}
-                          {this.state.locationFriends[1]}
-                          {this.state.locationFriends[2]}
-                        </div>
-                      )}
-                    </div> */}
-                    </div>
-                  ) : (
-                      <></>
-                    )}
-                  {this.state.location1 === "gwangju" ? (
-                    <div>
-                      <span>
-                        <div className="weathertitle">현재광주날씨</div>
-                        <span>
-                          <span>
-                            <img
-                              src={`http://openweathermap.org/img/wn/${this.props.currentWeather_gwangju.currentWeatherIcon}@2x.png`}
-                            />
-                          </span>
-                          <span>
-                            {"현재온도 : " +
-                              this.props.currentWeather_gwangju.currentTemp +
-                              " ℃"}
-                          </span>
-                        </span>
-                      </span>
-                      <div>
-                        <span>
-                          {/* <div>9am 서울예상날씨</div> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[0].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전9시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_gwangju[0].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>12am 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[1].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전12시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_gwangju[1].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>18pm 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[2].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오후18시&nbsp;온도 :&nbsp;
-                            {this.props.intervalWeather_gwangju[2].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                      </div>
-                      {/* <div>
-                      <button
-                        onClick={this.handleFindFriend(this.state.location1)}
-                      >
-                        친구찾기
-                      </button>
-                      {this.state.locationFriends === "" ? (
-                        <></>
-                      ) : (
-                        <div>
-                          {this.state.locationFriends[0]}
-                          {this.state.locationFriends[1]}
-                          {this.state.locationFriends[2]}
-                        </div>
-                      )}
-                    </div> */}
-                    </div>
-                  ) : (
-                      <></>
-                    )}
-                  {this.state.location1 === "busan" ? (
-                    <div>
-                      <span>
-                        <div className="weathertitle">현재부산날씨</div>
-                        <span>
-                          <span>
-                            <img
-                              src={`http://openweathermap.org/img/wn/${this.props.currentWeather_busan.currentWeatherIcon}@2x.png`}
-                            />
-                          </span>
-                          <span>
-                            {"현재온도 : " +
-                              this.props.currentWeather_busan.currentTemp +
-                              " ℃"}
-                          </span>
-                        </span>
-                      </span>
-                      <div>
-                        <span>
-                          {/* <div>9am 서울예상날씨</div> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[0].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전9시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_busan[0].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>12am 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[1].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전12시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_busan[1].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>18pm 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[2].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오후18시&nbsp;온도 :&nbsp;
-                            {this.props.intervalWeather_busan[2].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                      </div>
-                      {/* <div>
-                      <button
-                        onClick={this.handleFindFriend(this.state.location1)}
-                      >
-                        친구찾기
-                      </button>
-                      {this.state.locationFriends === "" ? (
-                        <></>
-                      ) : (
-                        <div>
-                          {this.state.locationFriends[0]}
-                          {this.state.locationFriends[1]}
-                          {this.state.locationFriends[2]}
-                        </div>
-                      )}
-                    </div> */}
-                    </div>
-                  ) : (
-                      <></>
-                    )}
-                </span>
-                <span className="content2_2">
-                  {/* 2번 도시 날씨 */}
-                  {this.state.location2 === "seoul" ? (
-                    <div>
-                      <span>
-                        <div className="weathertitle">현재서울날씨</div>
-                        <span>
-                          <span>
-                            <img
-                              src={`http://openweathermap.org/img/wn/${this.props.currentWeather_seoul.currentWeatherIcon}@2x.png`}
-                            />
-                          </span>
-                          <span>
-                            {"현재온도 : " +
-                              this.props.currentWeather_seoul.currentTemp +
-                              " ℃"}
-                          </span>
-                        </span>
-                      </span>
-                      <div>
-                        <span>
-                          {/* <div>9am 서울예상날씨</div> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[0].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전9시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_seoul[0].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>12am 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[1].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전12시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_seoul[1].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>18pm 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[2].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오후18시&nbsp;온도 :&nbsp;
-                            {this.props.intervalWeather_seoul[2].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                      </div>
-                      {/* <div>
-                      <button
-                        onClick={this.handleFindFriend(this.state.location2)}
-                      >
-                        친구찾기
-                      </button>
-                      {this.state.locationFriends === "" ? (
-                        <></>
-                      ) : (
-                        <div>
-                          {this.state.locationFriends[0]}
-                          {this.state.locationFriends[1]}
-                          {this.state.locationFriends[2]}
-                        </div>
-                      )}
-                    </div> */}
-                    </div>
-                  ) : (
-                      <></>
-                    )}
-                  {this.state.location2 === "incheon" ? (
-                    <div>
-                      <span>
-                        <div className="weathertitle">현재인천날씨</div>
-                        <span>
-                          <span>
-                            <img
-                              src={`http://openweathermap.org/img/wn/${this.props.currentWeather_incheon.currentWeatherIcon}@2x.png`}
-                            />
-                          </span>
-                          <span>
-                            {"현재온도 : " +
-                              this.props.currentWeather_incheon.currentTemp +
-                              " ℃"}
-                          </span>
-                        </span>
-                      </span>
-                      <div>
-                        <span>
-                          {/* <div>9am 서울예상날씨</div> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[0].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전9시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_incheon[0].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>12am 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[1].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전12시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_incheon[1].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>18pm 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[2].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오후18시&nbsp;온도 :&nbsp;
-                            {this.props.intervalWeather_incheon[2].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                      </div>
-                      {/* <div>
-                      <button
-                        onClick={this.handleFindFriend(this.state.location2)}
-                      >
-                        친구찾기
-                      </button>
-                      {this.state.locationFriends === "" ? (
-                        <></>
-                      ) : (
-                        <div>
-                          {this.state.locationFriends[0]}
-                          {this.state.locationFriends[1]}
-                          {this.state.locationFriends[2]}
-                        </div>
-                      )}
-                    </div> */}
-                    </div>
-                  ) : (
-                      <></>
-                    )}
-                  {this.state.location2 === "daegu" ? (
-                    <div>
-                      <span>
-                        <div className="weathertitle">현재대구날씨</div>
-                        <span>
-                          <span>
-                            <img
-                              src={`http://openweathermap.org/img/wn/${this.props.currentWeather_daegu.currentWeatherIcon}@2x.png`}
-                            />
-                          </span>
-                          <span>
-                            {"현재온도 : " +
-                              this.props.currentWeather_daegu.currentTemp +
-                              " ℃"}
-                          </span>
-                        </span>
-                      </span>
-                      <div>
-                        <span>
-                          {/* <div>9am 서울예상날씨</div> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[0].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전9시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_daegu[0].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>12am 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[1].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전12시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_daegu[1].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>18pm 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[2].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오후18시&nbsp;온도 :&nbsp;
-                            {this.props.intervalWeather_daegu[2].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                      </div>
-                      {/* <div>
-                      <button
-                        onClick={this.handleFindFriend(this.state.location2)}
-                      >
-                        친구찾기
-                      </button>
-                      {this.state.locationFriends === "" ? (
-                        <></>
-                      ) : (
-                        <div>
-                          {this.state.locationFriends[0]}
-                          {this.state.locationFriends[1]}
-                          {this.state.locationFriends[2]}
-                        </div>
-                      )}
-                    </div> */}
-                    </div>
-                  ) : (
-                      <></>
-                    )}
-                  {this.state.location2 === "gwangju" ? (
-                    <div>
-                      <span>
-                        <div className="weathertitle">현재광주날씨</div>
-                        <span>
-                          <span>
-                            <img
-                              src={`http://openweathermap.org/img/wn/${this.props.currentWeather_gwangju.currentWeatherIcon}@2x.png`}
-                            />
-                          </span>
-                          <span>
-                            {"현재온도 : " +
-                              this.props.currentWeather_gwangju.currentTemp +
-                              " ℃"}
-                          </span>
-                        </span>
-                      </span>
-                      <div>
-                        <span>
-                          {/* <div>9am 서울예상날씨</div> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[0].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전9시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_gwangju[0].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>12am 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[1].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전12시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_gwangju[1].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>18pm 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[2].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오후18시&nbsp;온도 :&nbsp;
-                            {this.props.intervalWeather_gwangju[2].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                      </div>
-                      {/* <div>
-                      <button
-                        onClick={this.handleFindFriend(this.state.location2)}
-                      >
-                        친구찾기
-                      </button>
-                      {this.state.locationFriends === "" ? (
-                        <></>
-                      ) : (
-                        <div>
-                          {this.state.locationFriends[0]}
-                          {this.state.locationFriends[1]}
-                          {this.state.locationFriends[2]}
-                        </div>
-                      )}
-                    </div> */}
-                    </div>
-                  ) : (
-                      <></>
-                    )}
-                  {this.state.location2 === "busan" ? (
-                    <div>
-                      <span>
-                        <div className="weathertitle">현재부산날씨</div>
-                        <span>
-                          <span>
-                            <img
-                              src={`http://openweathermap.org/img/wn/${this.props.currentWeather_busan.currentWeatherIcon}@2x.png`}
-                            />
-                          </span>
-                          <span>
-                            {"현재온도 : " +
-                              this.props.currentWeather_busan.currentTemp +
-                              " ℃"}
-                          </span>
-                        </span>
-                      </span>
-                      <div>
-                        <span>
-                          {/* <div>9am 서울예상날씨</div> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[0].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전9시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_busan[0].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>12am 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[1].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오전12시&nbsp; 온도 :&nbsp;
-                            {this.props.intervalWeather_busan[1].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                        <span>
-                          {/* <h3>18pm 서울예상날씨</h3> */}
-                          <span>
-                            <span>
-                              <img
-                                src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[2].icon}@2x.png`}
-                              />
-                            </span>
-                            <span>
-                              오후18시&nbsp;온도 :&nbsp;
-                            {this.props.intervalWeather_busan[2].temp + " ℃"}
-                            </span>
-                          </span>
-                        </span>
-                      </div>
-                      {/* <div>
-                      <button
-                        onClick={this.handleFindFriend(this.state.location2)}
-                      >
-                        친구찾기
-                      </button>
-                      {this.state.locationFriends === "" ? (
-                        <></>
-                      ) : (
-                        <div>
-                          {this.state.locationFriends[0]}
-                          {this.state.locationFriends[1]}
-                          {this.state.locationFriends[2]}
-                        </div>
-                      )}
-                    </div> */}
-                    </div>
-                  ) : (
-                      <></>
-                    )}
-                </span>
-              </a>
             </div>
-          )}
+            {/* 날씨 나오는 곳 */}
+            <a className="content2">
+              <span className="content2_1 weatherfont">
+                {/* 1번 도시 날씨 */}
+                {this.state.location1 === "seoul" ? (
+                  <div>
+                    <span>
+                      <div className="weathertitle">현재서울날씨</div>
+                      <span>
+                        <span>
+                          <img
+                            src={`http://openweathermap.org/img/wn/${this.props.currentWeather_seoul.currentWeatherIcon}@2x.png`}
+                          />
+                        </span>
+                        <span>
+                          {"현재온도 : " +
+                            this.props.currentWeather_seoul.currentTemp +
+                            " ℃"}
+                        </span>
+                      </span>
+                    </span>
+                    <div>
+                      <span>
+                        {/* <div>9am 서울예상날씨</div> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[0].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전9시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_seoul[0].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>12am 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[1].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전12시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_seoul[1].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>18pm 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[2].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오후18시&nbsp;온도 :&nbsp;
+                            {this.props.intervalWeather_seoul[2].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    {/* <div>
+                      <button
+                        onClick={this.handleFindFriend(this.state.location1)}
+                      >
+                        친구찾기
+                      </button>
+                      {this.state.locationFriends === "" ? (
+                        <></>
+                      ) : (
+                        <div>
+                          {this.state.locationFriends[0]}
+                          {this.state.locationFriends[1]}
+                          {this.state.locationFriends[2]}
+                        </div>
+                      )}
+                    </div> */}
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {this.state.location1 === "incheon" ? (
+                  <div>
+                    <span>
+                      <div className="weathertitle">현재인천날씨</div>
+                      <span>
+                        <span>
+                          <img
+                            src={`http://openweathermap.org/img/wn/${this.props.currentWeather_incheon.currentWeatherIcon}@2x.png`}
+                          />
+                        </span>
+                        <span>
+                          {"현재온도 : " +
+                            this.props.currentWeather_incheon.currentTemp +
+                            " ℃"}
+                        </span>
+                      </span>
+                    </span>
+                    <div>
+                      <span>
+                        {/* <div>9am 서울예상날씨</div> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[0].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전9시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_incheon[0].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>12am 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[1].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전12시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_incheon[1].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>18pm 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[2].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오후18시&nbsp;온도 :&nbsp;
+                            {this.props.intervalWeather_incheon[2].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    {/* <div>
+                      <button
+                        onClick={this.handleFindFriend(this.state.location1)}
+                      >
+                        친구찾기
+                      </button>
+                      {this.state.locationFriends === "" ? (
+                        <></>
+                      ) : (
+                        <div>
+                          {this.state.locationFriends[0]}
+                          {this.state.locationFriends[1]}
+                          {this.state.locationFriends[2]}
+                        </div>
+                      )}
+                    </div> */}
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {this.state.location1 === "daegu" ? (
+                  <div>
+                    <span>
+                      <div className="weathertitle">현재대구날씨</div>
+                      <span>
+                        <span>
+                          <img
+                            src={`http://openweathermap.org/img/wn/${this.props.currentWeather_daegu.currentWeatherIcon}@2x.png`}
+                          />
+                        </span>
+                        <span>
+                          {"현재온도 : " +
+                            this.props.currentWeather_daegu.currentTemp +
+                            " ℃"}
+                        </span>
+                      </span>
+                    </span>
+                    <div>
+                      <span>
+                        {/* <div>9am 서울예상날씨</div> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[0].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전9시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_daegu[0].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>12am 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[1].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전12시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_daegu[1].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>18pm 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[2].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오후18시&nbsp;온도 :&nbsp;
+                            {this.props.intervalWeather_daegu[2].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    {/* <div>
+                      <button
+                        onClick={this.handleFindFriend(this.state.location1)}
+                      >
+                        친구찾기
+                      </button>
+                      {this.state.locationFriends === "" ? (
+                        <></>
+                      ) : (
+                        <div>
+                          {this.state.locationFriends[0]}
+                          {this.state.locationFriends[1]}
+                          {this.state.locationFriends[2]}
+                        </div>
+                      )}
+                    </div> */}
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {this.state.location1 === "gwangju" ? (
+                  <div>
+                    <span>
+                      <div className="weathertitle">현재광주날씨</div>
+                      <span>
+                        <span>
+                          <img
+                            src={`http://openweathermap.org/img/wn/${this.props.currentWeather_gwangju.currentWeatherIcon}@2x.png`}
+                          />
+                        </span>
+                        <span>
+                          {"현재온도 : " +
+                            this.props.currentWeather_gwangju.currentTemp +
+                            " ℃"}
+                        </span>
+                      </span>
+                    </span>
+                    <div>
+                      <span>
+                        {/* <div>9am 서울예상날씨</div> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[0].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전9시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_gwangju[0].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>12am 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[1].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전12시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_gwangju[1].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>18pm 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[2].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오후18시&nbsp;온도 :&nbsp;
+                            {this.props.intervalWeather_gwangju[2].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    {/* <div>
+                      <button
+                        onClick={this.handleFindFriend(this.state.location1)}
+                      >
+                        친구찾기
+                      </button>
+                      {this.state.locationFriends === "" ? (
+                        <></>
+                      ) : (
+                        <div>
+                          {this.state.locationFriends[0]}
+                          {this.state.locationFriends[1]}
+                          {this.state.locationFriends[2]}
+                        </div>
+                      )}
+                    </div> */}
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {this.state.location1 === "busan" ? (
+                  <div>
+                    <span>
+                      <div className="weathertitle">현재부산날씨</div>
+                      <span>
+                        <span>
+                          <img
+                            src={`http://openweathermap.org/img/wn/${this.props.currentWeather_busan.currentWeatherIcon}@2x.png`}
+                          />
+                        </span>
+                        <span>
+                          {"현재온도 : " +
+                            this.props.currentWeather_busan.currentTemp +
+                            " ℃"}
+                        </span>
+                      </span>
+                    </span>
+                    <div>
+                      <span>
+                        {/* <div>9am 서울예상날씨</div> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[0].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전9시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_busan[0].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>12am 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[1].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전12시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_busan[1].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>18pm 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[2].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오후18시&nbsp;온도 :&nbsp;
+                            {this.props.intervalWeather_busan[2].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    {/* <div>
+                      <button
+                        onClick={this.handleFindFriend(this.state.location1)}
+                      >
+                        친구찾기
+                      </button>
+                      {this.state.locationFriends === "" ? (
+                        <></>
+                      ) : (
+                        <div>
+                          {this.state.locationFriends[0]}
+                          {this.state.locationFriends[1]}
+                          {this.state.locationFriends[2]}
+                        </div>
+                      )}
+                    </div> */}
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </span>
+              <span className="content2_2">
+                {/* 2번 도시 날씨 */}
+                {this.state.location2 === "seoul" ? (
+                  <div>
+                    <span>
+                      <div className="weathertitle">현재서울날씨</div>
+                      <span>
+                        <span>
+                          <img
+                            src={`http://openweathermap.org/img/wn/${this.props.currentWeather_seoul.currentWeatherIcon}@2x.png`}
+                          />
+                        </span>
+                        <span>
+                          {"현재온도 : " +
+                            this.props.currentWeather_seoul.currentTemp +
+                            " ℃"}
+                        </span>
+                      </span>
+                    </span>
+                    <div>
+                      <span>
+                        {/* <div>9am 서울예상날씨</div> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[0].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전9시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_seoul[0].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>12am 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[1].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전12시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_seoul[1].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>18pm 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_seoul[2].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오후18시&nbsp;온도 :&nbsp;
+                            {this.props.intervalWeather_seoul[2].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    {/* <div>
+                      <button
+                        onClick={this.handleFindFriend(this.state.location2)}
+                      >
+                        친구찾기
+                      </button>
+                      {this.state.locationFriends === "" ? (
+                        <></>
+                      ) : (
+                        <div>
+                          {this.state.locationFriends[0]}
+                          {this.state.locationFriends[1]}
+                          {this.state.locationFriends[2]}
+                        </div>
+                      )}
+                    </div> */}
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {this.state.location2 === "incheon" ? (
+                  <div>
+                    <span>
+                      <div className="weathertitle">현재인천날씨</div>
+                      <span>
+                        <span>
+                          <img
+                            src={`http://openweathermap.org/img/wn/${this.props.currentWeather_incheon.currentWeatherIcon}@2x.png`}
+                          />
+                        </span>
+                        <span>
+                          {"현재온도 : " +
+                            this.props.currentWeather_incheon.currentTemp +
+                            " ℃"}
+                        </span>
+                      </span>
+                    </span>
+                    <div>
+                      <span>
+                        {/* <div>9am 서울예상날씨</div> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[0].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전9시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_incheon[0].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>12am 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[1].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전12시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_incheon[1].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>18pm 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_incheon[2].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오후18시&nbsp;온도 :&nbsp;
+                            {this.props.intervalWeather_incheon[2].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    {/* <div>
+                      <button
+                        onClick={this.handleFindFriend(this.state.location2)}
+                      >
+                        친구찾기
+                      </button>
+                      {this.state.locationFriends === "" ? (
+                        <></>
+                      ) : (
+                        <div>
+                          {this.state.locationFriends[0]}
+                          {this.state.locationFriends[1]}
+                          {this.state.locationFriends[2]}
+                        </div>
+                      )}
+                    </div> */}
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {this.state.location2 === "daegu" ? (
+                  <div>
+                    <span>
+                      <div className="weathertitle">현재대구날씨</div>
+                      <span>
+                        <span>
+                          <img
+                            src={`http://openweathermap.org/img/wn/${this.props.currentWeather_daegu.currentWeatherIcon}@2x.png`}
+                          />
+                        </span>
+                        <span>
+                          {"현재온도 : " +
+                            this.props.currentWeather_daegu.currentTemp +
+                            " ℃"}
+                        </span>
+                      </span>
+                    </span>
+                    <div>
+                      <span>
+                        {/* <div>9am 서울예상날씨</div> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[0].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전9시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_daegu[0].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>12am 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[1].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전12시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_daegu[1].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>18pm 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_daegu[2].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오후18시&nbsp;온도 :&nbsp;
+                            {this.props.intervalWeather_daegu[2].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    {/* <div>
+                      <button
+                        onClick={this.handleFindFriend(this.state.location2)}
+                      >
+                        친구찾기
+                      </button>
+                      {this.state.locationFriends === "" ? (
+                        <></>
+                      ) : (
+                        <div>
+                          {this.state.locationFriends[0]}
+                          {this.state.locationFriends[1]}
+                          {this.state.locationFriends[2]}
+                        </div>
+                      )}
+                    </div> */}
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {this.state.location2 === "gwangju" ? (
+                  <div>
+                    <span>
+                      <div className="weathertitle">현재광주날씨</div>
+                      <span>
+                        <span>
+                          <img
+                            src={`http://openweathermap.org/img/wn/${this.props.currentWeather_gwangju.currentWeatherIcon}@2x.png`}
+                          />
+                        </span>
+                        <span>
+                          {"현재온도 : " +
+                            this.props.currentWeather_gwangju.currentTemp +
+                            " ℃"}
+                        </span>
+                      </span>
+                    </span>
+                    <div>
+                      <span>
+                        {/* <div>9am 서울예상날씨</div> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[0].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전9시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_gwangju[0].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>12am 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[1].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전12시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_gwangju[1].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>18pm 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_gwangju[2].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오후18시&nbsp;온도 :&nbsp;
+                            {this.props.intervalWeather_gwangju[2].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    {/* <div>
+                      <button
+                        onClick={this.handleFindFriend(this.state.location2)}
+                      >
+                        친구찾기
+                      </button>
+                      {this.state.locationFriends === "" ? (
+                        <></>
+                      ) : (
+                        <div>
+                          {this.state.locationFriends[0]}
+                          {this.state.locationFriends[1]}
+                          {this.state.locationFriends[2]}
+                        </div>
+                      )}
+                    </div> */}
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {this.state.location2 === "busan" ? (
+                  <div>
+                    <span>
+                      <div className="weathertitle">현재부산날씨</div>
+                      <span>
+                        <span>
+                          <img
+                            src={`http://openweathermap.org/img/wn/${this.props.currentWeather_busan.currentWeatherIcon}@2x.png`}
+                          />
+                        </span>
+                        <span>
+                          {"현재온도 : " +
+                            this.props.currentWeather_busan.currentTemp +
+                            " ℃"}
+                        </span>
+                      </span>
+                    </span>
+                    <div>
+                      <span>
+                        {/* <div>9am 서울예상날씨</div> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[0].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전9시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_busan[0].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>12am 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[1].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오전12시&nbsp; 온도 :&nbsp;
+                            {this.props.intervalWeather_busan[1].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        {/* <h3>18pm 서울예상날씨</h3> */}
+                        <span>
+                          <span>
+                            <img
+                              src={`http://openweathermap.org/img/wn/${this.props.intervalWeather_busan[2].icon}@2x.png`}
+                            />
+                          </span>
+                          <span>
+                            오후18시&nbsp;온도 :&nbsp;
+                            {this.props.intervalWeather_busan[2].temp + " ℃"}
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    {/* <div>
+                      <button
+                        onClick={this.handleFindFriend(this.state.location2)}
+                      >
+                        친구찾기
+                      </button>
+                      {this.state.locationFriends === "" ? (
+                        <></>
+                      ) : (
+                        <div>
+                          {this.state.locationFriends[0]}
+                          {this.state.locationFriends[1]}
+                          {this.state.locationFriends[2]}
+                        </div>
+                      )}
+                    </div> */}
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </span>
+            </a>
+          </div>
+        )}
       </div>
     );
   }
