@@ -1,114 +1,273 @@
-.App {
-  text-align: center;
+
+/*home 페이지 ******************************************************************/
+.hompage {
+  border:chartreuse;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.buttons {
+  background-color: black;
+  padding-left: 10%;
+  padding-bottom: 400px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* 지도 이미지 */
+.mapimg {
+  width: 700px;
+  height: 745px;
+  position: fixed;
+  left: 35%;
+  background-color: black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
+/* 제목 */
+#hometitle {
+  margin: 0;
+  padding: 30px;
+  padding-bottom: 50px;
+  text-shadow: 0.5px 1px lightcyan;
+  font-weight: 900;
   color: #61dafb;
+  background-color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+
+
+
+/* LocationListEntry페이지(Home) ******************************************************/
+.locationbuttons {
+  min-width: 100px;
+  padding: 20px;
+  position: abosolute;
+  width: 120px;
+  height: 135px;
+  display: block;
+  justify-content: space-evenly;
+  border: none;
+  background-color: lightgray;
 }
 
-/* 마이페이지 **************************************/
+/*홈 화면에 보이는 지역별 버튼관련 내용*/
+.locationbuttons:hover {
+  background-color: #61dafb;
+}
+.weathericon {
+  height: 40px;
+  width: 40px;
+}
+.locationname {
+  color: black;
+  line-height: 5px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.temperature {
+  color: black;
+  font-size: 17px;
+}
+
+
+
+
+
+
+/* 로그인페이지 ****************************************************************/
+.loginpage {
+  margin: 10px;
+  padding: 10px;
+  position: absolute;
+  align-items: center;
+  left: 20%;
+  width: 60%;
+  height: 40%;
+  display: inline-flex;
+  justify-content: space-evenly;
+}
+
 /* 내비게이션바 */
-.mypage_navbar {
+/* .login_navbar {
   list-style-type: none;
   display: flex;
-  margin: 0;
-  padding: 0.1;
+  position: relative;
+  background-color: black;
+  margin: 0 auto 0;
+  padding-top: 0px;
+  padding: 10px;
   justify-content: flex-end;
+} */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+  /* list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end; */
 }
+
+
+li {
+  float: left;
+  color:  #61dafb;
+  text-align: center;
+  font-weight: bold;
+  padding: 14px 16px;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+li a:hover {
+  font-weight: bolder;
+  color:  #61dafb;
+}
+
+
+/* 로그인페이지 회원 로그인 */
+
+.login_member {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  min-width: 260px;
+  height: 240px;
+  border: 3px black solid;
+}
+
+.idbox {
+  display: flex;
+  padding: 10px;
+}
+
+.pwbox {
+  display: flex;
+  padding: 10px;
+}
+
+
+/* 로그인페이지 비회원 로그인 */
+.login_nonmember {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  min-width: 260px;
+  height: 240px;
+  border: 3px black solid;
+}
+
+
+
+
+
+
+
+
+/* 마이페이지 ****************************************************************/
+/* 내비게이션바 */
+/* .mypage_navbar {
+  list-style-type: none;
+  display: flex;
+  position: relative;
+  background-color: black;
+  margin: 0 auto 0;
+  padding-top: 0px;
+  padding: 15px;
+  justify-content: flex-end;
+
+  list-style-type: none;
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  float: right;
+} */
+
 /* 내비게이션바 위에 있는 홈/메인페이지로의 이동 링크 */
-.mypage_tohome {
+/* .mypage_tohome {
   flex: 0;
   flex-basis: 5%;
   border: 1px;
   padding: 1px;
   text-decoration: none;
   text-align: center;
-}
+} */
+
 /* 네비게이션바 위의 로그아웃버튼 */
 .mypage_logout {
   flex: 0;
-  flex-basis: 5%;
-  border: 1px;
-  padding: 1px;
   text-align: center;
+  float: right;
 }
+
 /* 사용자 정보 */
-.mypage_userinfo {
-  margin: 10px;
-  padding: 10px;
-  text-align: center;
-  width: 260px;
-  height: 180px;
-  border: 3px gray solid;
-}
-
-/* 로그인페이지 ******************************************************/
-.loginpage {
-  margin: 10px;
-  padding: 10px;
-  position: absolute;
-  align-items: center;
-  width: 100%;
-  height: 40%;
-  display: inline-flex;
+.mypage_userinfobox {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2%;
+  text-align: right;
+  width: 360px;
+  height: 250px;
+  border: 3px black solid;
   justify-content: space-evenly;
 }
-/* 로그인페이지 회원 로그인 */
-.login_member {
-  margin: 10px;
-  padding: 10px;
-  text-align: center;
-  width: 260px;
-  height: 220px;
-  border: 3px gray solid;
-}
-/* 로그인페이지 비회원 로그인 */
-.login_nonmember {
-  margin: 10px;
-  padding: 10px;
-  text-align: center;
-  width: 260px;
-  height: 220px;
-  border: 3px gray solid;
-}
 
-/* LocationListEntry페이지 ******************************************************/
-.locationbuttons {
-  position: abosolute;
-  /* align-items: center; */
-  width: 10%;
-  height: 3%;
+/* 사용자사진 */
+.userimg {
+  /* position: relative;
+  min-height: 80px;
+  margin-top: -1px;
+  padding-bottom: 8px; */
+
+  width: 20%;
+  height: 20%;
   display: block;
-  justify-content: space-evenly;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.userinfo_content dt {
+  font-size: 14px;
+  font-weight: 700;
+  float: left;
+  width: 23%;
+  padding-top: 6px;
+  letter-spacing: -1px;
+  color: #333;
+}
+
+.userinfo_content dd {
+  font-size: 16px;
+  line-height: 26px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+  color: #666;
+}
+
+.userinfo_content button {
+  font-size: 12px;
+  line-height: 10px;
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none;
+
+  /* font-weight: 700;
+  letter-spacing: -1px; */
+}
+
+
+
+
+

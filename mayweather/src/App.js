@@ -8,54 +8,49 @@ import Content from "./pages/Content";
 import Mypage from "./pages/Mypage";
 import axios from "axios";
 
-//사용 가능한 서버: http://13.209.245.44/ or http://54.180.36.82
-
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      a: "1",
       isLoggedin: false,
       locations: [],
-      loca_App: "",
-      abc: "",
-      abc_1: "",
-      abc_2: "",
+
+      visitorLoca: "",
 
       currentWeather: "",
       intervalWeather: "",
+
       currentWeather_seoul: "",
       currentWeather_incheon: "",
       currentWeather_daegu: "",
       currentWeather_gwangju: "",
       currentWeather_busan: "",
+
       intervalWeather_seoul: "",
       intervalWeather_incheon: "",
       intervalWeather_daegu: "",
       intervalWeather_gwangju: "",
       intervalWeather_busan: "",
+      abcd: "",
     };
     this.handleLogout = this.handleLogout.bind(this);
     this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
-    this.handle_a = this.handle_a.bind(this);
+    this.handleVisitorLocation = this.handleVisitorLocation.bind(this);
   }
-  handle_a(e) {
+
+  handleVisitorLocation(e) {
     this.setState({
-      loca_App: e,
+      abcd: e,
     });
   }
+
   handleLogout() {
-    axios
-      .post("https://mayweather24.com/logout", {
-        withCredentials: true,
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    axios.post("https://mayweather24.com/logout", null, {
+      withCredentials: true,
+    });
   }
-  // userinfo: res.data
 
   componentDidMount() {
-    // console.log('----componentDidMount----')
     fetch("https://mayweather24.com")
       .then((res) => {
         return console.log("data from real server >>>", res), res.json();
@@ -74,17 +69,15 @@ class App extends React.Component {
       .then((res) => res.data)
       .then((res) => {
         this.setState({
-          abc: res.intervalWeather[0].Seoul,
-          abc_1: res.intervalWeather[0].Seoul[0].temp,
-          abc_2: res.intervalWeather[0].Seoul[0].id,
-
           currentWeather: res.currentWeather,
           intervalWeather: res.intervalWeather,
+
           currentWeather_seoul: res.currentWeather[0],
           currentWeather_incheon: res.currentWeather[1],
           currentWeather_daegu: res.currentWeather[2],
           currentWeather_gwangju: res.currentWeather[3],
           currentWeather_busan: res.currentWeather[4],
+
           intervalWeather_seoul: res.intervalWeather[0].Seoul,
           intervalWeather_incheon: res.intervalWeather[1].Incheon,
           intervalWeather_daegu: res.intervalWeather[2].Daegu,
@@ -109,7 +102,6 @@ class App extends React.Component {
             render={() => (
               <Content
                 handleLogout={this.handleLogout}
-                loca={this.state.loca_App}
                 abc={this.state.abc}
                 abc_1={this.state.abc_1}
                 abc_2={this.state.abc_2}
@@ -125,6 +117,8 @@ class App extends React.Component {
                 intervalWeather_gwangju={this.state.intervalWeather_gwangju}
                 intervalWeather_incheon={this.state.intervalWeather_incheon}
                 intervalWeather_seoul={this.state.intervalWeather_seoul}
+                visitorLoca={this.state.visitorLoca}
+                abcd={this.state.abcd}
               ></Content>
             )}
           ></Route>
@@ -134,7 +128,7 @@ class App extends React.Component {
             render={() => (
               <Login
                 handleResponseSuccess={this.handleResponseSuccess}
-                handle_a={this.handle_a}
+                handleVisitorLocation={this.handleVisitorLocation}
               />
             )}
           />
