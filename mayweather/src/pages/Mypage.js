@@ -165,3 +165,4 @@ class Mypage extends React.Component {
 }
 
 export default Mypage;
+
