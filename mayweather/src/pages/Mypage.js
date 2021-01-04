@@ -50,10 +50,11 @@ class Mypage extends React.Component {
 
   componentDidMount() {
     axios
-      .get("https://mayweather24.com/content", { withCredentials: true })
+      .get("https://mayweather24.com/content", null, { withCredentials: true })
       .then((res) => console.log(res))
+      .then((res) => res.data)
       .then((data) => {
-        console.log("***mypage data >>>>", data);
+        // console.log("***mypage data >>>>", data);
         // if ()
         this.setState({
           userId: data.userId,

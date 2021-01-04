@@ -16,8 +16,12 @@ class Login extends React.Component {
     this.handleInputValue = this.handleInputValue.bind(this);
   }
   handleInputValue = (key) => (e) => {
+    // if (this.state.visitorLocation !== e.target.value) {
     this.setState({ [key]: e.target.value });
+    this.props.handle_a(e.target.value);
+    // }
   };
+
   handleLogin = () => {
     const { userId, password } = this.state;
     const { handleResponseSuccess } = this.props;
@@ -26,13 +30,25 @@ class Login extends React.Component {
       return;
     } else {
       axios
-        .post("https://mayweather24.com/", {
-          userId: userId,
-          password: password,
+        .post(
+          "https://mayweather24.com/login",
+          {
+            userId: userId,
+            password: password,
+          },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          console.log(res);
+          return res;
         })
         .then((res) => {
-          console.log("res >>>", res);
-          handleResponseSuccess();
+          // handleResponseSuccess();
+          axios
+            .get("https://mayweather24.com/content", null, {
+              withCredential: true,
+            })
+            .then((res) => console.log(res));
         });
     }
   };

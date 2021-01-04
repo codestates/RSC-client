@@ -17,9 +17,32 @@ class App extends React.Component {
       a: "1",
       isLoggedin: false,
       locations: [],
+      loca_App: "",
+      abc: "",
+      abc_1: "",
+      abc_2: "",
+
+      currentWeather: "",
+      intervalWeather: "",
+      currentWeather_seoul: "",
+      currentWeather_incheon: "",
+      currentWeather_daegu: "",
+      currentWeather_gwangju: "",
+      currentWeather_busan: "",
+      intervalWeather_seoul: "",
+      intervalWeather_incheon: "",
+      intervalWeather_daegu: "",
+      intervalWeather_gwangju: "",
+      intervalWeather_busan: "",
     };
     this.handleLogout = this.handleLogout.bind(this);
     this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
+    this.handle_a = this.handle_a.bind(this);
+  }
+  handle_a(e) {
+    this.setState({
+      loca_App: e,
+    });
   }
   handleLogout() {
     axios
@@ -42,6 +65,33 @@ class App extends React.Component {
           locations: data.currentWeather,
         });
       });
+
+    axios
+      .get("https://mayweather24.com/", null, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
+      .then((res) => res.data)
+      .then((res) => {
+        this.setState({
+          abc: res.intervalWeather[0].Seoul,
+          abc_1: res.intervalWeather[0].Seoul[0].temp,
+          abc_2: res.intervalWeather[0].Seoul[0].id,
+
+          currentWeather: res.currentWeather,
+          intervalWeather: res.intervalWeather,
+          currentWeather_seoul: res.currentWeather[0],
+          currentWeather_incheon: res.currentWeather[1],
+          currentWeather_daegu: res.currentWeather[2],
+          currentWeather_gwangju: res.currentWeather[3],
+          currentWeather_busan: res.currentWeather[4],
+          intervalWeather_seoul: res.intervalWeather[0].Seoul,
+          intervalWeather_incheon: res.intervalWeather[1].Incheon,
+          intervalWeather_daegu: res.intervalWeather[2].Daegu,
+          intervalWeather_gwangju: res.intervalWeather[3].Gwangju,
+          intervalWeather_busan: res.intervalWeather[4].Busan,
+        });
+      });
   }
 
   handleResponseSuccess() {
@@ -56,13 +106,36 @@ class App extends React.Component {
           <Route
             exact
             path="/content"
-            render={() => <Content handleLogout={this.handleLogout}></Content>}
+            render={() => (
+              <Content
+                handleLogout={this.handleLogout}
+                loca={this.state.loca_App}
+                abc={this.state.abc}
+                abc_1={this.state.abc_1}
+                abc_2={this.state.abc_2}
+                currentWeather={this.state.currentWeather}
+                currentWeather_busan={this.state.currentWeather_busan}
+                currentWeather_daegu={this.state.currentWeather_daegu}
+                currentWeather_gwangju={this.state.currentWeather_gwangju}
+                currentWeather_incheon={this.state.currentWeather_incheon}
+                currentWeather_seoul={this.state.currentWeather_seoul}
+                intervalWeather={this.intervalWeather}
+                intervalWeather_busan={this.state.intervalWeather_busan}
+                intervalWeather_daegu={this.state.intervalWeather_daegu}
+                intervalWeather_gwangju={this.state.intervalWeather_gwangju}
+                intervalWeather_incheon={this.state.intervalWeather_incheon}
+                intervalWeather_seoul={this.state.intervalWeather_seoul}
+              ></Content>
+            )}
           ></Route>
           <Route exact path="/logout" render={() => <Logout></Logout>}></Route>
           <Route
             path="/login"
             render={() => (
-              <Login handleResponseSuccess={this.handleResponseSuccess} />
+              <Login
+                handleResponseSuccess={this.handleResponseSuccess}
+                handle_a={this.handle_a}
+              />
             )}
           />
           <Route
