@@ -53,6 +53,12 @@
   background-color: white;
 }
 
+.content_logout {
+  flex: 0;
+  text-align: center;
+  float: right;
+}
+
 .weatherfont {
   font-size: 20px;
 }

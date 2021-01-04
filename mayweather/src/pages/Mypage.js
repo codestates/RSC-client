@@ -6,44 +6,18 @@ import userimg from "../userimg.jpg";
 import "../App.css";
 
 
-class NewLocation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      location: "",
-    }
-    this.prevLocation = this.props.location1;
-    this.WriteNewLocation = this.WriteNewLocation.bind(this);
-  }
-  WriteNewLocation = (key) => (e) => {
-    this.setState({ [key]: e.target.value })
-  }
-  render() {
-    return (
-      <div>
-        <input
-          className="mypage_inputbox"
-          type="text"
-          placeholder="새로운 지역"
-          onChange={this.WriteNewLocation("location")}
-        ></input>
-      </div>
-    )
-  }
-}
-
 class Mypage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isModalOpen: false,
-      isModalOpen2: false,
       userId: "",
       email: "",
       location1: "",
       location2: "",
+      newlocation1: "",
     };
-    this.handleChangeL1 = this.handleChangeL1.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   openModal = () => {
@@ -55,17 +29,36 @@ class Mypage extends React.Component {
     this.props.handleLogout();
   };
 
-  openModal2 = () => {
-    this.setState({ isModalOpen2: true });
-  }
-
-  handleChangeL1 = (key) => (e) => {
-    this.setState({ [key]: e.target.value })
+  handleChange = (key) => (e) => {
+    if (
+      this.state.location1 !== e.target.value &&
+      this.state.location2 !== e.target.value
+    ) {
+      this.setState({
+        [key]: e.target.value,
+      });
+    } else {
+      this.setState({
+        [key]: "",
+      });
+    }
   };
 
-  handleMyLocationOnClick1 = () {
-    this.openModal2();
+  handleMyLocationOnClick1 = () => {
+    axios.post("https://mayweather24.com/mypage", {
+      userId: this.state.userId,
+      prevLocation: this.state.location1,
+      location: this.state.newlocation1,
+    }, {
+      withCredentials: true,
+    })
+      .then(res => console.log("post mypage >>>", res))
+    this.setState({
+      location1: this.state.newlocation1,
+      newlocation1: "",
+    })
   }
+
 
   handleGetUserInfo = async () => {
     const getUserInfo = await axios("https://mayweather24.com/content", {
@@ -91,6 +84,20 @@ class Mypage extends React.Component {
   }
 
   componentDidMount() {
+    axios
+      .get("https://mayweather24.com/content", null, { withCredentials: true })
+      .then((res) => console.log(res))
+      .then((res) => res.data)
+      .then((data) => {
+        // console.log("***mypage data >>>>", data);
+        // if ()
+        this.setState({
+          userId: data.userId,
+          username: data.username,
+          email: data.email,
+          location1: data.location, //지역1만 어떻게 받아지는지 확인 후 지역2 추가!
+        });
+      });
     this.handleGetUserInfo();
   }
 
@@ -101,7 +108,12 @@ class Mypage extends React.Component {
           <ul className="mypage_navbar">
             <li>MayWeather24</li>
             <li className="mypage_tohome">
-              <Link to="./" className="home">Home</Link>
+              <Link to="./" className="home">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="./content">Content</Link>
             </li>
             <li className="mypage_logout">
               <button onClick={this.handleLogoutOnClick}>Logout</button>
@@ -134,6 +146,16 @@ class Mypage extends React.Component {
                   <dd>{this.state.email}</dd>
                   <dt>선택지역 1</dt>
                   <dd>{this.state.location1}</dd>
+                  <div>
+                    <select onChange={this.handleChange("newlocation1")}>
+                      <option value="">도시선택</option>
+                      <option value="seoul">서울</option>
+                      <option value="incheon">인천</option>
+                      <option value="daegu">대구</option>
+                      <option value="gwangju">광주</option>
+                      <option value="busan">부산</option>
+                    </select>
+                  </div>
                   <button onClick={this.handleMyLocationOnClick1}>변경</button><br />
                   <dt>선택지역 2</dt>
                   <dd>{this.state.location2 ? <div>{this.state.location2}</div> : <div>선택한 지역이 없습니다.</div>}</dd>
@@ -149,3 +171,4 @@ class Mypage extends React.Component {
 }
 
 export default Mypage;
+
