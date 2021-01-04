@@ -1,6 +1,6 @@
 .signup {
   position: absolute;
-  left: 43%
+  left: 39%;
 }
 
 .signupbox {
@@ -11,7 +11,8 @@
   /* margin-left: auto;
   margin-right: auto; */
   padding: 2%;
-  background-color: cornflowerblue;
+  /* background-color: cornflowerblue; */
+  background: linear-gradient(to bottom, #3459a3, #3380a3);
 }
 
 .signupfont {
