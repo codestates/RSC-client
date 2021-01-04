@@ -32,10 +32,18 @@ class App extends React.Component {
       intervalWeather_gwangju: "",
       intervalWeather_busan: "",
       abcd: "",
+      isMember: "",
     };
     this.handleLogout = this.handleLogout.bind(this);
     this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
     this.handleVisitorLocation = this.handleVisitorLocation.bind(this);
+    this.handleisMember = this.handleisMember.bind(this);
+  }
+
+  handleisMember(e) {
+    this.setState({
+      isMember: e
+    })
   }
 
   handleVisitorLocation(e) {
@@ -119,6 +127,7 @@ class App extends React.Component {
                 intervalWeather_seoul={this.state.intervalWeather_seoul}
                 visitorLoca={this.state.visitorLoca}
                 abcd={this.state.abcd}
+                isMember={this.state.isMember}
               ></Content>
             )}
           ></Route>
@@ -129,6 +138,7 @@ class App extends React.Component {
               <Login
                 handleResponseSuccess={this.handleResponseSuccess}
                 handleVisitorLocation={this.handleVisitorLocation}
+                handleisMember={this.handleisMember}
               />
             )}
           />

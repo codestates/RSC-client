@@ -13,6 +13,7 @@ class Login extends React.Component {
       errorMessage: "",
       errorMessage_0: "",
       visitorLocation: "",
+      isMember: ""
     };
     this.handleInputValue = this.handleInputValue.bind(this);
     this.handleLogin_0 = this.handleLogin_0.bind(this);
@@ -46,6 +47,10 @@ class Login extends React.Component {
         )
         .then((res) => {
           console.log("post login res >>>", res);
+          this.setState({
+            isMember: true,
+          });
+          this.props.handleisMember(this.state.isMember);
           handleResponseSuccess();
         });
     }
@@ -67,6 +72,10 @@ class Login extends React.Component {
         )
         .then((res) => {
           console.log("post login res >>>", res);
+          this.setState({
+            isMember: false,
+          })
+          this.props.handleisMember(this.state.isMember);
           handleResponseSuccess();
         });
     }
