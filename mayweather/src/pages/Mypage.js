@@ -46,7 +46,7 @@ class Mypage extends React.Component {
 
   handleMyLocationOnClick1 = () => {
     axios.post("https://mayweather24.com/mypage", {
-      userId: this.state.userId,
+      // userId: this.state.userId,
       prevLocation: this.state.location1,
       location: this.state.newlocation1,
     }, {
