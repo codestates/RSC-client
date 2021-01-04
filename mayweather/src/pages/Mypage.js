@@ -6,16 +6,44 @@ import userimg from "../userimg.jpg";
 import "../App.css";
 
 
+class NewLocation extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      location: "",
+    }
+    this.prevLocation = this.props.location1;
+    this.WriteNewLocation = this.WriteNewLocation.bind(this);
+  }
+  WriteNewLocation = (key) => (e) => {
+    this.setState({ [key]: e.target.value })
+  }
+  render() {
+    return (
+      <div>
+        <input
+          className="mypage_inputbox"
+          type="text"
+          placeholder="새로운 지역"
+          onChange={this.WriteNewLocation("location")}
+        ></input>
+      </div>
+    )
+  }
+}
+
 class Mypage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isModalOpen: false,
+      isModalOpen2: false,
       userId: "",
       email: "",
       location1: "",
       location2: "",
     };
+    this.handleChangeL1 = this.handleChangeL1.bind(this);
   }
 
   openModal = () => {
@@ -27,11 +55,16 @@ class Mypage extends React.Component {
     this.props.handleLogout();
   };
 
-  handleChangeMyLocation() { //지역 변경에 대한 내 요청
-    return axios
-      .post("https://mayweather24.com/mypage")
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+  openModal2 = () => {
+    this.setState({ isModalOpen2: true });
+  }
+
+  handleChangeL1 = (key) => (e) => {
+    this.setState({ [key]: e.target.value })
+  };
+
+  handleMyLocationOnClick1 = () {
+    this.openModal2();
   }
 
   handleGetUserInfo = async () => {
@@ -56,14 +89,6 @@ class Mypage extends React.Component {
       });
     }
   }
-
-  // handleMyLocationOnClick1 = () {
-  //   console.log()
-  // }
-
-  //   this.handleChangeMyLocation();
-  // }
-
 
   componentDidMount() {
     this.handleGetUserInfo();
@@ -111,20 +136,9 @@ class Mypage extends React.Component {
                   <dd>{this.state.location1}</dd>
                   <button onClick={this.handleMyLocationOnClick1}>변경</button><br />
                   <dt>선택지역 2</dt>
-                  <dd>{this.state.location2}</dd>
+                  <dd>{this.state.location2 ? <div>{this.state.location2}</div> : <div>선택한 지역이 없습니다.</div>}</dd>
                   <button onClick={() => { alert("현재는 내가 선택한 지역1만 변경가능합니다."); }}>변경</button>
                 </dl>
-                {/* <div>ID {this.state.userId}</div>
-            <div>사용자명 {this.state.username}</div>
-            <div>이메일 {this.state.email}</div>
-            <div>
-              내가 선택한 지역 1 {this.state.location1}
-              <button onClick={this.handleMyLocationOnClick1}>변경</button>
-            </div>
-            <div>
-              내가 선택한 지역 2 {this.state.location2}
-              <button onClick={() => {alert("현재는 내가 선택한 지역1만 변경가능합니다.");}}>변경</button>
-            </div> */}
               </div>
             </div>
           </center>
