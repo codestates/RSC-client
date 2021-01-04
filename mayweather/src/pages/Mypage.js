@@ -34,35 +34,27 @@ class Mypage extends React.Component {
       .catch((err) => console.log(err));
   }
 
-  handleGetUserInfo = () => {
-    return axios
-      .get("https://mayweather24.com/content", null, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      })
-      .then(res => res.data)
-      .then(res => {
-        if (res.location.length < 8) {
-          this.setState({
-            userId: res.userId,
-            username: res.username,
-            email: res.email,
-            location1: res.location,
-          })
-        } else {
-          let arr = res.location.split("");
-          arr.splice(arr.indexOf(","), 1);
-          let newstr = arr.join("");
-          let newarr = newstr.split(" ");
-          this.setState({
-            userId: res.userId,
-            username: res.username,
-            email: res.email,
-            location1: newarr[0],
-            location2: newarr[1],
-          })
-        }
-      })
+  handleGetUserInfo = async () => {
+    const getUserInfo = await axios("https://mayweather24.com/content", {
+      withCredentials: true,
+    });
+    if (!getUserInfo.data.location.includes(",")) {
+      this.setState({
+        userId: getUserInfo.data.userId,
+        username: getUserInfo.data.username,
+        email: getUserInfo.data.email,
+        location1: getUserInfo.data.location,
+      });
+    } else {
+      const locationArr = getUserInfo.data.location.split(",");
+      this.setState({
+        userId: getUserInfo.data.userId,
+        username: getUserInfo.data.username,
+        email: getUserInfo.data.email,
+        location1: locationArr[0],
+        location2: locationArr[1],
+      });
+    }
   }
 
   // handleMyLocationOnClick1 = () {
@@ -94,35 +86,35 @@ class Mypage extends React.Component {
         </nav>
 
         <div>
-        <center>
-          <h1>Mypage</h1>
-          <br />
-        {/* </center> */}
-          {this.state.isModalOpen ? (
-            <div>
-              <Logout open={this.state.isModalOpen}></Logout>
-            </div>
-          ) : (
-              <></>
-            )}
-          <div className="mypage_userinfobox">
-            <img src={userimg} alt="Userimg" className="userimg" />
-            <div className="mypage_userinfo">
-              <dl className="userinfo_content">
-                <dt>사용자 ID</dt>
-                <dd>eunwo.o_c</dd>
-                <dt>사용자명</dt>
-                <dd>차은우</dd>
-                <dt>사용자 이메일</dt>
-                <dd>eunwoo@mayweather24.com</dd>
-                <dt>선택지역 1</dt>
-                <dd>서울</dd>
-                <button onClick={this.handleMyLocationOnClick1}>변경</button><br />
-                <dt>선택지역 2</dt>
-                <dd>대구</dd>
-                <button onClick={() => {alert("현재는 내가 선택한 지역1만 변경가능합니다.");}}>변경</button>
-              </dl>
-            {/* <div>ID {this.state.userId}</div>
+          <center>
+            <h1>Mypage</h1>
+            <br />
+            {/* </center> */}
+            {this.state.isModalOpen ? (
+              <div>
+                <Logout open={this.state.isModalOpen}></Logout>
+              </div>
+            ) : (
+                <></>
+              )}
+            <div className="mypage_userinfobox">
+              <img src={userimg} alt="Userimg" className="userimg" />
+              <div className="mypage_userinfo">
+                <dl className="userinfo_content">
+                  <dt>사용자 ID</dt>
+                  <dd>{this.state.userId}</dd>
+                  <dt>사용자명</dt>
+                  <dd>{this.state.username}</dd>
+                  <dt>사용자 이메일</dt>
+                  <dd>{this.state.email}</dd>
+                  <dt>선택지역 1</dt>
+                  <dd>{this.state.location1}</dd>
+                  <button onClick={this.handleMyLocationOnClick1}>변경</button><br />
+                  <dt>선택지역 2</dt>
+                  <dd>{this.state.location2}</dd>
+                  <button onClick={() => { alert("현재는 내가 선택한 지역1만 변경가능합니다."); }}>변경</button>
+                </dl>
+                {/* <div>ID {this.state.userId}</div>
             <div>사용자명 {this.state.username}</div>
             <div>이메일 {this.state.email}</div>
             <div>
@@ -133,10 +125,10 @@ class Mypage extends React.Component {
               내가 선택한 지역 2 {this.state.location2}
               <button onClick={() => {alert("현재는 내가 선택한 지역1만 변경가능합니다.");}}>변경</button>
             </div> */}
+              </div>
             </div>
-          </div>
           </center>
-          </div>
+        </div>
       </div>
     );
   }
