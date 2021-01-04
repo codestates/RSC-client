@@ -3,6 +3,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import "../App.css";
 
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -15,49 +16,62 @@ class Login extends React.Component {
     };
     this.handleInputValue = this.handleInputValue.bind(this);
   }
+
   handleInputValue = (key) => (e) => {
-    this.setState({ [key]: e.target.value });
+    this.setState({ [key]: e.target.value })
+    this.props.handleVisitorLocation(e.target.value)
   };
+
   handleLogin = () => {
-    const { userId, password } = this.state;
+    const { userId, password} = this.state;
     const { handleResponseSuccess } = this.props;
-    if (this.state.userId === "" || this.state.password === "") {
+    if (!this.state.userId || !this.state.password) {
       this.setState({ errorMessage: "ID와 비밀번호를 다시 확인해주세요" });
       return;
     } else {
       axios
-        .post("https://mayweather24.com/", {
+        .post("https://mayweather24.com/login", {
           userId: userId,
           password: password,
-        })
+        },
+          { withCredentials: true })
         .then((res) => {
-          console.log("res >>>", res);
+          console.log("post login res >>>", res);
           handleResponseSuccess();
         });
     }
   };
+  
   render() {
     return (
       <div>
+        <nav className="login_navbar">
+          <ul>
+          <li>MayWeather24</li>
+            <li>
+              <Link to="./" className="login_tohome">Home</Link>
+            </li>
+          </ul>
+        </nav>
         <div>
           <center>
-            <h1>로그인하기</h1>
+            <h1>Login Page</h1>
           </center>
         </div>
         <div className="loginpage">
           <div className="login_member">
             <h3>회원 로그인</h3>
             <form onSubmit={(e) => e.preventDefault()}>
-              <div>
-                {/* <span>ID</span> */}
+              <div className="idbox">
+                <span>회원 ID</span>&nbsp;
                 <input
                   type="text"
                   placeholder="ID를 입력하세요"
-                  onChange={this.handleInputValue("userId")}
-                ></input>
+                  onChange={this.handleInputValue("userId")}>
+                </input>
               </div>
-              <div>
-                {/* <span>비밀번호</span> */}
+              <div className="pwbox">
+                <span>비밀번호</span>&nbsp;
                 <input
                   type="password"
                   placeholder="비밀번호를 입력하세요"
@@ -68,8 +82,7 @@ class Login extends React.Component {
               <button
                 className="loginbtn"
                 type="submit"
-                onClick={this.handleLogin}
-              >
+                onClick={this.handleLogin}>
                 로그인
               </button>
               {<div>{this.state.errorMessage}</div>}
@@ -98,7 +111,7 @@ class Login extends React.Component {
               <br />
               <br />
               <Link to="./content">
-                <button>날씨 보기</button>
+                <button onClick={this.props.handleVisitorLocation.bind(this.state.visitorLocation)}>로그인</button>
               </Link>
             </div>
           </div>
