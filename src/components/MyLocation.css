@@ -1,0 +1,365 @@
+.my_location_container{
+    width: 100%;
+    height: 100%;
+}
+
+.my_location_title{
+    border: 1px solid red;
+    /* width: 100%; */
+    /* height: 50%; */
+    position: absolute;
+    top: 10%;
+    left: 25%;
+}
+
+.my_location_box{
+    border: 1px solid red;
+    width: 65%;
+    height: 75%;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+} 
+
+.my_location_data_1{
+    /* border: 1px solid red;
+    width: 100%;
+    height: 50%; */
+    border: 1px solid red;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    /* top: 30%; */
+    /* right: 20%; */
+}
+
+.my_location_data_1_date{
+    /* border: 1px solid red; */
+    /* width: %; */
+    position: absolute;
+    top: -15%;
+    right: 2%;
+    font-size: 1vmax;
+}
+
+.my_location_data_1_weather_box{
+    border: 1px solid red;
+    width: 15%;
+    height: 40%;
+    position: absolute;
+    top: 5%;
+    left: 18%;   
+    font-size: 1vmax;
+}
+
+.my_location_data_1_div_weather_icon{
+    /* display: inline-block; */
+    width: 80%;
+    height: 80%;
+    align-items: center;
+    /* border: 1px solid red;     */
+    margin-left: 15%;
+}
+
+.my_location_data_1_weather_icon{
+    width: 100%;
+    height: 100%;
+
+}
+
+.my_location_data_1_weather_description{
+    /* border: 1px solid red;     */
+    width: 80%;
+    text-align: center;
+    margin-left: 15%;
+    font-size: 1.2vmax;
+    position: relative;
+    top: -8%;
+}
+
+
+.my_location_data_1_temp_box{
+    /* border: 1px solid red; */
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    top: 10%;
+    left: 35%;   
+    text-align: center;    
+}
+
+.my_location_data_1_temp{
+    display: inline-block;
+    /* width: 100%; */
+    /* height: 10%; */
+    font-size: 3vmax;   
+}
+
+.my_location_data_1_temp_celsius_icon{
+    display: inline-block;
+    position: relative;
+    top: -10%;
+    font-size: 1.3vmax;
+}
+
+.my_location_data_1_feel_like{
+    display: inline-block;
+    margin-left: 4%;
+    font-size: 1.5vmax;      
+}
+
+.my_location_data_1_yesterday_temp{
+    /* border: 1px solid red; */
+    margin-top: 2%;
+    font-size: 1.4vmax;     
+}
+
+.my_location_data_1_hr{
+    position: relative;
+    top:53%;
+    width: 90%;
+    
+}
+
+.my_location_data_1_max_min_box{
+    display: inline-block;
+    width: 20%;
+    height: 30%;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 65%;
+    left: 10%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.my_location_data_1_max{
+    /* border: 1px solid red; */
+}
+
+.my_location_data_1_min{
+    /* border: 1px solid red; */
+    margin-top: 10%;
+}
+
+.my_location_data_1_humidity_box{
+    display: inline-block;
+    width: 20%;
+    height: 30%;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 65%;
+    left: 40%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.my_location_data_1_humidity_value{
+    margin-top: 10%;
+}
+
+.my_location_data_1_wind_box{
+    display: inline-block;
+    width: 30%;
+    height: 30%;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 65%;
+    right: 6%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.my_location_data_1_wind{
+    text-align: center;
+}
+
+.my_location_data_1_wind_speeed{
+    display: inline-block;
+    margin-top: 5%;
+    /* margin-left: 3%; */
+}
+
+.my_location_data_1_wind_line{
+    display: inline-block;
+    margin-left: 4%;
+    color: gray;
+}
+
+.my_location_data_1_wind_deg{
+    display: inline-block;
+    margin-top: 5%;
+    margin-left: 4%;
+}
+
+/*! 2번 째 칸 */
+.my_location_data_2{
+    /* border: 1px solid red;
+    width: 100%;
+    height: 50%; */
+    border: 1px solid red;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    /* right: 20%; */
+}
+
+.my_location_data_2_date{
+    /* border: 1px solid red; */
+    /* width: %; */
+    position: absolute;
+    top: 3%;
+    right: 2%;
+    font-size: 1vmax;
+}
+
+.my_location_data_2_weather_box{
+    border: 1px solid red;
+    width: 15%;
+    height: 40%;
+    position: absolute;
+    top: 5%;
+    left: 18%;   
+    font-size: 1vmax;
+}
+
+.my_location_data_2_div_weather_icon{
+    /* display: inline-block; */
+    width: 80%;
+    height: 80%;
+    align-items: center;
+    /* border: 1px solid red;     */
+    margin-left: 15%;
+}
+
+.my_location_data_2_weather_icon{
+    width: 100%;
+    height: 100%;
+
+}
+
+.my_location_data_2_weather_description{
+    /* border: 1px solid red;     */
+    width: 80%;
+    text-align: center;
+    margin-left: 15%;
+    font-size: 1.2vmax;
+    position: relative;
+    top: -8%;
+}
+
+
+.my_location_data_2_temp_box{
+    /* border: 1px solid red; */
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    top: 10%;
+    left: 35%;   
+    text-align: center;    
+}
+
+.my_location_data_2_temp{
+    display: inline-block;
+    /* width: 100%; */
+    /* height: 10%; */
+    font-size: 3vmax;   
+}
+
+.my_location_data_2_temp_celsius_icon{
+    display: inline-block;
+    position: relative;
+    top: -10%;
+    font-size: 1.3vmax;
+}
+
+.my_location_data_2_feel_like{
+    display: inline-block;
+    margin-left: 4%;
+    font-size: 1.5vmax;      
+}
+
+.my_location_data_2_yesterday_temp{
+    /* border: 1px solid red; */
+    margin-top: 2%;
+    font-size: 1.4vmax;     
+}
+
+.my_location_data_2_hr{
+    position: relative;
+    top:53%;
+    width: 90%;
+    
+}
+
+.my_location_data_2_max_min_box{
+    display: inline-block;
+    width: 20%;
+    height: 30%;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 65%;
+    left: 10%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.my_location_data_2_max{
+    /* border: 1px solid red; */
+}
+
+.my_location_data_2_min{
+    /* border: 1px solid red; */
+    margin-top: 10%;
+}
+
+.my_location_data_2_humidity_box{
+    display: inline-block;
+    width: 20%;
+    height: 30%;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 65%;
+    left: 40%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.my_location_data_2_humidity_value{
+    margin-top: 10%;
+}
+
+.my_location_data_2_wind_box{
+    display: inline-block;
+    width: 30%;
+    height: 30%;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 65%;
+    right: 6%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.my_location_data_2_wind{
+    text-align: center;
+}
+
+.my_location_data_2_wind_speeed{
+    display: inline-block;
+    margin-top: 5%;
+    /* margin-left: 3%; */
+}
+
+.my_location_data_2_wind_line{
+    display: inline-block;
+    margin-left: 4%;
+    color: gray;
+}
+
+.my_location_data_2_wind_deg{
+    display: inline-block;
+    margin-top: 5%;
+    margin-left: 4%;
+}

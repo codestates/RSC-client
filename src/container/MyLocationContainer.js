@@ -1,6 +1,6 @@
 import React, {useCallback}  from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import LandingPresentWeather from '../components/LandingPresentWeather';
+import MyLocation from '../components/MyLocation';
 import { 
     getAirQualityIndex,
     getFeelLikeTemp,
@@ -15,7 +15,7 @@ import {
     getTempDifferenceYesterday,
 } from '../modules/landingPresentWeather'
 
-const LandingPresentWeatherContainer = () => {
+const MyLocationContainer = () => {
     const airQualityIndex = useSelector(state => state.landingPresentWeather.airQualityIndex)
     const feelLike = useSelector(state => state.landingPresentWeather.feelLike)
     const humidity = useSelector(state => state.landingPresentWeather.humidity)
@@ -40,10 +40,8 @@ const LandingPresentWeatherContainer = () => {
     const getWindDegAction = useCallback((windDeg) => dispatch(getWindDeg(windDeg)), [dispatch]);
     const getWindSpeedAction = useCallback((windSpeed) => dispatch(getWindSpeed(windSpeed)), [dispatch]);
     const getTempDifferenceYesterdayAction = useCallback((temp) => dispatch(getTempDifferenceYesterday(temp)), [dispatch]);
-
-
     return (
-        <LandingPresentWeather 
+        <MyLocation
             airQualityInde={airQualityIndex}
             feelLike={feelLike}
             humidity={humidity}
@@ -70,4 +68,4 @@ const LandingPresentWeatherContainer = () => {
     );
 };
 
-export default React.memo(LandingPresentWeatherContainer);
+export default React.memo(MyLocationContainer);
