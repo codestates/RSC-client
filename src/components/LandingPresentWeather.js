@@ -1,12 +1,41 @@
 import React, { useEffect, useState } from 'react';
+import { Link, withRouter } from "react-router-dom";
 import axios from 'axios'
 import './LandingPresentWeather.css'
 
-const LandingPresentWeather = () => {
+const LandingPresentWeather = ({
+            airQualityInde,
+            feelLike,
+            humidity,
+            temp,
+            tempMax,
+            tempMin,
+            weatherDescription,
+            weatherIcon,
+            windDeg,
+            windSpeed,
+            tempDifferenceYesterday,
+            getAirQualityIndexAction,
+            getFeelLikeTempAction,
+            getHumidityAction,
+            getTempAction,
+            getTempMaxAction,
+            getTempMinAction,
+            getWeatherAction,
+            getWeatherIconAction,
+            getWindDegAction,
+            getWindSpeedAction,
+            getTempDifferenceYesterdayAction,
+            history
+}) => {
+            console.log("🚀 ~ file: LandingPresentWeather.js ~ line 31 ~ temp", temp)
+            console.log("🚀 ~ file: LandingPresentWeather.js ~ line 31 ~ tempMax", tempMax)
+            console.log("🚀 ~ file: LandingPresentWeather.js ~ line 31 ~ windSpeed", windSpeed)
+            console.log("🚀 ~ file: LandingPresentWeather.js ~ line 31 ~ tempDifferenceYesterday", tempDifferenceYesterday)
+     
     
-    const [weatherData, setWeatherData] = useState(null)
-    const [date, setDate] = useState(null)
-   
+    const [date, setDate] = useState(null)    
+
     const getDate = new Date();
    
     let getMonth = String(getDate.getMonth() + 1);
@@ -29,28 +58,38 @@ const LandingPresentWeather = () => {
     useEffect(async() => {
         try{
             const getWeatherData = await axios('https://localhost:3002')
-            console.log("🚀 ~ file: Landing.js ~ line 13 ~ getPresentWeatherSeoul ~ getWeatherData", getWeatherData)
-            // airQualityIndex: 4
-            // feelsLike: 15.73
-            // humidity: 24
-            // temp: 17.32
-            // tempMax: 18
-            // tempMin: 16
-            // weather: "구름조금"
-            // weatherIcon: "03d"
-            // windDeg: 270
-            // windSpeed: 4.12
-            // yesterdayTemp: 16.38
-            setWeatherData(getWeatherData.data)
+            console.log("🚀 ~ file: LandingPresentWeather.js ~ line 60 ~ useEffect ~ getWeatherData", getWeatherData.data)
+            //     airQualityIndex: 5
+            //     feelLike: 9.33
+            //     humidity: 53
+            //     temp: 9.33
+            //     tempDifferenceYesterday: 0.7699999999999996
+            //     tempMax: 10
+            //     tempMin: 9
+            //     weatherDescription: "맑음"
+            //     weatherIcon: "01n"
+            //     windDeg: 210
+            //     windSpeed: 0.51
+            getAirQualityIndexAction(getWeatherData.data.airQualityIndex)
+            getFeelLikeTempAction(getWeatherData.data.feelLike)
+            getHumidityAction(getWeatherData.data.humidity)
+            getTempAction(getWeatherData.data.temp)
+            getTempMaxAction(getWeatherData.data.tempMax)
+            getTempMinAction(getWeatherData.data.tempMin)
+            getWeatherAction(getWeatherData.data.weatherDescription)
+            getWeatherIconAction(`'http://openweathermap.org/img/wn/${getWeatherData.data.weatherIcon}@2x.png`)
+            getWindDegAction(getWeatherData.data.windDeg)
+            getWindSpeedAction(getWeatherData.data.windSpeed)
+            getTempDifferenceYesterdayAction(getWeatherData.data.tempDifferenceYesterday)
+
             setDate(`${getMonth}.${getDayNumber}(${getDay}) ${hour}:${min}`)
-            // setWeatherIcon(getWeatherData.weatherIcon)
         } catch(err) {
             console.error(err)
         }
     },[])
     
     
-    return weatherData && date?(
+    return temp && date?(
         <div className="LandingPresentWeather_container">
             {/* <div className="LandingPresentWeather_date">04.10(토) 15:30</div> */}
             <div className="LandingPresentWeather_date">{date}</div>
@@ -61,40 +100,40 @@ const LandingPresentWeather = () => {
                     alt="date" /> */}
                 </div>
                 <div className="LandingPresentWeather_weather_description">
-                    {weatherData.weatherDescription}
+                    {weatherDescription}
                 </div>
             </div>
             <div className="LandingPresentWeather_temp_box">
                 <div className="LandingPresentWeather_temp">
-                    온도: 1 
+                    온도: {temp}
                 </div>
                 <div className="LandingPresentWeather_temp_celsius_icon">
                     &#8451;
                 </div>
                 <div className="LandingPresentWeather_feel_like">
-                    체감(1&#8451;)	
+                    체감({feelLike}&#8451;)	
                 </div>
                 {/*  */}
                 {/* 어제보다 기온 높을 때 */}
-                 {parseInt(weatherData.tempDifferenceYesterday) < 0 ?(
+                 {parseInt(tempDifferenceYesterday) < 0 ?(
                     <div className="LandingPresentWeather_yesterday_temp">
-                        어제보다 {parseInt(weatherData.tempDifferenceYesterday)}도 높아요
+                        어제보다 {Math.abs(parseInt(tempDifferenceYesterday))}도 높아요
                     </div>
                 ):(
                     null
                 )}
 
                 {/* 어제보다 기온 낮을 때 */}
-                 {parseInt(weatherData.tempDifferenceYesterday) > 0 ?(
+                 {parseInt(tempDifferenceYesterday) > 0 ?(
                     <div className="LandingPresentWeather_yesterday_temp">
-                        어제보다 {parseInt(weatherData.tempDifferenceYesterday)}도 낮아요
+                        어제보다 {parseInt(tempDifferenceYesterday)}도 낮아요
                     </div>
                 ):(
                     null
                 )}
 
                 {/* 기온 똑같을 때 */}
-                  {parseInt(weatherData.tempDifferenceYesterday) === 0 ?(
+                  {parseInt(tempDifferenceYesterday) === 0 ?(
                     <div className="LandingPresentWeather_yesterday_temp">
                         어제와 평균 온도가 같습니다
                     </div>
@@ -106,10 +145,10 @@ const LandingPresentWeather = () => {
             <hr className="LandingPresentWeather_hr"></hr>
             <div className="LandingPresentWeather_max_min_box">
                 <div className="LandingPresentWeather_max">
-                    최고 온도: {weatherData.tempMax}&#8451;
+                    최고 온도: {tempMax}&#8451;
                 </div>
                 <div className="LandingPresentWeather_min">
-                    최저 온도: {weatherData.tempMin}&#8451;
+                    최저 온도: {tempMin}&#8451;
                 </div>
             </div>
             <div className="LandingPresentWeather_humidity_box">
@@ -117,7 +156,7 @@ const LandingPresentWeather = () => {
                     습도
                 </div>
                 <div className="LandingPresentWeather_humidity_value">    
-                    {weatherData.humidity}%
+                    {humidity}%
                 </div>
             </div>
             <div className="LandingPresentWeather_wind_box">
@@ -125,13 +164,13 @@ const LandingPresentWeather = () => {
                 바람
             </div>
             <div className="LandingPresentWeather_wind_speeed">
-                속도 {weatherData.windSpeed} m/s
+                속도 {windSpeed} m/s
             </div>
             <div className="LandingPresentWeather_wind_line">
                         |
             </div>
             <div className="LandingPresentWeather_wind_deg">
-                풍향 {weatherData.windDeg}&#176;
+                풍향 {windDeg}&#176;
             </div>
             </div>
         </div>
@@ -142,4 +181,4 @@ const LandingPresentWeather = () => {
     );
 };
 
-export default LandingPresentWeather;
+export default withRouter(LandingPresentWeather);
