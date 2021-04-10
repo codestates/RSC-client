@@ -1,0 +1,33 @@
+.nav_container{
+    border: 1px solid red;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    /* height는 폰트 크기 설정 후 조정 */
+    height: 5%;
+}
+
+.nav_logo{
+    display: inline-block;
+    border: 1px solid red;
+    position: relative;
+    left: 1%;
+}
+
+.nav_sign_in{
+    display: inline-block;
+    border: 1px solid red;
+    position: absolute;
+    right: 16%;
+    /* font-weight: 600; */
+    /* font-size: 1.1vmax; */
+}
+
+.nav_sign_up{
+    display: inline-block;
+    border: 1px solid red;
+    position: absolute;
+    right: 8%;
+}
