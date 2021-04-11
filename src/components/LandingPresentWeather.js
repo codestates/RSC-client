@@ -4,6 +4,7 @@ import axios from 'axios'
 import './LandingPresentWeather.css'
 
 const LandingPresentWeather = ({
+            cityName,
             airQualityInde,
             feelLike,
             humidity,
@@ -15,6 +16,7 @@ const LandingPresentWeather = ({
             windDeg,
             windSpeed,
             tempDifferenceYesterday,
+            getCityNameAction,
             getAirQualityIndexAction,
             getFeelLikeTempAction,
             getHumidityAction,
@@ -28,11 +30,7 @@ const LandingPresentWeather = ({
             getTempDifferenceYesterdayAction,
             history
 }) => {
-            console.log("🚀 ~ file: LandingPresentWeather.js ~ line 31 ~ temp", temp)
-            console.log("🚀 ~ file: LandingPresentWeather.js ~ line 31 ~ tempMax", tempMax)
-            console.log("🚀 ~ file: LandingPresentWeather.js ~ line 31 ~ windSpeed", windSpeed)
-            console.log("🚀 ~ file: LandingPresentWeather.js ~ line 31 ~ tempDifferenceYesterday", tempDifferenceYesterday)
-     
+    console.log("🚀 ~ file: LandingPresentWeather.js ~ line 33 ~ cityName", cityName)
     
     const [date, setDate] = useState(null)    
 
@@ -70,6 +68,7 @@ const LandingPresentWeather = ({
             //     weatherIcon: "01n"
             //     windDeg: 210
             //     windSpeed: 0.51
+            getCityNameAction(getWeatherData.data.cityName)
             getAirQualityIndexAction(getWeatherData.data.airQualityIndex)
             getFeelLikeTempAction(getWeatherData.data.feelLike)
             getHumidityAction(getWeatherData.data.humidity)
@@ -94,6 +93,9 @@ const LandingPresentWeather = ({
             {/* <div className="LandingPresentWeather_date">04.10(토) 15:30</div> */}
             <div className="LandingPresentWeather_date">{date}</div>
             <div className="LandingPresentWeather_weather_box">
+                <div className="LandingPresentWeather_city">
+                    {cityName}
+                </div>
                 <div className="LandingPresentWeather_div_weather_icon">
                     <img className="LandingPresentWeather_weather_icon" src='http://openweathermap.org/img/wn/01n@2x.png' alt="date" /> 
                     {/* <img className="LandingPresentWeather_weather_icon" src={weatherIcon}

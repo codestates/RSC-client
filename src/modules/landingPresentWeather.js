@@ -2,6 +2,7 @@ import { createAction, handleActions } from 'redux-actions'
 
 // action
 
+const GET_CITY_NAME = 'landingPresentWeather/GET_CITY_NAME';
 const GET_AIR_QUALITY_INDEX = 'landingPresentWeather/GET_AIR_QUALITY_INDEX';
 const GET_FEEL_LIKE_TEMP = 'landingPresentWeather/GET_FELL_LIKE_TEMP';
 const GET_HUMIDITY = 'landingPresentWeather/GET_HUMIDITY'
@@ -16,6 +17,7 @@ const GET_TEMP_DIFFERENCE_YESTERDAY = 'landingPresentWeather/GET_TEMP_DIFFERENCE
 
 // action creator
 
+export const getCityName = createAction(GET_CITY_NAME)
 export const getAirQualityIndex = createAction(GET_AIR_QUALITY_INDEX)
 export const getFeelLikeTemp = createAction(GET_FEEL_LIKE_TEMP)
 export const getHumidity = createAction(GET_HUMIDITY)
@@ -31,6 +33,7 @@ export const getTempDifferenceYesterday = createAction(GET_TEMP_DIFFERENCE_YESTE
 
 
 const initialState = {
+    cityName: null,
     airQualityIndex: null,
     feelLike: null,
     humidity: null,
@@ -47,6 +50,7 @@ const initialState = {
 // reducer
 const landingPresentWeather = handleActions(
     {
+        [GET_CITY_NAME]: (state, { payload: cityName }) =>  ({ ...state, cityName }),
         [GET_AIR_QUALITY_INDEX]: (state, { payload: index }) =>  ({ ...state, index }),
         [GET_FEEL_LIKE_TEMP]: (state, { payload: temp }) => ({ ...state, temp }),
         [GET_HUMIDITY]: (state, { payload: humidity }) => ({ ...state, humidity }),

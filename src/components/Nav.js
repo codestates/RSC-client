@@ -15,6 +15,10 @@ const Nav = ({
         window.scrollTo(0,0)
     }
     
+    const handleGoHome = () => {
+        handleScroll()
+        history.push('/')
+    }
 
     const handleLogout = async () => {
         const logout = await axios.post(

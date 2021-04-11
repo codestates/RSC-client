@@ -3,6 +3,7 @@ import SearchLocation from './SearchLocation';
 import Nav from './Nav';
 import Sidebar from './Sidebar';
 import LandingPresentWeatherContainer from '../container/LandingPresentWeatherContainer';
+import SearchLocationContainer from '../container/SearchLocationContainer';
 import NavContainer from '../container/NavContainer';
 
 const Landing = () => {
@@ -10,7 +11,7 @@ const Landing = () => {
         <div>
             <NavContainer />
             <Sidebar />
-            <SearchLocation />
+            <SearchLocationContainer />
             <LandingPresentWeatherContainer />
         </div>
     );

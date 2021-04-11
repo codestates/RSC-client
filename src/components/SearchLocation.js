@@ -3,7 +3,20 @@ import { Link, withRouter } from "react-router-dom";
 import './SearchLocation.css'
 import axios from 'axios'
 
-const SearchLocation = ({ history }) => {
+const SearchLocation = ({ 
+    getCityNameAction,
+    getAirQualityIndexAction,
+    getFeelLikeTempAction,
+    getHumidityAction,
+    getTempAction,
+    getTempMaxAction,
+    getTempMinAction,
+    getWeatherAction,
+    getWeatherIconAction,
+    getWindDegAction,
+    getWindSpeedAction,
+    getTempDifferenceYesterdayAction,
+    history }) => {
     const [city, setCity] = useState(null)    
 
     const handleInputValue = (key) => (e) => {
@@ -49,14 +62,32 @@ const SearchLocation = ({ history }) => {
         
 
     const handleOnClickSearchBtn = async () => {
+        // const getWeatherData = await axios.post(
+        //     'https://localhost:3002/weather',
+        //     {
+        //         city
+        //     }
+        // )
         const getWeatherData = await axios.post(
-            'https://localhost:3002/weather',
+            'https://localhost:3002',
             {
                 city
             }
         )
-        console.log("🚀 ~ file: SearchLocation.js ~ line 21 ~ handleOnClickSearchBtn ~ getWeatherData", getWeatherData)
-        history.push('/weather')
+        console.log("🚀 ~ file: SearchLocation.js ~ line 64 ~ handleOnClickSearchBtn ~ getWeatherData", getWeatherData)
+        getCityNameAction(getWeatherData.data.cityName)
+        getAirQualityIndexAction(getWeatherData.data.airQualityIndex)
+        getFeelLikeTempAction(getWeatherData.data.feelLike)
+        getHumidityAction(getWeatherData.data.humidity)
+        getTempAction(getWeatherData.data.temp)
+        getTempMaxAction(getWeatherData.data.tempMax)
+        getTempMinAction(getWeatherData.data.tempMin)
+        getWeatherAction(getWeatherData.data.weatherDescription)
+        getWeatherIconAction(`'http://openweathermap.org/img/wn/${getWeatherData.data.weatherIcon}@2x.png`)
+        getWindDegAction(getWeatherData.data.windDeg)
+        getWindSpeedAction(getWeatherData.data.windSpeed)
+        getTempDifferenceYesterdayAction(getWeatherData.data.tempDifferenceYesterday)
+        // history.push('/weather')
     }
 
     return (
