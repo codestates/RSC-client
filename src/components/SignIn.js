@@ -4,32 +4,50 @@ import Nav from './Nav';
 import axios from 'axios'
 import './SignIn.css'
 
-const SignIn = () => {
+const SignIn = ({
+  email,
+  password,
+  // emailErrorMsg,
+  // passwordErrorMsg,
+  setEmailAction,
+  setUserNameAction,
+  setPasswordAction,
+  // setEmailErrorAction,
+  // setPasswordErrorAction,
+  // eraseEmailErrorAction,
+  // erasePasswordErrorAction,
+  isLoggedIn,
+  changeLoggedInStateAction,
+  history
+}) => {
+  console.log("🚀 ~ file: SignIn.js ~ line 23 ~ isLoggedIn", isLoggedIn)
     const [isClickSignInBtn, setIsClickSignInBtn] = useState(false)
     
-    const [idInputValue, setIdInputValue] = useState(null);
-    const [passwordInputValue, setPasswordInputValue] = useState(null);
+    // const [emailInputValue, setEmailInputValue] = useState(null);
+    // const [passwordInputValue, setPasswordInputValue] = useState(null);
     
     const [idErrorMessage, setIdErrorMessage] = useState("올바른 이메일 형식이 아닙니다");
     const [passwordErrorMessage, setPasswordErrorMessage] = useState("8~15자리 사이로 입력해야 합니다");
     const [errorMessage, setErrorMessage] = useState('아이디 또는 비밀번호를 확인해 주세요');
 
     const handleInputValue = (key) => (e) => {
-    if (key === "id") {
+    if (key === "email") {
         const idValue = e.target.value.split("@");
         console.log("🚀 ~ file: SignIn.js ~ line 36 ~ handleInputValue ~ idValue", idValue)
         if (idValue.length !== 2) {
             setIdErrorMessage("올바른 이메일 형식이 아닙니다");
         } else {
             setIdErrorMessage(null);
-            setIdInputValue(e.target.value);
+            // setEmailInputValue(e.target.value);
+            setEmailAction(e.target.value)
         }
     } else if (key === "password") {
         if (e.target.value.length < 8) {
             setPasswordErrorMessage("8~15자리 사이로 입력해야 합니다");
         } else {
             setPasswordErrorMessage(null);
-            setPasswordInputValue(e.target.value);
+            // setPasswordInputValue(e.target.value);
+            setPasswordAction(e.target.value);
         }
       } 
     };
@@ -41,28 +59,33 @@ const SignIn = () => {
               const signIn = await axios.post(
                   "https://localhost:3002/sign-in",
                   {
-                      userId: idInputValue,
-                      password: passwordInputValue
+                      // email: emailInputValue,
+                      email,
+                      // password: passwordInputValue
+                      password
                   },
                   {
                       withCredentials: true,
                   }
               );
-              console.log('signIn.data.message>>>>',signIn.data.message)
-              setErrorMessage(null)
+              if (signIn.data.message === 'OK') {
+                setErrorMessage(null)
+                setPasswordAction(null)
+                changeLoggedInStateAction()
+              }
               const userInfo = await axios(
-                'https://localhost:3002/userInfo',
+                'https://localhost:3002/user-info',
                 {
                   withCredentials: true
                 }
               )
               console.log("🚀 ~ file: SignIn.js ~ line 99 ~ handleOnClickSignInBtn ~ userInfo>>>>", userInfo)
-                // id: "test@test.com"
+                // email: "test@test.com"
                 // name: "test"
-              
+              setUserNameAction(userInfo.data.name)
               // history.goBack();
               // 임시 방편, 원래는 뒤로 가기 해야 하는데 회원가입에서 로그인 오면 회원가입으로 돌아가버림
-              // history.push('/calming-signal');
+              history.push('/');
           } else {
             setErrorMessage('아이디 또는 비밀번호를 확인해 주세요')
             // setSignInErrorMsg('아이디 또는 비밀번호를 확인해 주세요');
@@ -77,7 +100,7 @@ const SignIn = () => {
             <Nav />
             <div className="sign_in_box">
             <div className="sign_in_box_id">
-                <input className="sign_in_box_input_id" placeholder="ID" onChange={handleInputValue("id")}></input>
+                <input className="sign_in_box_input_id" placeholder="ID" onChange={handleInputValue("email")}></input>
             </div>
             <div className="sign_in_box_id_error_message">
                 {isClickSignInBtn&&idErrorMessage? idErrorMessage:null}              {/* {isClickedSignInBtn&&emailErrorMsg? emailErrorMsg:null} */}

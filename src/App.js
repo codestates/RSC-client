@@ -4,6 +4,7 @@ import Landing from './components/Landing';
 import MyLocation from './components/MyLocation';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import SignInContainer from './container/SignInContainer';
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
         <Route component={Landing} path="/" exact />
         <Route component={MyLocation} path="/my-location" exact />
         <Route component={SignUp} path="/sign-up" exact />
-        <Route component={SignIn} path="/sign-in" exact />
+        <Route component={SignInContainer} path="/sign-in" exact />
     </div>
   );
 };
