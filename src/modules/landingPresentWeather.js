@@ -31,7 +31,7 @@ export const getTempDifferenceYesterday = createAction(GET_TEMP_DIFFERENCE_YESTE
 
 
 const initialState = {
-    cityName: null,
+    cityName: null,                                 
     feelLike: null,
     humidity: null,
     temp: null,
@@ -47,7 +47,7 @@ const initialState = {
 // reducer
 const landingPresentWeather = handleActions(
     {
-        [GET_CITY_NAME]: (state, { payload: cityName }) =>  ({ ...state, cityName }),
+        [GET_CITY_NAME]: (state, { payload: cityName }) =>  ({ ...state, cityName: cityName }),
         [GET_FEEL_LIKE_TEMP]: (state, { payload: temp }) => ({ ...state, temp }),
         [GET_HUMIDITY]: (state, { payload: humidity }) => ({ ...state, humidity }),
         [GET_TEMP]: (state, { payload: temp}) => ({ ...state, temp}),

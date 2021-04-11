@@ -88,14 +88,27 @@ const SearchLocation = ({
             getPM2_5Action(getAirPollutionData.data.pm2_5)
             getPM10Action(getAirPollutionData.data.pm10)
             getNH3Action(getAirPollutionData.data.nh3)
+        } //! 지역 추가
+         else if (window.location.href.split('/')[3] === "my-location") {
+            const getWeatherData = await axios.post(
+                'https://localhost:3002/my-location',
+                {
+                    city
+                },
+                {
+                    withCredentials: true
+                }
+            )
+
+            
         } else {
             const getWeatherData = await axios.post(
                 'https://localhost:3002',
                 {
                     city
-                }
+                }              
             )
-            console.log("🚀 ~ file: SearchLocation.js ~ line 64 ~ handleOnClickSearchBtn ~ getWeatherData", getWeatherData)
+            // console.log("🚀 ~ file: SearchLocation.js ~ line 64 ~ handleOnClickSearchBtn ~ getWeatherData", getWeatherData)
             getCityNameAction(getWeatherData.data.cityName)
             getAirQualityIndexAction(getWeatherData.data.airQualityIndex)
             getFeelLikeTempAction(getWeatherData.data.feelLike)

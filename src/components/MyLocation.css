@@ -371,3 +371,15 @@
     position: absolute;
     top: 5%;
 }
+
+.my_location_empty{
+     /* border: 1px solid red;
+    width: 100%;
+    height: 50%; */
+    border: 1px solid red;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    /* right: 20%; */
+}

@@ -18,6 +18,10 @@ const SignIn = ({
   // erasePasswordErrorAction,
   isLoggedIn,
   changeLoggedInStateAction,
+  // getCityName1Action,
+  // getCityName2Action,
+  // getCityNameAction,
+  getMyLocationNameAction,
   history
 }) => {
   console.log("🚀 ~ file: SignIn.js ~ line 23 ~ isLoggedIn", isLoggedIn)
@@ -83,6 +87,10 @@ const SignIn = ({
                 // email: "test@test.com"
                 // name: "test"
               setUserNameAction(userInfo.data.name)
+              getMyLocationNameAction(0,userInfo.data.cityName1)
+              getMyLocationNameAction(1,userInfo.data.cityName2)
+              //! getCityName1Action(userInfo.data.cityName1)
+              //! getCityName2Action(userInfo.data.cityName2)
               // history.goBack();
               // 임시 방편, 원래는 뒤로 가기 해야 하는데 회원가입에서 로그인 오면 회원가입으로 돌아가버림
               history.push('/');
