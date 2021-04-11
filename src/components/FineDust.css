@@ -1,0 +1,201 @@
+.fine_dust_container{
+    border: 1px solid red;
+    width: 60%;
+    height: 60%;
+    position: absolute;
+    top: 28%;
+    right: 15%;
+}
+
+.fine_dust_date{
+    /* border: 1px solid red; */
+    /* width: %; */
+    position: absolute;
+    top: 3%;
+    right: 2%;
+    font-size: 1vmax;
+}
+
+.fine_dust_city{
+    display: inline-block;
+    border: 1px solid red;
+    /* width: 15%; */
+    /* height: 40%; */
+    position: absolute;
+    top: 20%;
+    left: 15%;   
+    font-size: 1vmax;
+    font-size: 2vmax;
+}
+
+
+
+.fine_dust_aqi{
+    border: 1px solid red;
+    /* width: 60%; */
+    /* height: 40%; */
+    position: absolute;
+    top: 20%;
+    left: 25%;   
+    text-align: center;    
+    font-size: 3vmax;   
+    display: inline-block;
+}
+
+.fine_dust_temp_celsius_icon{
+    display: inline-block;
+    position: relative;
+    top: -10%;
+    font-size: 1.3vmax;
+}
+
+.fine_dust_feel_like{
+    display: inline-block;
+    margin-left: 4%;
+    font-size: 1.5vmax;      
+}
+
+.fine_dust_yesterday_temp{
+    /* border: 1px solid red; */
+    margin-top: 2%;
+    font-size: 1.4vmax;     
+}
+
+.fine_dust_hr{
+    position: relative;
+    /* top:53%; */
+    top:45%;
+    width: 90%;
+    
+}
+
+.fine_dust_CO_box{
+    display: inline-block;
+    width: 20%;
+    height: 15%;
+    border: 1px solid red;
+    position: absolute;
+    top: 55%;
+    left: 5%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.fine_dust_max{
+    /* border: 1px solid red; */
+}
+
+.fine_dust_min{
+    /* border: 1px solid red; */
+    margin-top: 10%;
+}
+
+.fine_dust_humidity_box{
+    display: inline-block;
+    width: 20%;
+    height: 15%;
+    border: 1px solid red;
+    position: absolute;
+    top: 55%;
+    left: 30%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.fine_dust_humidity_value{
+    margin-top: 10%;
+}
+
+.fine_dust_wind_box{
+    display: inline-block;
+    width: 20%;
+    height: 15%;
+    border: 1px solid red;
+    position: absolute;
+    top: 55%;
+    right: 30%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.fine_dust_wind{
+    text-align: center;
+}
+
+.fine_dust_wind_speeed{
+    display: inline-block;
+    margin-top: 5%;
+    /* margin-left: 3%; */
+}
+
+.fine_dust_wind_line{
+    display: inline-block;
+    margin-left: 4%;
+    color: gray;
+}
+
+.fine_dust_wind_deg{
+    display: inline-block;
+    margin-top: 5%;
+    margin-left: 4%;
+}
+
+.box{
+    display: inline-block;
+    width: 20%;
+    height: 15%;
+    border: 1px solid red;
+    position: absolute;
+    top: 55%;
+    right: 5%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.box2{
+    display: inline-block;
+    width: 20%;
+    height: 15%;
+    border: 1px solid red;
+    position: absolute;
+    top: 75%;
+    left: 5%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.box3{
+    display: inline-block;
+    width: 20%;
+    height: 15%;
+    border: 1px solid red;
+    position: absolute;
+    top: 75%;
+    left: 30%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.box4{
+    display: inline-block;
+    width: 20%;
+    height: 15%;
+    border: 1px solid red;
+    position: absolute;
+    top: 75%;
+    right: 30%;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+
+.box5{
+    display: inline-block;
+    width: 20%;
+    height: 15%;
+    border: 1px solid red;
+    position: absolute;
+    top: 75%;
+    right: 5%;
+    font-size: 1.2vmax;
+    text-align: center;
+}

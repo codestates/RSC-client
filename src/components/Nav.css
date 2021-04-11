@@ -1,0 +1,52 @@
+a{ 
+    text-decoration: none;  
+    color: black;
+}
+
+.nav_container{
+    border: 1px solid red;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    /* height는 폰트 크기 설정 후 조정 */
+    height: 5%;
+}
+
+.nav_logo{
+    display: inline-block;
+    border: 1px solid red;
+    position: relative;
+    left: 1%;
+}
+
+.nav_sign_box{
+    display: inline-block;
+    width: 15%;
+    height: 100%;
+    /* border: 3px solid red; */
+    position: absolute;
+    top: 15%;
+    right: 0%;
+    text-align: center;
+    font-size: 1vmax;
+}
+
+.nav_sign_in,
+.nav_mypage{
+    display: inline-block;
+    /* border: 1px solid red; */
+    width: 50%;
+    height: 100%;
+    
+}
+
+.nav_sign_up,
+.nav_logout{
+    display: inline-block;
+    /* border: 1px solid red; */
+    width: 50%;
+    height: 100%;
+    
+}
