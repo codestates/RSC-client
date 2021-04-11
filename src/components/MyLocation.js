@@ -7,7 +7,7 @@ import SearchLocation from './SearchLocation';
 import './MyLocation.css'
 
 const MyLocation = ({
-           airQualityInde,
+            isLoggedIn,
             feelLike,
             humidity,
             temp,
@@ -18,7 +18,6 @@ const MyLocation = ({
             windDeg,
             windSpeed,
             tempDifferenceYesterday,
-            getAirQualityIndexAction,
             getFeelLikeTempAction,
             getHumidityAction,
             getTempAction,
@@ -54,7 +53,8 @@ const MyLocation = ({
     useEffect(() => {
         setDate(`${getMonth}.${getDayNumber}(${getDay}) ${hour}:${min}`)
     },[])
-    return (
+
+    return isLoggedIn?(
         <div className="my_location_container">
             <Nav />
             <Sidebar />
@@ -225,6 +225,15 @@ const MyLocation = ({
                             풍향 {windDeg}&#176;
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        ):(
+        <div className="my_location_container">
+            <Nav />
+            <div className="my_location_guest">
+                <div>
+                    로그인 시 이용 가능합니다.
                 </div>
             </div>
         </div>

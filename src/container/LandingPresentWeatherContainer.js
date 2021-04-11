@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import LandingPresentWeather from '../components/LandingPresentWeather';
 import { 
     getCityName,
-    getAirQualityIndex,
     getFeelLikeTemp,
     getHumidity,
     getTemp,
@@ -18,7 +17,6 @@ import {
 
 const LandingPresentWeatherContainer = () => {
     const cityName = useSelector(state => state.landingPresentWeather.cityName)
-    const airQualityIndex = useSelector(state => state.landingPresentWeather.airQualityIndex)
     const feelLike = useSelector(state => state.landingPresentWeather.feelLike)
     const humidity = useSelector(state => state.landingPresentWeather.humidity)
     const temp = useSelector(state => state.landingPresentWeather.temp)
@@ -32,7 +30,6 @@ const LandingPresentWeatherContainer = () => {
 
     const dispatch = useDispatch();
     const getCityNameAction = useCallback((name) => dispatch(getCityName(name)), [dispatch]);
-    const getAirQualityIndexAction = useCallback((index) => dispatch(getAirQualityIndex(index)), [dispatch]);
     const getFeelLikeTempAction = useCallback((temp) => dispatch(getFeelLikeTemp(temp)), [dispatch]);
     const getHumidityAction = useCallback((humidity) => dispatch(getHumidity(humidity)), [dispatch]);
     const getTempAction = useCallback((temp) => dispatch(getTemp(temp)), [dispatch]);
@@ -48,7 +45,6 @@ const LandingPresentWeatherContainer = () => {
     return (
         <LandingPresentWeather 
             cityName={cityName}
-            airQualityInde={airQualityIndex}
             feelLike={feelLike}
             humidity={humidity}
             temp={temp}
@@ -60,7 +56,6 @@ const LandingPresentWeatherContainer = () => {
             windSpeed={windSpeed}
             tempDifferenceYesterday={tempDifferenceYesterday}
             getCityNameAction={getCityNameAction}
-            getAirQualityIndexAction={getAirQualityIndexAction}
             getFeelLikeTempAction={getFeelLikeTempAction}
             getHumidityAction={getHumidityAction}
             getTempAction={getTempAction}

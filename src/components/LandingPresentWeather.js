@@ -5,7 +5,6 @@ import './LandingPresentWeather.css'
 
 const LandingPresentWeather = ({
             cityName,
-            airQualityInde,
             feelLike,
             humidity,
             temp,
@@ -17,7 +16,6 @@ const LandingPresentWeather = ({
             windSpeed,
             tempDifferenceYesterday,
             getCityNameAction,
-            getAirQualityIndexAction,
             getFeelLikeTempAction,
             getHumidityAction,
             getTempAction,
@@ -69,7 +67,6 @@ const LandingPresentWeather = ({
             //     windDeg: 210
             //     windSpeed: 0.51
             getCityNameAction(getWeatherData.data.cityName)
-            getAirQualityIndexAction(getWeatherData.data.airQualityIndex)
             getFeelLikeTempAction(getWeatherData.data.feelLike)
             getHumidityAction(getWeatherData.data.humidity)
             getTempAction(getWeatherData.data.temp)

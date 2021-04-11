@@ -5,7 +5,6 @@ import axios from 'axios'
 
 const SearchLocation = ({ 
     getCityNameAction,
-    getAirQualityIndexAction,
     getFeelLikeTempAction,
     getHumidityAction,
     getTempAction,
@@ -16,7 +15,17 @@ const SearchLocation = ({
     getWindDegAction,
     getWindSpeedAction,
     getTempDifferenceYesterdayAction,
-    history }) => {
+    getAirQualityIndexAction,
+    getCOAction,
+    getNOAction,
+    getNO2Action,
+    getO3Action,
+    getSO2Action,
+    getPM2_5Action,
+    getPM10Action,
+    getNH3Action,
+    history 
+}) => {
     const [city, setCity] = useState(null)    
 
     const handleInputValue = (key) => (e) => {
@@ -62,32 +71,45 @@ const SearchLocation = ({
         
 
     const handleOnClickSearchBtn = async () => {
-        // const getWeatherData = await axios.post(
-        //     'https://localhost:3002/weather',
-        //     {
-        //         city
-        //     }
-        // )
-        const getWeatherData = await axios.post(
-            'https://localhost:3002',
-            {
-                city
+        if(window.location.href.split('/')[3] === "fine-dust") {
+            const getAirPollutionData = await axios.post(
+                'https://localhost:3002/fine-dust',
+                {
+                    city
+                }
+            )
+            getCityNameAction(getAirPollutionData.data.cityName)
+            getAirQualityIndexAction(getAirPollutionData.data.airQualityIndex)
+            getCOAction(getAirPollutionData.data.co)
+            getNOAction(getAirPollutionData.data.no)
+            getNO2Action(getAirPollutionData.data.no2)
+            getO3Action(getAirPollutionData.data.o3)
+            getSO2Action(getAirPollutionData.data.so2)
+            getPM2_5Action(getAirPollutionData.data.pm2_5)
+            getPM10Action(getAirPollutionData.data.pm10)
+            getNH3Action(getAirPollutionData.data.nh3)
+        } else {
+            const getWeatherData = await axios.post(
+                'https://localhost:3002',
+                {
+                    city
+                }
+            )
+            console.log("🚀 ~ file: SearchLocation.js ~ line 64 ~ handleOnClickSearchBtn ~ getWeatherData", getWeatherData)
+            getCityNameAction(getWeatherData.data.cityName)
+            getAirQualityIndexAction(getWeatherData.data.airQualityIndex)
+            getFeelLikeTempAction(getWeatherData.data.feelLike)
+            getHumidityAction(getWeatherData.data.humidity)
+            getTempAction(getWeatherData.data.temp)
+            getTempMaxAction(getWeatherData.data.tempMax)
+            getTempMinAction(getWeatherData.data.tempMin)
+            getWeatherAction(getWeatherData.data.weatherDescription)
+            getWeatherIconAction(`'http://openweathermap.org/img/wn/${getWeatherData.data.weatherIcon}@2x.png`)
+            getWindDegAction(getWeatherData.data.windDeg)
+            getWindSpeedAction(getWeatherData.data.windSpeed)
+            getTempDifferenceYesterdayAction(getWeatherData.data.tempDifferenceYesterday)
+            // history.push('/weather')
             }
-        )
-        console.log("🚀 ~ file: SearchLocation.js ~ line 64 ~ handleOnClickSearchBtn ~ getWeatherData", getWeatherData)
-        getCityNameAction(getWeatherData.data.cityName)
-        getAirQualityIndexAction(getWeatherData.data.airQualityIndex)
-        getFeelLikeTempAction(getWeatherData.data.feelLike)
-        getHumidityAction(getWeatherData.data.humidity)
-        getTempAction(getWeatherData.data.temp)
-        getTempMaxAction(getWeatherData.data.tempMax)
-        getTempMinAction(getWeatherData.data.tempMin)
-        getWeatherAction(getWeatherData.data.weatherDescription)
-        getWeatherIconAction(`'http://openweathermap.org/img/wn/${getWeatherData.data.weatherIcon}@2x.png`)
-        getWindDegAction(getWeatherData.data.windDeg)
-        getWindSpeedAction(getWeatherData.data.windSpeed)
-        getTempDifferenceYesterdayAction(getWeatherData.data.tempDifferenceYesterday)
-        // history.push('/weather')
     }
 
     return (

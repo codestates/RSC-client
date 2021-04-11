@@ -2,7 +2,6 @@ import React, {useCallback}  from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MyLocation from '../components/MyLocation';
 import { 
-    getAirQualityIndex,
     getFeelLikeTemp,
     getHumidity,
     getTemp,
@@ -27,9 +26,10 @@ const MyLocationContainer = () => {
     const windDeg = useSelector(state => state.landingPresentWeather.windDeg)
     const windSpeed = useSelector(state => state.landingPresentWeather.windSpeed)
     const tempDifferenceYesterday = useSelector(state => state.landingPresentWeather.tempDifferenceYesterday)
+    const isLoggedIn = useSelector(state => state.signIn.isLoggedIn);
+
 
     const dispatch = useDispatch();
-    const getAirQualityIndexAction = useCallback((index) => dispatch(getAirQualityIndex(index)), [dispatch]);
     const getFeelLikeTempAction = useCallback((temp) => dispatch(getFeelLikeTemp(temp)), [dispatch]);
     const getHumidityAction = useCallback((humidity) => dispatch(getHumidity(humidity)), [dispatch]);
     const getTempAction = useCallback((temp) => dispatch(getTemp(temp)), [dispatch]);
@@ -42,6 +42,7 @@ const MyLocationContainer = () => {
     const getTempDifferenceYesterdayAction = useCallback((temp) => dispatch(getTempDifferenceYesterday(temp)), [dispatch]);
     return (
         <MyLocation
+            isLoggedIn={isLoggedIn}
             airQualityInde={airQualityIndex}
             feelLike={feelLike}
             humidity={humidity}
@@ -53,7 +54,6 @@ const MyLocationContainer = () => {
             windDeg={windDeg}
             windSpeed={windSpeed}
             tempDifferenceYesterday={tempDifferenceYesterday}
-            getAirQualityIndexAction={getAirQualityIndexAction}
             getFeelLikeTempAction={getFeelLikeTempAction}
             getHumidityAction={getHumidityAction}
             getTempAction={getTempAction}
