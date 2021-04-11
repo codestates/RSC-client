@@ -1,0 +1,125 @@
+.sign_up_container{
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100vh;    
+}
+
+.sign_up_container_title{
+    border: 1px solid gray;
+    width: 10%;
+    text-align: center;
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    font-size: 3vmax;
+}
+
+.sign_up_box_notice{
+    font-size: 1vmax;
+    position: absolute;
+    top: 9.5%;
+    right: 14.5%;
+    width: 35%; 
+}
+
+.sign_up_box{
+    position: absolute;
+    top: 13%;
+    right: 15%;
+    border: 3px solid gray;
+    width: 35%;
+    height: 80%;
+}
+
+
+.sign_up_box_name_sign,
+.sign_up_box_id_sign,
+.sign_up_box_password_sign,
+.sign_up_box_pet_name_sign,
+.sign_up_box_location_sign
+{
+    display: inline-block;
+    margin-left: 5%;
+    font-size: 1vmax;
+    /* border: 1px solid red; */
+    width: 15%;
+}
+
+.sign_up_box_name{
+    /* border: 1px solid red; */
+    display: inline-block;
+    margin-top: 5%;
+    width: 60%;
+    height: 8%;
+    text-align: center;
+}
+
+.sign_up_box_id,
+.sign_up_box_password,
+.sign_up_box_pet_name,
+.sign_up_box_location{
+    /* border: 1px solid red; */
+    display: inline-block;
+    margin-top: 3%;
+    width: 60%;
+    height: 8%;
+    text-align: center;
+}
+
+.sign_up_box_input_name,
+.sign_up_box_input_id,
+.sign_up_box_input_password,
+.sign_up_box_input_location_1,
+.sign_up_box_input_location_2
+{
+    width: 90%;
+    height: 70%;   
+    padding-left: 3%;
+    font-size: 1.1vmax;
+}
+
+.sign_up_box_name_error_message,
+.sign_up_box_id_error_message,
+.sign_up_box_password_error_message,
+.sign_up_box_pet_error_message{
+    font-size: 1.1vmax;
+    margin-left: 5%;
+}
+
+.sign_up_box_already_have{
+    /* border: 1px solid red; */
+    text-align: center;
+    font-size: 1.3vmax;
+    margin-top: 5%;
+}
+
+.sign_up_box_already_have_text{
+    /* border: 1px solid red; */
+    display: inline;
+    /* margin: 2%; */
+    /* font-size: 1.3vmax */
+}
+
+.sign_up_box_hr{
+    border: 1px solid lightgray;
+    width: 90%;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.sign_up_box_create_btn_div{
+    /* border: 1px solid red; */
+    margin-top: 7%;
+    margin-left: 23%;
+
+    width: 60%;
+    height: 10%;
+    /* text-align: center; */
+}
+
+
+.sign_up_box_create_btn{
+    width: 90%;
+    height: 80%;
+    font-size: 1.2vmax
+}
