@@ -4,44 +4,44 @@ import './SearchLocation.css'
 import axios from 'axios'
 
 const SearchLocation = ({ history }) => {
-    const [cityId, setCityId] = useState(null)    
+    const [city, setCity] = useState(null)    
 
     const handleInputValue = (key) => (e) => {
         if (key === "city" && e.target.value !== undefined) {
             if(e.target.value === '서울') {
-                setCityId(1835847)
+                setCity('서울')
             } else if (e.target.value === '인천') {
-                setCityId(1843561)    
+                setCity('인천')    
             } else if (e.target.value === '대전') {
-                setCityId(1835224)
+                setCity('대전')
             } else if (e.target.value === '대구') {
-                setCityId(1835327)
+                setCity('대구')
             } else if (e.target.value === '울산') {
-                setCityId(1833742)
+                setCity('울산')
             } else if (e.target.value === '부산') {
-                setCityId(1838519)
+                setCity('부산')
             } else if (e.target.value === '광주') {
-                setCityId(1841808)
+                setCity('광주')
             } else if (e.target.value === '경기도') {
-                setCityId(1841610)
+                setCity('경기도')
             } else if(e.target.value === '강원도') {
-                setCityId(1843125)
+                setCity('강원도')
             } else if (e.target.value === '충청남도') {
-                setCityId(1845105)
+                setCity('충청남도')
             } else if (e.target.value === '충청북도') {
-                setCityId(1845106)
+                setCity('충청북도')
             } else if (e.target.value === '전라남도') {
-                setCityId(1845788)
+                setCity('전라남도')
             } else if (e.target.value === '전라북도') {
-                setCityId(1845789)
+                setCity('전라북도')
             } else if (e.target.value === '경상남도') {
-                setCityId(1902028)
+                setCity('경상남도')
             } else if (e.target.value === '경상북도') {
-                setCityId(1841597)
+                setCity('경상북도')
             } else if (e.target.value === '제주도') {
-                setCityId(1846265)
+                setCity('제주도')
             } else {
-                setCityId(null)
+                setCity(null)
             }
           }
       };
@@ -52,7 +52,7 @@ const SearchLocation = ({ history }) => {
         const getWeatherData = await axios.post(
             'https://localhost:3002/weather',
             {
-                cityId
+                city
             }
         )
         console.log("🚀 ~ file: SearchLocation.js ~ line 21 ~ handleOnClickSearchBtn ~ getWeatherData", getWeatherData)
