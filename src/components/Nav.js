@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, withRouter } from "react-router-dom";
 import './Nav.css'
 import axios from 'axios'
@@ -10,6 +10,10 @@ const Nav = ({
     changeLoggedInStateAction,
     history
 }) => {
+
+    useEffect(() => {
+        
+    },[isLoggedIn])
 
     const handleScroll = () => {
         window.scrollTo(0,0)

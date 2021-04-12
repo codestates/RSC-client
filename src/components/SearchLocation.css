@@ -1,10 +1,11 @@
 .searchLocation_container{
-    /* border: 1px solid red; */
-    width: 45%;
+    /* width: 45%;
     height: 5%;
     position: absolute;
     top: 18%;
-    right: 25%;
+    right: 25%; */
+    width: 100%;
+    height: 100%;
 }   
 
 .searchLocation_input_box{

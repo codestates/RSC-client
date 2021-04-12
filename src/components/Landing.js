@@ -5,13 +5,16 @@ import Sidebar from './Sidebar';
 import LandingPresentWeatherContainer from '../container/LandingPresentWeatherContainer';
 import SearchLocationContainer from '../container/SearchLocationContainer';
 import NavContainer from '../container/NavContainer';
+import './Landing.css'
 
 const Landing = () => {
     return (
         <div>
             <NavContainer />
             <Sidebar />
-            <SearchLocationContainer />
+            <div className="landing_search_location_input">
+                <SearchLocationContainer />
+            </div>
             <LandingPresentWeatherContainer />
         </div>
     );

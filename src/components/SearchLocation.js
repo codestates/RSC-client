@@ -24,6 +24,10 @@ const SearchLocation = ({
     getPM2_5Action,
     getPM10Action,
     getNH3Action,
+    cityName1,
+    cityName2,
+    getCityName1Action,
+    getCityName2Action,
     history 
 }) => {
     const [city, setCity] = useState(null)    
@@ -99,7 +103,8 @@ const SearchLocation = ({
                     withCredentials: true
                 }
             )
-
+            console.log("🚀 ~ file: SearchLocation.js ~ line 106 ~ handleOnClickSearchBtn ~ getWeatherData", getWeatherData)
+            getCityName2Action(getWeatherData.data.city)
             
         } else {
             const getWeatherData = await axios.post(

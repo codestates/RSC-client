@@ -1,3 +1,11 @@
+.fine_dust_search_location_input{
+    width: 45%;
+    height: 5%;
+    position: absolute;
+    top: 18%;
+    right: 25%;
+}
+
 .fine_dust_container{
     border: 1px solid red;
     width: 60%;
@@ -198,4 +206,14 @@
     right: 5%;
     font-size: 1.2vmax;
     text-align: center;
+}
+
+.fine_dust_loading{
+    /* border: 1px solid red; */
+    /* width: 15%; */
+    /* height: 40%; */
+    position: absolute;
+    top: 45%;
+    left: 38%;   
+    font-size: 2.5vmax;
 }
