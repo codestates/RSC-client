@@ -48,7 +48,10 @@ const LandingPresentWeather = ({
     const getWeekNumber = getDate.getDay()
     const getDay = week[getWeekNumber]
     const hour = getDate.getHours();
-    const min = getDate.getMinutes();
+    let min = getDate.getMinutes();
+    if (min < 10) {
+        min = '0' + min;
+    }
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async() => {
