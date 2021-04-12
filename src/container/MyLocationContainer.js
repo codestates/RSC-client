@@ -1,6 +1,10 @@
 import React, {useCallback}  from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MyLocation from '../components/MyLocation';
+import {
+    getCityName1,
+    getCityName2
+} from '../modules/signIn'
 import { 
     getMyLocationName,
     getMyLocationFeelLikeTemp,
@@ -52,7 +56,10 @@ const MyLocationContainer = () => {
     const myLocationWindeDeg2 = useSelector(state => state.myLocation.myLocationWindeDeg2)
     const myLocationWindSpeed2 = useSelector(state => state.myLocation.myLocationWindSpeed2)
     const myLocationTempDifferenceYesterday2 = useSelector(state => state.myLocation.myLocationTempDifferenceYesterday2)
-        
+    //
+    const cityName1 = useSelector(state => state.signIn.cityName1);
+    const cityName2 = useSelector(state => state.signIn.cityName2);
+
     const dispatch = useDispatch();
     //1
     const getMyLocationNameAction = useCallback((name) => dispatch(getMyLocationName(name)), [dispatch]);
@@ -78,7 +85,9 @@ const MyLocationContainer = () => {
     const getMyLocationWindDegAction2 = useCallback((deg) => dispatch(getMyLocationWindDeg2(deg)), [dispatch]);
     const getMyLocationWindSpeedAction2 = useCallback((speed) => dispatch(getMyLocationWindSpeed2(speed)), [dispatch]);
     const getMyLocationTempDifferenceYesterdayAction2 = useCallback((temp) => dispatch(getMyLocationTempDifferenceYesterday2(temp)), [dispatch]);
-
+    //
+    const getCityName1Action = useCallback((city) => dispatch(getCityName1(city)), [dispatch]);
+    const getCityName2Action = useCallback((city) => dispatch(getCityName2(city)), [dispatch]);
 
 
     
@@ -134,7 +143,11 @@ const MyLocationContainer = () => {
             getMyLocationWindDegAction2={getMyLocationWindDegAction2}
             getMyLocationWindSpeedAction2={getMyLocationWindSpeedAction2}
             getMyLocationTempDifferenceYesterdayAction2={getMyLocationTempDifferenceYesterdayAction2}
-            
+            //
+            cityName1={cityName1}
+            cityName2={cityName2}
+            getCityName1Action={getCityName1Action}
+            getCityName2Action={getCityName2Action}  
         />
     );
 };

@@ -90,7 +90,9 @@ const FineDust = ({
         <div>
             <NavContainer />
             <Sidebar />
-            <SearchLocationContainer />        
+            <div className="fine_dust_search_location_input">
+                <SearchLocationContainer />        
+            </div>
         <div className="fine_dust_container">
             {/* <div className="fine_dust_date">04.10(토) 15:30</div> */}
             <div className="fine_dust_date">{date}</div>
@@ -169,7 +171,12 @@ const FineDust = ({
         </div>
     ):(
         <div>
-            loading...
+            <NavContainer />
+            <Sidebar />
+            <SearchLocationContainer />  
+            <div className="fine_dust_loading">
+                대기질 정보를 가져오는 중입니다...
+            </div>
         </div>
     );
 };

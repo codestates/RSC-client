@@ -85,7 +85,7 @@ const LandingPresentWeather = ({
     },[])
     
     
-    return temp && date?(
+    return   temp && date?(
         <div className="LandingPresentWeather_container">
             {/* <div className="LandingPresentWeather_date">04.10(토) 15:30</div> */}
             <div className="LandingPresentWeather_date">{date}</div>
@@ -174,8 +174,8 @@ const LandingPresentWeather = ({
             </div>
         </div>
     ):(
-        <div>
-            loading...
+        <div className="LandingPresentWeather_loading">
+            날씨 정보를 가져오고 있습니다...
         </div>
     );
 };

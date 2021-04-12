@@ -1,6 +1,10 @@
 import React, {useCallback}  from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchLocation from '../components/SearchLocation';
+import {
+    getCityName1,
+    getCityName2
+} from '../modules/signIn'
 import { 
     getCityName,
     getFeelLikeTemp,
@@ -27,6 +31,9 @@ import {
 } from '../modules/fineDust'
 
 const SearchLocationContainer = () => {
+    const cityName1 = useSelector(state => state.signIn.cityName1);
+    const cityName2 = useSelector(state => state.signIn.cityName2);
+
     const dispatch = useDispatch();
     const getCityNameAction = useCallback((name) => dispatch(getCityName(name)), [dispatch]);
     const getFeelLikeTempAction = useCallback((temp) => dispatch(getFeelLikeTemp(temp)), [dispatch]);
@@ -50,6 +57,8 @@ const SearchLocationContainer = () => {
     const getPM10Action = useCallback((PM10) => dispatch(getPM10(PM10)), [dispatch]);
     const getNH3Action = useCallback((NH3) => dispatch(getNH3(NH3)), [dispatch]);
 
+    const getCityName1Action = useCallback((city) => dispatch(getCityName1(city)), [dispatch]);
+    const getCityName2Action = useCallback((city) => dispatch(getCityName2(city)), [dispatch]);
     
     return (
         <SearchLocation 
@@ -73,6 +82,10 @@ const SearchLocationContainer = () => {
             getPM2_5Action={getPM2_5Action}
             getPM10Action={getPM10Action}
             getNH3Action={getNH3Action}
+            cityName1={cityName1}
+            cityName2={cityName2}
+            getCityName1Action={getCityName1Action}
+            getCityName2Action={getCityName2Action}
         />
     );
 };

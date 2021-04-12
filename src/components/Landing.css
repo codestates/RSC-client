@@ -1,0 +1,8 @@
+.landing_search_location_input{
+    /* border: 1px solid red; */
+    width: 45%;
+    height: 5%;
+    position: absolute;
+    top: 18%;
+    right: 25%;
+}   

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, withRouter } from "react-router-dom";
 import axios from 'axios'
-import Nav from './Nav';
+import NavContainer from '../container/NavContainer';
 import Sidebar from './Sidebar';
 import SearchLocation from './SearchLocation';
 import './MyLocation.css'
 import SearchLocationContainer from '../container/SearchLocationContainer';
+import SignInContainer from '../container/SignInContainer';
 
 const MyLocation = ({
             isLoggedIn,
@@ -57,10 +58,14 @@ const MyLocation = ({
             getMyLocationWindDegAction2,
             getMyLocationWindSpeedAction2,
             getMyLocationTempDifferenceYesterdayAction2,
+            cityName1,
+            cityName2,
+            getCityName1Action,
+            getCityName2Action,
             history
 }) => {
-            console.log("🚀 ~ file: MyLocation.js ~ line 62 ~ myLocationName2", myLocationName2)
-            console.log("🚀 ~ file: MyLocation.js ~ line 62 ~ myLocationName", myLocationName)
+    console.log("🚀 ~ file: MyLocation.js ~ line 62 ~ myLocationName2", myLocationName2)
+    console.log("🚀 ~ file: MyLocation.js ~ line 62 ~ myLocationName", myLocationName)
     const [date, setDate] = useState(null)    
     const [isClickedAddBtn, setIsClickedAddBtn] = useState(false);
 
@@ -145,17 +150,29 @@ const MyLocation = ({
                 getMyLocationWindDegAction2(windDeg2)
                 getMyLocationWindSpeedAction2(windSpeed2)
                 getMyLocationTempDifferenceYesterdayAction2(tempDifferenceYesterday2)
+            } else {
+                getMyLocationNameAction(cityName1)
+                getMyLocationFeelLikeTempAction(feelLike1)
+                getMyLocationHumidityAction(humidity1)
+                getMyLocationTempAction(temp1)
+                getMyLocationTempMaxAction(tempMax1)
+                getMyLocationTempMinAction(tempMin1)
+                getMyLocationWeatherAction(weatherDescription1)
+                getMyLocationWeatherIconAction(weatherIcon1)
+                getMyLocationWindDegAction(windDeg1)
+                getMyLocationWindSpeedAction(windSpeed1)
+                getMyLocationTempDifferenceYesterdayAction(tempDifferenceYesterday1)
             }
 
             setDate(`${getMonth}.${getDayNumber}(${getDay}) ${hour}:${min}`)
         } catch(err) {
             console.error(err)
         }
-    },[])
+    },[cityName2])
 
-    return isLoggedIn && myLocationName?(
+    return isLoggedIn && myLocationName ?(
         <div className="my_location_container">
-            <Nav />
+            <NavContainer />
             <Sidebar />
             <div className="my_location_title">
                 나의 지역
@@ -333,13 +350,13 @@ const MyLocation = ({
                     </div>
                 </div>
                 ):(
-                    <div className="my_location_empty">
-                        <div onClick={handleOnIsClickedAddBtn}>
+                    <div className="my_location_empty_box">
+                        <div className="my_location_add_message" onClick={handleOnIsClickedAddBtn}>
                             즐겨찾기 지역 추가하기
                         </div>    
                         {isClickedAddBtn?
                         (
-                            <div>
+                            <div className="my_location_search_location_input">
                                 <SearchLocationContainer />
                             </div>    
                         ):(
@@ -351,12 +368,22 @@ const MyLocation = ({
         </div>
         ):(
         <div className="my_location_container">
-            <Nav />
-            <div className="my_location_guest">
-                <div>
+            <NavContainer />
+            <Sidebar />
+                {isLoggedIn?(
+                <div className="my_location_guest_message">
+                    날씨 정보를 가져오고 있습니다...
+                </div>
+                ):(
+                <div className="my_location_guest_message">
                     로그인 시 이용 가능합니다.
                 </div>
-            </div>
+                )}
+                {isLoggedIn?(
+                    null
+                ):(
+                    <SignInContainer />
+                )}
         </div>
     );
 };
