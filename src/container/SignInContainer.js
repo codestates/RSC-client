@@ -12,14 +12,10 @@ import {
 } from '../modules/signUp';
 import {
     changeLoggedInState,
-    getCityName1,
-    getCityName2
 } from '../modules/signIn'
 import {
-    getCityName
-} from '../modules/landingPresentWeather'
-import { 
-    getMyLocationName
+    getMyLocationName,
+    getMyLocationName2 
 } from '../modules/myLocation'
 
 const SignInContainer = () => {
@@ -28,11 +24,13 @@ const SignInContainer = () => {
     const emailErrorMsg = useSelector(state => state.signUp.emailErrorMsg);
     const passwordErrorMsg = useSelector(state => state.signUp.passwordErrorMsg);
     const isLoggedIn = useSelector(state => state.signIn.isLoggedIn);
-    const cityName1 = useSelector(state => state.signIn.cityName1);
-    const cityName2 = useSelector(state => state.signIn.cityName2);
-
+    const myLocationName = useSelector(state => state.myLocation.myLocationName)
+    const myLocationName2 = useSelector(state => state.myLocation.myLocationName2)   
+    
     const dispatch = useDispatch();
-    const getMyLocationNameAction = useCallback((num,name) => dispatch(getMyLocationName(num,name)), [dispatch]);
+    
+    const getMyLocationNameAction = useCallback((name) => dispatch(getMyLocationName(name)), [dispatch]);
+    const getMyLocationNameAction2 = useCallback((name) => dispatch(getMyLocationName2(name)), [dispatch]);
     const setEmailAction = useCallback((email) => dispatch(setEmail(email)), [dispatch]);    
     const setUserNameAction = useCallback((name) => dispatch(setUserName(name)), [dispatch]);    
     const setPasswordAction = useCallback((email) => dispatch(setPassword(email)), [dispatch]);
@@ -41,10 +39,6 @@ const SignInContainer = () => {
     const eraseEmailErrorAction = useCallback((email) => dispatch(eraseEmailError(email)), [dispatch]);
     const erasePasswordErrorAction = useCallback((email) => dispatch(erasePasswordError(email)), [dispatch]);
     const changeLoggedInStateAction = useCallback(() => dispatch(changeLoggedInState()), [dispatch]);
-    const getCityNameAction = useCallback((city) => dispatch(getCityName(city)), [dispatch]);
-    const getCityName1Action = useCallback((city) => dispatch(getCityName1(city)), [dispatch]);
-    const getCityName2Action = useCallback((city) => dispatch(getCityName2(city)), [dispatch]);
-
     
 
     return (
@@ -54,6 +48,8 @@ const SignInContainer = () => {
             emailErrorMsg={emailErrorMsg}
             passwordErrorMsg={passwordErrorMsg}
             isLoggedIn={isLoggedIn}
+            myLocationName={myLocationName}
+            myLocationName2={myLocationName2}
             setEmailAction={setEmailAction}
             setUserNameAction={setUserNameAction}
             setPasswordAction={setPasswordAction}
@@ -62,12 +58,8 @@ const SignInContainer = () => {
             eraseEmailErrorAction={eraseEmailErrorAction}
             erasePasswordErrorAction={erasePasswordErrorAction}
             changeLoggedInStateAction={changeLoggedInStateAction}
-            getCityNameAction={getCityNameAction}
             getMyLocationNameAction={getMyLocationNameAction}
-            cityName1={cityName1}
-            cityName2={cityName2}
-            getCityName1Action={getCityName1Action}
-            getCityName2Action={getCityName2Action}
+            getMyLocationNameAction2={getMyLocationNameAction2}
        />
     );
 };

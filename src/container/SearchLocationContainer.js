@@ -1,10 +1,7 @@
 import React, {useCallback}  from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchLocation from '../components/SearchLocation';
-import {
-    getCityName1,
-    getCityName2
-} from '../modules/signIn'
+
 import { 
     getCityName,
     getFeelLikeTemp,
@@ -56,9 +53,6 @@ const SearchLocationContainer = () => {
     const getPM2_5Action = useCallback((PM2_5) => dispatch(getPM2_5(PM2_5)), [dispatch]);
     const getPM10Action = useCallback((PM10) => dispatch(getPM10(PM10)), [dispatch]);
     const getNH3Action = useCallback((NH3) => dispatch(getNH3(NH3)), [dispatch]);
-
-    const getCityName1Action = useCallback((city) => dispatch(getCityName1(city)), [dispatch]);
-    const getCityName2Action = useCallback((city) => dispatch(getCityName2(city)), [dispatch]);
     
     return (
         <SearchLocation 
@@ -84,8 +78,6 @@ const SearchLocationContainer = () => {
             getNH3Action={getNH3Action}
             cityName1={cityName1}
             cityName2={cityName2}
-            getCityName1Action={getCityName1Action}
-            getCityName2Action={getCityName2Action}
         />
     );
 };

@@ -43,7 +43,7 @@
 }
 
 .my_location_data_1_weather_box{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 15%;
     height: 40%;
     position: absolute;
@@ -215,7 +215,7 @@
 }
 
 .my_location_data_2_weather_box{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 15%;
     height: 40%;
     position: absolute;

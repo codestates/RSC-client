@@ -16,9 +16,11 @@ a{
 
 .nav_logo{
     display: inline-block;
-    border: 1px solid red;
-    position: relative;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 18%;
     left: 1%;
+    font-size: 1.2vmax;
 }
 
 .nav_sign_box{

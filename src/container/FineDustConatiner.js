@@ -14,7 +14,7 @@ getNH3,
 } from '../modules/fineDust'
 
 import { 
-    getCityName,
+    getCityName
 } from '../modules/landingPresentWeather'
 
 const FineDustContainer = () => {

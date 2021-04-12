@@ -60,8 +60,8 @@ const MyLocation = ({
             getMyLocationTempDifferenceYesterdayAction2,
             cityName1,
             cityName2,
-            getCityName1Action,
-            getCityName2Action,
+            // getCityName1Action,
+            // getCityName2Action,
             history
 }) => {
     console.log("🚀 ~ file: MyLocation.js ~ line 62 ~ myLocationName2", myLocationName2)
