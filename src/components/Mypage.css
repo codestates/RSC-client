@@ -1,26 +1,26 @@
-.mypage_container{
- width: 100%;
- height: 100%;  
- border: 1px solid red;
+.mypage_container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
 }
 
-.mypage_profile_title{
-    /* border: 1px solid red; */
-    position: absolute;
-    top: 13%;
-    left: 25%;
-    /* width: 80%; */
-    /* height: 5%; */
-    font-size: 1.3vmax;
+.mypage_profile_title {
+  /* border: 1px solid red; */
+  position: absolute;
+  top: 13%;
+  left: 25%;
+  /* width: 80%; */
+  /* height: 5%; */
+  font-size: 1.3vmax;
 }
 
-.mypage_profile_box{
-    width: 50%;
-    height: 70%;      
-    position: absolute;
-    top: 20%;
-    left: 25%;
-    border: 1px solid red;
+.mypage_profile_box {
+  width: 50%;
+  height: 70%;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  border: 1px solid red;
 }
 
 .mypage_profile_ID_title,
@@ -35,308 +35,321 @@
 .mypage_profile_location_1_title,
 .mypage_profile_location_1_value,
 .mypage_profile_location_2_title,
-.mypage_profile_location_2_value
-{
-    display: inline-block;
+.mypage_profile_location_2_value {
+  display: inline-block;
 }
-
 
 /*! ID */
-.mypage_profile_ID_box{
-    border-bottom: 1px solid red;
-    width: 100%;
-    height: 12.5%;
+.mypage_profile_ID_box {
+  border-bottom: 1px solid red;
+  width: 100%;
+  height: 12.5%;
 }
 
-.mypage_profile_ID_title{
-    display: inline-block;
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    width: 15%;
-    margin-top: 3%;
-    margin-left: 3%;
+.mypage_profile_ID_title {
+  display: inline-block;
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  width: 15%;
+  margin-top: 3%;
+  margin-left: 3%;
 }
 
-.mypage_profile_ID_value{
-    display: inline-block;
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    /* height: 100%; */
-    position: relative;
-    left: 10%;
+.mypage_profile_ID_value {
+  display: inline-block;
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  /* height: 100%; */
+  position: relative;
+  left: 10%;
 }
 
-.mypage_profile_ID_change_btn{
-    border: 1px solid black;
-    font-size: 1vmax;
-    /* width: 85%; */
-    height: 10%;
-    position: absolute;
-    /* position: relative; */
-    top: 2.8%;
-    right: 5%;
+.mypage_profile_ID_change_btn {
+  border: 1px solid black;
+  font-size: 1vmax;
+  /* width: 85%; */
+  height: 10%;
+  position: absolute;
+  /* position: relative; */
+  top: 2.8%;
+  right: 5%;
 }
-
 
 /*! PW */
-.mypage_profile_PW_box{
-    border-bottom: 1px solid red;
-    width: 100%;
-    height: 12.5%;
+.mypage_profile_PW_box {
+  border-bottom: 1px solid red;
+  width: 100%;
+  height: 12.5%;
 }
 
-.mypage_profile_PW_title{
-    display: inline-block;
-    margin-top: 3%;
-    margin-left: 3%;
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    width: 15%;
-    /* height: 100%; */
+.mypage_profile_PW_title {
+  display: inline-block;
+  margin-top: 3%;
+  margin-left: 3%;
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  width: 15%;
+  /* height: 100%; */
 }
 
-.mypage_profile_PW_value{
-    display: inline-block;
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    /* height: 100%; */
-    position: relative;
-    left: 10%;
+.mypage_profile_PW_value {
+  display: inline-block;
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  /* height: 100%; */
+  position: relative;
+  left: 10%;
 }
 
-.mypage_profile_PW_change_btn{
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    height: 10%;
-    position: absolute;
-    /* position: relative; */
-    top: 17%;
-    right: 5%;
+.mypage_profile_PW_change_btn {
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  height: 10%;
+  position: absolute;
+  /* position: relative; */
+  top: 17%;
+  right: 5%;
 }
 
 /*! name */
-.mypage_profile_name_box{
-    border-bottom: 1px solid red;
-    width: 100%;
-    height: 12.5%;
+.mypage_profile_name_box {
+  border-bottom: 1px solid red;
+  width: 100%;
+  height: 12.5%;
 }
 
-.mypage_profile_name_title{
-    /* border: 1px solid black; */
-    margin-top: 3%;
-    margin-left: 3%;
-    font-size: 1vmax;
-    width: 15%;
-    /* height: 100%; */
+.mypage_profile_name_title {
+  /* border: 1px solid black; */
+  margin-top: 3%;
+  margin-left: 3%;
+  font-size: 1vmax;
+  width: 15%;
+  /* height: 100%; */
 }
 
-.mypage_profile_name_value{
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    /* height: 100%; */
-    position: relative;
-    left: 10%;
+.mypage_profile_name_value {
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  /* height: 100%; */
+  position: relative;
+  left: 10%;
 }
 
-.mypage_profile_name_change_btn{
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    height: 10%;
-    position: absolute;
-    /* position: relative; */
-    top: 29.5%;
-    right: 5%;
+.mypage_profile_name_change_btn {
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  height: 10%;
+  position: absolute;
+  /* position: relative; */
+  top: 29.5%;
+  right: 5%;
 }
 
 /*! 지역 1*/
-.mypage_profile_location_1_box{
-    border-bottom: 1px solid red;
-    width: 100%;
-    height: 12.5%;
+.mypage_profile_location_1_box {
+  border-bottom: 1px solid red;
+  width: 100%;
+  height: 12.5%;
 }
 
-.mypage_profile_location_1_title{
-    /* border: 1px solid black; */
-    margin-top: 3%;
-    margin-left: 3%;
-    font-size: 1vmax;
-    width: 15%;
-    /* height: 100%; */
+.mypage_profile_location_1_title {
+  /* border: 1px solid black; */
+  margin-top: 3%;
+  margin-left: 3%;
+  font-size: 1vmax;
+  width: 15%;
+  /* height: 100%; */
 }
 
-.mypage_profile_location_1_value{
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    /* height: 100%; */
-    position: relative;
-    left: 10%;
+.mypage_profile_location_1_value {
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  /* height: 100%; */
+  position: relative;
+  left: 10%;
 }
 
-.mypage_profile_location_1_change_btn{
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    height: 10%;
-    position: absolute;
-    /* position: relative; */
-    top: 42%;
-    right: 5%;
+.mypage_profile_location_1_change_btn {
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  height: 10%;
+  position: absolute;
+  /* position: relative; */
+  top: 42%;
+  right: 5%;
 }
 
 /*! 지역 2*/
-.mypage_profile_location_2_box{
-    border-bottom: 1px solid red;
-    width: 100%;
-    height: 12.5%;
+.mypage_profile_location_2_box {
+  border-bottom: 1px solid red;
+  width: 100%;
+  height: 12.5%;
 }
 
-.mypage_profile_location_2_title{
-    /* border: 1px solid black; */
-    margin-top: 3%;
-    margin-left: 3%;
-    font-size: 1vmax;
-    width: 15%;
-    /* height: 100%; */
+.mypage_profile_location_2_title {
+  /* border: 1px solid black; */
+  margin-top: 3%;
+  margin-left: 3%;
+  font-size: 1vmax;
+  width: 15%;
+  /* height: 100%; */
 }
 
-.mypage_profile_location_2_value{
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    /* height: 100%; */
-    position: relative;
-    left: 10%;
+.mypage_profile_location_2_value {
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  /* height: 100%; */
+  position: relative;
+  left: 10%;
 }
 
-.mypage_profile_location_2_change_btn{
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    height: 10%;
-    position: absolute;
-    /* position: relative; */
-    top: 54.5%;
-    right: 5%;
+.mypage_profile_location_2_change_btn {
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  height: 10%;
+  position: absolute;
+  /* position: relative; */
+  top: 54.5%;
+  right: 5%;
 }
 
 /* 업데이트 예정 */
 /*! 반려견 이름 */
-.mypage_profile_pet_name_box{
-    border-bottom: 1px solid red;
-    width: 100%;
-    height: 12.5%;
+.mypage_profile_pet_name_box {
+  border-bottom: 1px solid red;
+  width: 100%;
+  height: 12.5%;
 }
 
-.mypage_profile_pet_name_title{
-    display: inline-block;
-    margin-top: 3%;
-    margin-left: 3%;
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    width: 15%;
-    /* height: 100%; */
+.mypage_profile_pet_name_title {
+  display: inline-block;
+  margin-top: 3%;
+  margin-left: 3%;
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  width: 15%;
+  /* height: 100%; */
 }
 
-.mypage_profile_pet_name_value{
-    display: inline-block;
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    /* height: 100%; */
-    position: relative;
-    left: 10%;
+.mypage_profile_pet_name_value {
+  display: inline-block;
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  /* height: 100%; */
+  position: relative;
+  left: 10%;
 }
 
-.mypage_profile_pet_name_change_btn{
-    display: inline-block;
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    height: 10%;
-    position: absolute;
-    /* position: relative; */
-    top: 67%;
-    right: 5%;
+.mypage_profile_pet_name_change_btn {
+  display: inline-block;
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  height: 10%;
+  position: absolute;
+  /* position: relative; */
+  top: 67%;
+  right: 5%;
 }
 
 /*! 반려견종 */
-.mypage_profile_pet_breed_box{
-    border-bottom: 1px solid red;
-    width: 100%;
-    height: 12.5%;
+.mypage_profile_pet_breed_box {
+  border-bottom: 1px solid red;
+  width: 100%;
+  height: 12.5%;
 }
 
-.mypage_profile_pet_breed_title{
-    display: inline-block;
-    margin-top: 3%;
-    margin-left: 3%;
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    width: 15%;
-    /* height: 100%; */
+.mypage_profile_pet_breed_title {
+  display: inline-block;
+  margin-top: 3%;
+  margin-left: 3%;
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  width: 15%;
+  /* height: 100%; */
 }
 
-.mypage_profile_pet_breed_value{
-    display: inline-block;
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    /* height: 100%; */
-    position: relative;
-    left: 10%;
+.mypage_profile_pet_breed_value {
+  display: inline-block;
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  /* height: 100%; */
+  position: relative;
+  left: 10%;
 }
 
-.mypage_profile_pet_breed_change_btn{
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    height: 10%;
-    position: absolute;
-    /* position: relative; */
-    top: 79.5%;
-    right: 5%;
+.mypage_profile_pet_breed_change_btn {
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  height: 10%;
+  position: absolute;
+  /* position: relative; */
+  top: 79.5%;
+  right: 5%;
 }
 
 /*! 반려견 나이 2*/
-.mypage_profile_pet_age_box{
-    /* border-bottom: 1px solid red; */
-    width: 100%;
-    height: 12.5%;
+.mypage_profile_pet_age_box {
+  /* border-bottom: 1px solid red; */
+  width: 100%;
+  height: 12.5%;
 }
 
-.mypage_profile_pet_age_title{
-    display: inline-block;
-    margin-top: 3%;
-    margin-left: 3%;
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    width: 15%;
-    /* height: 100%; */
+.mypage_profile_pet_age_title {
+  display: inline-block;
+  margin-top: 3%;
+  margin-left: 3%;
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  width: 15%;
+  /* height: 100%; */
 }
 
-.mypage_profile_pet_age_value{
-    display: inline-block;
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    /* height: 100%; */
-    position: relative;
-    left: 10%;
+.mypage_profile_pet_age_value {
+  display: inline-block;
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  /* height: 100%; */
+  position: relative;
+  left: 10%;
 }
 
-.mypage_profile_pet_age_change_btn{
-    /* border: 1px solid black; */
-    font-size: 1vmax;
-    /* width: 85%; */
-    height: 10%;
-    position: absolute;
-    /* position: relative; */
-    top: 92%;
-    right: 5%;
+.mypage_profile_pet_age_change_btn {
+  /* border: 1px solid black; */
+  font-size: 1vmax;
+  /* width: 85%; */
+  height: 10%;
+  position: absolute;
+  /* position: relative; */
+  top: 92%;
+  right: 5%;
+}
+
+/* 모달 */
+
+.mypage_profile_modal_password,
+.mypage_profile_modal_name,
+.mypage_profile_modal_location_one,
+.mypage_profile_modal_location_two {
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  border: 3px solid red;
+  width: 30%;
+  height: 60%;
+  z-index: 999;
+  background-color: white;
 }
