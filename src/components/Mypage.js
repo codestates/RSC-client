@@ -106,6 +106,7 @@ const MyPage = ({
       withCredentials: true,
     });
     getMyLocationNameAction(userInfo.data.cityName1);
+    getMyLocationNameAction2(userInfo.data.cityName2);
     handleOnClickLocationOneBtn();
   };
 
@@ -115,25 +116,30 @@ const MyPage = ({
     setIsClickedLocationTwoBtn(!isClickedLocationTwoBtn);
   };
   const handleChangeLocation2 = async () => {
-    const changeLocation = await axios.post(
-      "https://localhost:3002/mypage/location2",
-      {
-        prevLocation: myLocationName2,
-        newLocation,
-      },
-      {
+    if (newLocation !== myLocationName) {
+      const changeLocation = await axios.post(
+        "https://localhost:3002/mypage/location2",
+        {
+          prevLocation: myLocationName2,
+          newLocation,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      const userInfo = await axios("https://localhost:3002/user-info", {
         withCredentials: true,
-      }
-    );
-    const userInfo = await axios("https://localhost:3002/user-info", {
-      withCredentials: true,
-    });
-    console.log(
-      "🚀 ~ file: Mypage.js ~ line 132 ~ handleChangeLocation2 ~ userInfo",
-      userInfo
-    );
-    getMyLocationNameAction2(userInfo.data.cityName2);
-    handleOnClickLocationTwoBtn();
+      });
+      console.log(
+        "🚀 ~ file: Mypage.js ~ line 132 ~ handleChangeLocation2 ~ userInfo",
+        userInfo
+      );
+      getMyLocationNameAction(userInfo.data.cityName1);
+      getMyLocationNameAction2(userInfo.data.cityName2);
+      handleOnClickLocationTwoBtn();
+    } else {
+      alert("지역1과 다른 지역을 선택하세요");
+    }
   };
   //! 지역2 제거하기
   const handleRemoveLocation2 = async () => {
