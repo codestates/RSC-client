@@ -135,7 +135,27 @@ const MyPage = ({
     getMyLocationNameAction2(userInfo.data.cityName2);
     handleOnClickLocationTwoBtn();
   };
-  // 지역2 제거하기
+  //! 지역2 제거하기
+  const handleRemoveLocation2 = async () => {
+    const removeLocation2 = await axios.delete(
+      "https://localhost:3002/mypage/location2",
+      {
+        data: {
+          location2: myLocationName2,
+        },
+        withCredentials: true,
+      }
+    );
+    // console.log(
+    //   "🚀 ~ file: Mypage.js ~ line 149 ~ handleRemoveLocation2 ~ removeLocation2",
+    //   removeLocation2
+    // );
+    if (removeLocation2.data.message === "OK") {
+      getMyLocationNameAction2(null);
+      handleOnClickLocationTwoBtn();
+    }
+  };
+
   //!  공통
   const handleInputValue = (key) => (e) => {
     // prevPassword
@@ -343,6 +363,7 @@ const MyPage = ({
             <div>
               <div>{myLocationName2}</div>
               <div>변경할 지역</div>
+              <div onClick={handleRemoveLocation2}>지역 삭제하기</div>
             </div>
           ) : (
             <div>
